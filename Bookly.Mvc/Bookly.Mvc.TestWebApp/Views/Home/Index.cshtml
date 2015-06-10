@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Bookly.Mvc.TetWebApp</h1>
+    <p class="lead">This is an MVC app to test out Bookly.Mvc features</p>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Embedded File System</h2>
+        <p>
+            Embedded file system allows for storing and retrieving any asset stored as an embedded resource via a URL.
+        </p>
+        <p><a class="btn btn-default" href="/Bookly.Mvc.TestMockup/Assets/LandingPage/img/banner-bg.jpg">Retrieve Embedded Picture</a></p>
+        <p><a class="btn btn-default" href="/Bookly.Mvc.TestMockup/Assets/LandingPage/index.html">Retrieve Html</a></p>
+    </div>
+    <div class="col-md-6">
+        <h2>Embedded View Engines</h2>
+        <p>Embedded View engine allows for storing Razor views as embedded resources, and use them as if they were file system based.</p>
+        <p><a class="btn btn-default" href="/TestMockup/RetrieveHtml">Retreive Simple Html</a></p>
+        <p><a class="btn btn-default" href="/TestMockup/RetrieveSimpleRazor">Retreive Simple Razor</a></p>
+        <p><a class="btn btn-default" href="/TestMockup/RetrieveSimpleEmbedded">Retreive Simple EmbeddedView</a></p>
+        
+    </div>
+    
+</div>
