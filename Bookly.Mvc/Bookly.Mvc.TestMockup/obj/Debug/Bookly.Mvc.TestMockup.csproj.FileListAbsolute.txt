@@ -40,3 +40,8 @@ C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.
 C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc.TestMockup\bin\Debug\HtmlAgilityPack.dll
 C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc.TestMockup\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc.TestMockup\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc.TestMockup\obj\Debug\Bookly.Mvc.TestMockup.UIStrings.resources
+C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc.TestMockup\obj\Debug\Bookly.Mvc.TestMockup.csproj.GenerateResource.Cache
+C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc.TestMockup\bin\Debug\Dynamitey.dll
+C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc.TestMockup\bin\Debug\Dynamitey.pdb
+C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc.TestMockup\bin\Debug\Dynamitey.xml

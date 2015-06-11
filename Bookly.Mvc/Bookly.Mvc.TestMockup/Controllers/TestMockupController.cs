@@ -23,5 +23,21 @@ namespace Bookly.Mvc.TestMockup.Controllers
         {
             return View("Bookly.Mvc.TestMockup.Views.Mockup.index.cshtml");
         }
+
+        public ActionResult SampleEntireLandingPage()
+        {
+            ViewBag.Title = "Viewbag title from controller";
+            ViewBag.Header = "Viewbag header from controller";
+
+            return View("Bookly.Mvc.TestMockup.Views.Sample.EntireLandingPage.html");
+        }
+
+        public ActionResult SampleLandingPageWithMaster()
+        {
+            ViewBag.Title = "Viewbag title from controller";
+            ViewBag.Header = "Viewbag header from controller";
+
+            return View("Bookly.Mvc.TestMockup.Views.Sample.LandingPage.html", "Bookly.Mvc.TestMockup.Views.Sample.LandingPageMaster.html");
+        }
     }
 }

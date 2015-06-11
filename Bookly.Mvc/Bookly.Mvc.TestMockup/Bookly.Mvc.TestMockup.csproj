@@ -102,8 +102,16 @@
   <ItemGroup>
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="Controllers\TestMockupController.cs" />
+    <Compile Include="LandingPageMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestMockupPlugin.cs" />
+    <Compile Include="UIStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UIStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EntireLandingPageView.cs" />
+    <Compile Include="Views\LandingPage.cs" />
     <Compile Include="Views\SampleEmbeddedView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -125,7 +133,14 @@
     <EmbeddedResource Include="Assets\LandingPage\js\jquery.js" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Views\Sample\LandingPage.html" />
+    <EmbeddedResource Include="Views\Sample\LandingPageMaster.html" />
+    <EmbeddedResource Include="Views\Sample\EntireLandingPage.html" />
     <None Include="app.config" />
+    <EmbeddedResource Include="UIStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UIStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Mockup\index.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

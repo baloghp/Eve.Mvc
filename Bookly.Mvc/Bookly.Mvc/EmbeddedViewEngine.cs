@@ -109,6 +109,7 @@ namespace Bookly.Mvc
             {
                 var view = views.First().Value;
                 view.ViewName = viewName;
+                view.MasterName = masterName;
                 view.AssemblyName = resourceDictionary[viewName];
                 return new ViewEngineResult(view, this);
             }

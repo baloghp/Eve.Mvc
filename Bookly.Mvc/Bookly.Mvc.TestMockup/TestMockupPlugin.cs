@@ -24,13 +24,6 @@ namespace Bookly.Mvc.TestMockup
                 FileSystem = new EmbeddedFileSystem("Bookly.Mvc.TestMockup, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "Bookly.Mvc.TestMockup.Assets")
             });
             app.UseStageMarker(PipelineStage.MapHandler);
-
-            app.UseFileServer(new FileServerOptions
-            {
-                RequestPath = new PathString("/Bookly.Mvc.TestMockup/Views"),
-                FileSystem = new EmbeddedFileSystem("Bookly.Mvc.TestMockup, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "Bookly.Mvc.TestMockup.Views")
-            });
-            app.UseStageMarker(PipelineStage.MapHandler);
         }
 
         public void InitializeViews(string PluginDirectory)

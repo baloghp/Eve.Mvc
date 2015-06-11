@@ -95,3 +95,6 @@ C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.
 C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc\bin\Debug\HtmlAgilityPack.dll
 C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc\bin\Debug\Dynamitey.dll
+C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc\bin\Debug\Dynamitey.pdb
+C:\Users\Peter\Downloads\git-visual-studio-developers\Sandbox\Bookly.Mvc\Bookly.Mvc\bin\Debug\Dynamitey.xml

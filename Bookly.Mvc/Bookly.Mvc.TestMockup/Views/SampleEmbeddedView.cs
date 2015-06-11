@@ -12,7 +12,7 @@ namespace Bookly.Mvc.TestMockup.Views
     {
         
 
-        public override void ManipulateDocument(HtmlAgilityPack.HtmlDocument Document, System.Web.Mvc.ViewContext viewContext)
+        public override void ProcessView( System.Web.Mvc.ViewContext viewContext)
         {
             
         }
