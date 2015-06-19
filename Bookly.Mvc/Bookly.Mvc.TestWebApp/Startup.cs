@@ -2,16 +2,16 @@
 using Owin;
 using Microsoft.Owin.StaticFiles;
 using Microsoft.Owin.FileSystems;
-using Bookly.Mvc;
+using EVE.Mvc;
 using Microsoft.Owin.Extensions;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Optimization;
-using Bookly.Mvc.TestMockup;
+using EVE.Mvc.TestMockup;
 using System.IO;
 
-[assembly: OwinStartupAttribute(typeof(Bookly.Mvc.TestWebApp.Startup))]
-namespace Bookly.Mvc.TestWebApp
+[assembly: OwinStartupAttribute(typeof(EVE.Mvc.TestWebApp.Startup))]
+namespace EVE.Mvc.TestWebApp
 {
     public partial class Startup
     {

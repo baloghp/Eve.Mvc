@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Bookly.Mvc.TestWebApp.Controllers
+namespace EVE.Mvc.TestWebApp.Controllers
 {
     public class HomeController : Controller
     {

@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Bookly.Mvc.TestWebApp.Models;
+using EVE.Mvc.TestWebApp.Models;
 
-namespace Bookly.Mvc.TestWebApp
+namespace EVE.Mvc.TestWebApp
 {
     public partial class Startup
     {

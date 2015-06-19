@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Bookly.Mvc.TestWebApp.MvcApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="EVE.Mvc.TestWebApp.MvcApplication" Language="C#" %>

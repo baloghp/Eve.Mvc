@@ -7,8 +7,8 @@
     <ProjectGuid>{5C0855AC-8408-4D5F-B148-AF50C77095B4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bookly.Mvc.TestMockup</RootNamespace>
-    <AssemblyName>Bookly.Mvc.TestMockup</AssemblyName>
+    <RootNamespace>EVE.Mvc.Samples.Embedded</RootNamespace>
+    <AssemblyName>EVE.Mvc.Samples.Embedded</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -185,9 +185,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bookly.Mvc\Bookly.Mvc.csproj">
+    <ProjectReference Include="..\Bookly.Mvc\EVE.Mvc.csproj">
       <Project>{03653281-a77e-463e-b24a-9763d59007a5}</Project>
-      <Name>Bookly.Mvc</Name>
+      <Name>EVE.Mvc</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

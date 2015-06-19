@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Bookly.Mvc
+namespace EVE.Mvc
 {
    public class DocumentHelper : IDocumentHelper
     {

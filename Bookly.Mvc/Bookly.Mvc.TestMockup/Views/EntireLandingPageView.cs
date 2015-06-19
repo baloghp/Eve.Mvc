@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bookly.Mvc;
+using EVE.Mvc;
 
-namespace Bookly.Mvc.TestMockup.Views
+namespace EVE.Mvc.TestMockup.Views
 {
      [EmbeddedView("Bookly.Mvc.TestMockup.Views.Sample.EntireLandingPage.html")]
     public class EntireLandingPageView : EmbeddedView

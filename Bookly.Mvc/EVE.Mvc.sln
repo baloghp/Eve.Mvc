@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8777C9F1-7DC4-4389-8F2F-AAC0AB8EFED7}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVE.Mvc.TestWebApp", "Bookly.Mvc.TestWebApp\EVE.Mvc.TestWebApp.csproj", "{55E28C99-C032-4E6B-902A-778DCEBDE328}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVE.Mvc.Samples.Embedded", "Bookly.Mvc.TestMockup\EVE.Mvc.Samples.Embedded.csproj", "{5C0855AC-8408-4D5F-B148-AF50C77095B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVE.Mvc", "Bookly.Mvc\EVE.Mvc.csproj", "{03653281-A77E-463E-B24A-9763D59007A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVE.Mvc.Samples.ViewEngine", "EVE.Mvc.Samples.ViewEngine\EVE.Mvc.Samples.ViewEngine.csproj", "{09B9B1D1-C8B1-41E5-8703-45607DCF10B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55E28C99-C032-4E6B-902A-778DCEBDE328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E28C99-C032-4E6B-902A-778DCEBDE328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E28C99-C032-4E6B-902A-778DCEBDE328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E28C99-C032-4E6B-902A-778DCEBDE328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C0855AC-8408-4D5F-B148-AF50C77095B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0855AC-8408-4D5F-B148-AF50C77095B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0855AC-8408-4D5F-B148-AF50C77095B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0855AC-8408-4D5F-B148-AF50C77095B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03653281-A77E-463E-B24A-9763D59007A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03653281-A77E-463E-B24A-9763D59007A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03653281-A77E-463E-B24A-9763D59007A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03653281-A77E-463E-B24A-9763D59007A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09B9B1D1-C8B1-41E5-8703-45607DCF10B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B9B1D1-C8B1-41E5-8703-45607DCF10B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B9B1D1-C8B1-41E5-8703-45607DCF10B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B9B1D1-C8B1-41E5-8703-45607DCF10B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

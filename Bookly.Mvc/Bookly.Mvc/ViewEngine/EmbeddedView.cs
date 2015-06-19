@@ -15,7 +15,7 @@ using System.ComponentModel.Composition;
 using HtmlAgilityPack;
 using System.Web.Mvc.Html;
 
-namespace Bookly.Mvc
+namespace EVE.Mvc
 {
     [InheritedExport]
     public abstract class EmbeddedView: IView, IViewDataContainer
@@ -36,12 +36,24 @@ namespace Bookly.Mvc
 
         public void Render(ViewContext viewContext, System.IO.TextWriter writer)
         {
+            HtmlDocument masterDoc = null;
+            HtmlDocument document;
+
             //init context sensitive fields
             this.ViewData = viewContext.ViewData;    
             this.Html = new HtmlHelper(viewContext,this);
 
-            //prepare document
-            var document = new HtmlAgilityPack.HtmlDocument();
+            //if it has a master prepare that
+            if (!string.IsNullOrWhiteSpace(MasterName))
+            {
+                var masterString = this.Html.Partial(MasterName);
+                masterDoc = new HtmlDocument();
+                masterDoc.LoadHtml(masterString.ToHtmlString());
+               
+            }
+
+            //prepare document for the current view
+            document = new HtmlAgilityPack.HtmlDocument();
             var html = AssetManager.LoadResourceString(ViewName,AssemblyName);
             document.LoadHtml(html);
             //init document helper
@@ -53,16 +65,15 @@ namespace Bookly.Mvc
 
             //handle partial views
 
-            //handle masterpage
-            if (!string.IsNullOrWhiteSpace(MasterName))
+            //handle masterpage, if we have one insert the doc into it.
+            if (masterDoc!=null)
             {
-                var masterString = this.Html.Partial(MasterName);
-                HtmlDocument masterDoc = new HtmlDocument();
-                masterDoc.LoadHtml(masterString.ToHtmlString());
-                masterDoc.DocumentNode.SelectSingleNode("//*[@ev-renderbody]").InnerHtml =document.DocumentNode.WriteTo();
+                masterDoc.DocumentNode.SelectSingleNode("//*[@ev-renderbody]").InnerHtml = document.DocumentNode.WriteTo();
                 masterDoc.Save(writer);
                 return;
             }
+
+
             //save doc to output stream
             document.Save(writer);
         }

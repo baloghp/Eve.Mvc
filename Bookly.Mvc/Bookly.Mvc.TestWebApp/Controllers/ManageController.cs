@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Bookly.Mvc.TestWebApp.Models;
+using EVE.Mvc.TestWebApp.Models;
 
-namespace Bookly.Mvc.TestWebApp.Controllers
+namespace EVE.Mvc.TestWebApp.Controllers
 {
     [Authorize]
     public class ManageController : Controller

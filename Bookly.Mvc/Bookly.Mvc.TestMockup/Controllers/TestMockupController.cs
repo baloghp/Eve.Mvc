@@ -5,23 +5,23 @@ using System.Web;
 using System.Web.Mvc;
 
 
-namespace Bookly.Mvc.TestMockup.Controllers
+namespace EVE.Mvc.TestMockup.Controllers
 {
    public class TestMockupController : Controller
     {
         public ActionResult RetrieveHtml()
         {
-            return View("Bookly.Mvc.TestMockup.Assets.LandingPage.index2.html");
+            return View("EVE.Mvc.Samples.Embedded.Assets.LandingPage.index2.html");
         }
 
         public ActionResult RetrieveSimpleRazor()
         {
-            return View("/Plugins//Bookly.Mvc.TestMockup/Views/index.cshtml");
+            return View("/Plugins//EVE.Mvc.Samples.Embedded/Views/index.cshtml");
          
         }
         public ActionResult RetrieveSimpleEmbedded()
         {
-            return View("Bookly.Mvc.TestMockup.Views.Mockup.index.cshtml");
+            return View("EVE.Mvc.Samples.Embedded.Views.Mockup.index.cshtml");
         }
 
         public ActionResult SampleEntireLandingPage()
@@ -29,7 +29,7 @@ namespace Bookly.Mvc.TestMockup.Controllers
             ViewBag.Title = "Viewbag title from controller";
             ViewBag.Header = "Viewbag header from controller";
 
-            return View("Bookly.Mvc.TestMockup.Views.Sample.EntireLandingPage.html");
+            return View("EVE.Mvc.Samples.Embedded.Views.Sample.EntireLandingPage.html");
         }
 
         public ActionResult SampleLandingPageWithMaster()
@@ -37,7 +37,7 @@ namespace Bookly.Mvc.TestMockup.Controllers
             ViewBag.Title = "Viewbag title from controller";
             ViewBag.Header = "Viewbag header from controller";
 
-            return View("Bookly.Mvc.TestMockup.Views.Sample.LandingPage.html", "Bookly.Mvc.TestMockup.Views.Sample.LandingPageMaster.html");
+            return View("EVE.Mvc.Samples.Embedded.Views.Sample.LandingPage.html", "EVE.Mvc.Samples.Embedded.Views.Sample.LandingPageMaster.html");
         }
     }
 }

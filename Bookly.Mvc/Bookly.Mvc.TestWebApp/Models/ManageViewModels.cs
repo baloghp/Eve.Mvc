@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace Bookly.Mvc.TestWebApp.Models
+namespace EVE.Mvc.TestWebApp.Models
 {
     public class IndexViewModel
     {

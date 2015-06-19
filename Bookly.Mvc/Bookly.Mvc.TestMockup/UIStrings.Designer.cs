@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bookly.Mvc.TestMockup {
+namespace EVE.Mvc.Samples.Embedded {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Bookly.Mvc.TestMockup {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Bookly.Mvc.TestMockup.UIStrings", typeof(UIStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EVE.Mvc.Samples.Embedded.UIStrings", typeof(UIStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

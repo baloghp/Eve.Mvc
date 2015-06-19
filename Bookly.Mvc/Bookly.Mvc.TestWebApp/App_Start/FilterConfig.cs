@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Bookly.Mvc.TestWebApp
+namespace EVE.Mvc.TestWebApp
 {
     public class FilterConfig
     {

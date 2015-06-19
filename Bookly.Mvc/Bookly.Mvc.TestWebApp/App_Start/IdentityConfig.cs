@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Bookly.Mvc.TestWebApp.Models;
+using EVE.Mvc.TestWebApp.Models;
 
-namespace Bookly.Mvc.TestWebApp
+namespace EVE.Mvc.TestWebApp
 {
     public class EmailService : IIdentityMessageService
     {

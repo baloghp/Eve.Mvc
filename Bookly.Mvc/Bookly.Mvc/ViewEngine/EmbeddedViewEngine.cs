@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EVE.Mvc.Composition;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel.Composition.Hosting;
@@ -8,12 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Bookly.Mvc
+namespace EVE.Mvc
 {
 
     public class EmbeddedViewEngine : IViewEngine
     {
-        CompositionContainer container;
         public IEnumerable<EmbeddedResourceOption> options;
         private ConcurrentDictionary<string, string> resourceDictionary;
         private ConcurrentDictionary<string, string> ResourceDictionary
@@ -38,22 +38,14 @@ namespace Bookly.Mvc
            
         }
 
-
-
         public EmbeddedViewEngine(IEnumerable<EmbeddedResourceOption> options)
-        { 
-            CreateMEFCatalog();
+        {
+
             this.options = options;
             InitializeResourceDictionary();
         }
-
-        private void CreateMEFCatalog()
-        {
-            var asmCatalogs = from a in AppDomain.CurrentDomain.GetAssemblies()
-                              select (new AssemblyCatalog(a));
-            AggregateCatalog aggregateCatalog = new AggregateCatalog(asmCatalogs);
-            container = new CompositionContainer(aggregateCatalog);
-        }
+        
+        #region resource index
 
         private void InitializeResourceDictionary()
         {
@@ -88,10 +80,11 @@ namespace Bookly.Mvc
             }
             return false;
         }
+        #endregion
 
         public ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache)
         {
-            var views = container.GetExports<EmbeddedView>(partialViewName);
+            var views = AppMefContainer.Container.GetExports<EmbeddedView>(partialViewName);
             if (views != null && views.Count() > 0)
             {
                 var view = views.First().Value;
@@ -104,7 +97,7 @@ namespace Bookly.Mvc
 
         public ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
         {
-            var views = container.GetExports<EmbeddedView>(viewName);
+            var views = AppMefContainer.Container.GetExports<EmbeddedView>(viewName);
             if (views != null && views.Count() > 0)
             {
                 var view = views.First().Value;

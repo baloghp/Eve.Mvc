@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookly.Mvc.TestMockup.Views
+namespace EVE.Mvc.TestMockup.Views
 {
     [EmbeddedView("Bookly.Mvc.TestMockup.Views.Sample.LandingPage.html")]
     public class LandingPage : EmbeddedView

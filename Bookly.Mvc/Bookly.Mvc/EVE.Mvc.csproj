@@ -7,7 +7,7 @@
     <ProjectGuid>{03653281-A77E-463E-B24A-9763D59007A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bookly.Mvc</RootNamespace>
+    <RootNamespace>EVE.Mvc</RootNamespace>
     <AssemblyName>Bookly.Mvc</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -121,23 +121,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssetManager.cs" />
-    <Compile Include="DocumentHelper.cs" />
-    <Compile Include="DocumentHelperExtensions.cs" />
-    <Compile Include="EmbeddedFileSystem.cs" />
-    <Compile Include="EmbeddedStringResult.cs" />
-    <Compile Include="EmbeddedPlugins.cs" />
-    <Compile Include="EmbeddedView.cs" />
-    <Compile Include="EmbeddedViewAttribute.cs" />
-    <Compile Include="EmbeddedViewEngine.cs" />
-    <Compile Include="IDocumentHelper.cs" />
-    <Compile Include="IEmbeddedPlugin.cs" />
+    <Compile Include="Composition\AppMefContainer.cs" />
+    <Compile Include="Embedded\AssetManager.cs" />
+    <Compile Include="Plugin\IAppBuilderExtension.cs" />
+    <Compile Include="ViewEngine\DocumentHelper.cs" />
+    <Compile Include="ViewEngine\DocumentHelperExtensions.cs" />
+    <Compile Include="Embedded\EmbeddedFileSystem.cs" />
+    <Compile Include="Embedded\EmbeddedStringResult.cs" />
+    <Compile Include="Plugin\EmbeddedPlugins.cs" />
+    <Compile Include="ViewEngine\EmbeddedView.cs" />
+    <Compile Include="ViewEngine\EmbeddedViewAttribute.cs" />
+    <Compile Include="ViewEngine\EmbeddedViewEngine.cs" />
+    <Compile Include="ViewEngine\IDocumentHelper.cs" />
+    <Compile Include="Plugin\IEmbeddedPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
