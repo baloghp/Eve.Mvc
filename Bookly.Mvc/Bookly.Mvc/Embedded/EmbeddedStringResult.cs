@@ -4,40 +4,53 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using RazorEngine.Templating;
 using RazorEngine;
+using System.Reflection;
+using System;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace EVE.Mvc
 {
-    public class EmbeddedHtmlStringResult : IHttpActionResult
+    public class EmbeddedHtmlStringResult : ContentResult
     {
-        string path;
+       
         string file;
+        Assembly assembly;
        
 
-        public EmbeddedHtmlStringResult(HttpRequestMessage request, string file)
-        {
-            var pathbase = request.GetOwinContext().Request.PathBase;
-            this.path = pathbase.Value;
-            this.file = file;
-       
-        }
-
-        public Task<System.Net.Http.HttpResponseMessage> ExecuteAsync(System.Threading.CancellationToken cancellationToken)
-        {
-            return Task.FromResult(GetResponseMessage());
-        }
-
-        public HttpResponseMessage GetResponseMessage()
+        public EmbeddedHtmlStringResult( string file, string assemblyName)
         {
             
-            var html = AssetManager.LoadResourceString(this.file,typeof(EmbeddedHtmlStringResult).Assembly.FullName);
-               
-
-            return new HttpResponseMessage()
-            {
-                Content = new StringContent(html, System.Text.Encoding.UTF8, "text/html")
-            };
+            this.file = file;
+            this.assembly = (from a in AppDomain.CurrentDomain.GetAssemblies()
+                                where a.FullName == assemblyName
+                                select a).FirstOrDefault();
         }
 
-        
+        public EmbeddedHtmlStringResult( string file, Assembly assembly)
+        {
+          
+            this.file = file;
+            this.assembly = assembly;
+        }
+
+        public string GetResponseMessage()
+        {
+            
+            return AssetManager.LoadResourceString(this.file,assembly);
+            
+        }
+
+
+
+        public override void ExecuteResult(ControllerContext context)
+        {
+            ContentResult c = new ContentResult();
+            c.Content = GetResponseMessage();
+            c.ContentType = "text/html";
+            c.ContentEncoding = System.Text.Encoding.UTF8;
+            c.ExecuteResult(context);
+        }
     }
 }

@@ -1,0 +1,138 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page - EVE.Mvc</title>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">EVE.Mvc</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+
+                    <li><a href="/Home/Contact">Contact</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+
+
+
+        <div class="jumbotron">
+            <h1>EVE.Mvc</h1>
+            <p class="lead"> EVE.Mvc is a utility library for ASP.NET MVC</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>It contains:</h2>
+                <p>
+
+                    <ul>
+                        <li>
+                            Plugin system that does not require separate static file deployment
+                        </li>
+                        <li>
+                            Utilities for using EmbeddedFileSystem to serve static content and html as ActionResult
+                        </li>
+                        <li>
+                            A View Engine that uses static embedded html as markup and a separate c# view class for markup (DOM) manipulation.
+                        </li>
+                    </ul>
+                </p>
+
+                <p>
+                    This sample application will use a scenario where an existing application needs to be extended with a landing page.
+                    The landing page has a style sheet and a set of static resources which are alien to the original application's resources.
+                    Thus it is a requirement to achieve maximum separation.
+                    The landing page is provided by <a href="http://startbootstrap.com/template-overviews/landing-page/">StartBootstrap</a>.
+                </p>
+                <p>
+                    The sample app will show how to create a plugin (EVE.Mvc.Samples.Embedded) via EVE.Mvc that includes only 1 dll and it is able to show the landing page similar to a static html.
+                </p>
+                <p>
+                    The EVE.Mvc.Samples.ViewEngine plugin project shows the same landing page, but this time using the EmbeddedViewEngine.
+                    Actual MVC views are used, which have a masterpgae and are using partial views for specific parts of the page.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Embedded File System</h2>
+                <p>
+                    Embedded file system allows for storing and retrieving any asset stored as an embedded resource via a URL.
+                </p>
+                <ul class="nav nav-stacked">
+                    <li><a href="#">Setting up the Embedded File System and retrieving an image.</a></li>
+                    <li><a href="#">Retrieve an HTML using the Embedded File system, or EmbeddedHtmlStringResult</a></li>
+                </ul>
+
+            </div>
+            <div class="col-md-6">
+                <h2>Embedded Plugin System</h2>
+                <p>
+                    Create a drag and drop plugin.
+                </p>
+                <ul class="nav nav-stacked">
+                    <li><a href="#">Creating EmbeddedPlugins using IEmbeddedPlugin interface </a></li>
+                    <li><a href="#">Initilizing plugins for your application</a></li>
+                    <li><a href="#">Using embedded Razor views</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Embedded View Engine</h2>
+                <p>Embedded View Engine allows for storing Razor views as embedded resources, and use them as if they were file system based.</p>
+
+                <ul class="nav nav-stacked">
+                    <li><a href="#">Register the Embedded View Engine</a></li>
+                    <li><a href="#">Simple html view</a></li>
+                    <li><a href="#">Simple html view with a MasterPage</a></li>
+                    <li><a href="#">Simple html view with MasterPage and Partial Views</a></li>
+                    <li><a href="#">Typed html view</a></li>
+                    <li><a href="#">Typed html view with a MasterPage</a></li>
+                    <li><a href="#">Typed html view with MasterPage and Partial Views</a></li>
+                    <li><a href="#">Handling UI resources</a></li>
+                    <li><a href="#">EVE html attributes</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2015 - EVE.Mvc</p>
+        </footer>
+    </div>
+
+    <script src="/Scripts/jquery-2.1.4.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+
+
+
+    
+</body>
+</html>

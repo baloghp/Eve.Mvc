@@ -32,7 +32,7 @@ namespace EVE.Mvc.TestMockup
         public void RegisterRoutes(System.Web.Routing.RouteCollection routes)
         {
             routes.MapRoute("EVE.Mvc.Samples.Embedded",
-                "Plugins/TestMockup",
+                "Plugins/EmbeddedSample/{controller}/{action}",
                 new { controller = "TestMockup", action = "RetrieveSimpleRazor" },
                 new[] { "Bookly.Mvc.TestMockup.Controllers" }
            );
