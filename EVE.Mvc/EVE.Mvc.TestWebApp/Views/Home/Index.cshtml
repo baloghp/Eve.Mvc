@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>EVE.Mvc</h1>
+    <p class="lead"> EVE.Mvc is a utility library for ASP.NET MVC</p>
+ </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>It contains:</h2>
+        <p>
+
+            <ul>
+                <li>
+                    Plugin system that does not require separate static file deployment
+                </li>
+                <li>
+                    Utilities for using EmbeddedFileSystem to serve static content and html as ActionResult
+                </li>
+                <li>
+                    A View Engine that uses static embedded html as markup and a separate c# view class for markup (DOM) manipulation.
+                </li>
+            </ul>
+        </p>
+
+        <p>
+            This sample application will use a scenario where an existing application needs to be extended with a landing page.
+            The landing page has a style sheet and a set of static resources which are alien to the original application's resources.
+            Thus it is a requirement to achieve maximum separation.
+            The landing page is provided by <a href="http://startbootstrap.com/template-overviews/landing-page/">StartBootstrap</a>.
+        </p>
+        <p>
+            The sample app will show how to create a plugin (EVE.Mvc.Samples.Embedded) via EVE.Mvc that includes only 1 dll and it is able to show the landing page similar to a static html.
+        </p>
+        <p>
+            The EVE.Mvc.Samples.ViewEngine plugin project shows the same landing page, but this time using the EmbeddedViewEngine.
+            Actual MVC views are used, which have a masterpgae and are using partial views for specific parts of the page.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h2>Embedded File System</h2>
+        <p>
+            Embedded file system allows for storing and retrieving any asset stored as an embedded resource via a URL.
+        </p>
+        <ul class="nav nav-stacked">
+            <li><a href="Plugins/EmbeddedSample/Tutorial/RetrieveHtml">1. Setting up the Embedded File System and retrieving an image.</a></li>
+            <li><a href="Plugins/EmbeddedSample/Tutorial/HtmlResult">2. Retrieve an HTML using the Embedded File system, or EmbeddedHtmlStringResult</a></li>
+            <li><a href="Plugins/EmbeddedSample/Tutorial/RazorResult">3. Using embedded Razor views</a></li>
+        </ul>
+
+    </div>
+    <div class="col-md-6">
+        <h2>Embedded Plugin System</h2>
+        <p>
+            Create a drag and drop plugin.
+        </p>
+        <ul class="nav nav-stacked">
+            <li><a href="#">4. Creating EmbeddedPlugins using IEmbeddedPlugin interface </a></li>
+            <li><a href="#">5. Initializing plugins for your application</a></li>
+            
+        </ul>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Embedded View Engine</h2>
+        <p>Embedded View Engine uses embedded html files as primary source for view markup, for every such markup it associates a view class that can manipulate the markup's DOM.</p>
+
+        <ul class="nav nav-stacked">
+            <li><a href="#">6. Register the Embedded View Engine</a></li>
+            <li><a href="#">7. Simple html view</a></li>
+            <li><a href="#">8. Simple html view with a MasterPage</a></li>
+            <li><a href="#">9. Simple html view with MasterPage and Partial Views</a></li>
+            <li><a href="#">10. Typed html view</a></li>
+            <li><a href="#">11. Typed html view with a MasterPage</a></li>
+            <li><a href="#">12. Typed html view with MasterPage and Partial Views</a></li>
+            <li><a href="#">13. Handling UI resources</a></li>
+            <li><a href="#">14. EVE html attributes</a></li>
+        </ul>
+        
+    </div>
+
+</div>
