@@ -117,7 +117,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\TestMockupController.cs" />
+    <Compile Include="Controllers\SamplesController.cs" />
     <Compile Include="Controllers\TutorialController.cs" />
     <Compile Include="Views\LandingPageMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,6 +150,11 @@
     <EmbeddedResource Include="Assets\LandingPage\js\jquery.js" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Tutorial\EFS\EmbeddedHtmlResult\Controller.PNG" />
+    <EmbeddedResource Include="Assets\Tutorial\EFS\EmbeddedHtmlResult\HtmlResult.html" />
+    <EmbeddedResource Include="Assets\Tutorial\EFS\Setup\embedded.PNG" />
+    <EmbeddedResource Include="Assets\Tutorial\EFS\Setup\assets.PNG" />
+    <EmbeddedResource Include="Assets\Tutorial\EFS\Setup\newproject.png" />
     <EmbeddedResource Include="Assets\Tutorial\EFS\Setup\Setup.html" />
     <EmbeddedResource Include="Views\Sample\LandingPage.html" />
     <EmbeddedResource Include="Views\Sample\LandingPageMaster.html" />
@@ -208,9 +213,7 @@
       <Name>EVE.Mvc</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Tutorial\EFS\EmbeddedHtmlResult\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

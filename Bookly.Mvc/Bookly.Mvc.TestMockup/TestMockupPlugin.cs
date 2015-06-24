@@ -33,8 +33,8 @@ namespace EVE.Mvc.TestMockup
         {
             routes.MapRoute("EVE.Mvc.Samples.Embedded",
                 "Plugins/EmbeddedSample/{controller}/{action}",
-                new { controller = "TestMockup", action = "RetrieveSimpleRazor" },
-                new[] { "Bookly.Mvc.TestMockup.Controllers" }
+                new { controller = "Samples", action = "RetrieveHtmlResult" },
+                new[] { " EVE.Mvc.Samples.Embedded.Controllers" }
            );
         }
     }

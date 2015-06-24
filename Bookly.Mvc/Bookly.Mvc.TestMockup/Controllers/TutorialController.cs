@@ -16,6 +16,12 @@ namespace EVE.Mvc.Samples.Embedded.Controllers
                 this.GetType().Assembly);
         }
 
+        public ActionResult HtmlResult()
+        {
+            return new EmbeddedHtmlStringResult("EVE.Mvc.Samples.Embedded.Assets.Tutorial.EFS.EmbeddedHtmlResult.HtmlResult.html",
+                this.GetType().Assembly);
+        }
+
        
     }
 }

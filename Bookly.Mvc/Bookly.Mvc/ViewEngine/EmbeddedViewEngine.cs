@@ -42,7 +42,7 @@ namespace EVE.Mvc
         {
 
             this.options = options;
-            InitializeResourceDictionary();
+            //InitializeResourceDictionary();
         }
         
         #region resource index

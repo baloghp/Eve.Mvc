@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page - EVE.Mvc</title>
+    <title>EVE.Mvc Tutorial 1 - Setup</title>
     <link href="/Content/bootstrap.css" rel="stylesheet" />
     <link href="/Content/site.css" rel="stylesheet" />
 
@@ -38,88 +38,60 @@
 
 
         <div class="jumbotron">
-            <h1>EVE.Mvc</h1>
-            <p class="lead"> EVE.Mvc is a utility library for ASP.NET MVC</p>
+            <br />
+            <p class="lead">Setting up the Embedded File System and retrieving an image.</p>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <h2>It contains:</h2>
-                <p>
-
-                    <ul>
-                        <li>
-                            Plugin system that does not require separate static file deployment
-                        </li>
-                        <li>
-                            Utilities for using EmbeddedFileSystem to serve static content and html as ActionResult
-                        </li>
-                        <li>
-                            A View Engine that uses static embedded html as markup and a separate c# view class for markup (DOM) manipulation.
-                        </li>
-                    </ul>
-                </p>
-
-                <p>
-                    This sample application will use a scenario where an existing application needs to be extended with a landing page.
-                    The landing page has a style sheet and a set of static resources which are alien to the original application's resources.
-                    Thus it is a requirement to achieve maximum separation.
-                    The landing page is provided by <a href="http://startbootstrap.com/template-overviews/landing-page/">StartBootstrap</a>.
-                </p>
-                <p>
-                    The sample app will show how to create a plugin (EVE.Mvc.Samples.Embedded) via EVE.Mvc that includes only 1 dll and it is able to show the landing page similar to a static html.
-                </p>
-                <p>
-                    The EVE.Mvc.Samples.ViewEngine plugin project shows the same landing page, but this time using the EmbeddedViewEngine.
-                    Actual MVC views are used, which have a masterpgae and are using partial views for specific parts of the page.
-                </p>
+        <div class="panel panel-info">
+            <div class="panel-heading">Starting with a simple library project</div>
+            <div class="panel-body">
+                Open visual studio and create a Class Library Project.
+                <img src="/EVE.Mvc.Samples.Embedded/Assets/Tutorial/EFS/Setup/newproject.png" />
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Embedded File System</h2>
-                <p>
-                    Embedded file system allows for storing and retrieving any asset stored as an embedded resource via a URL.
-                </p>
-                <ul class="nav nav-stacked">
-                    <li><a href="#">Setting up the Embedded File System and retrieving an image.</a></li>
-                    <li><a href="#">Retrieve an HTML using the Embedded File system, or EmbeddedHtmlStringResult</a></li>
-                </ul>
 
-            </div>
-            <div class="col-md-6">
-                <h2>Embedded Plugin System</h2>
-                <p>
-                    Create a drag and drop plugin.
-                </p>
-                <ul class="nav nav-stacked">
-                    <li><a href="#">Creating EmbeddedPlugins using IEmbeddedPlugin interface </a></li>
-                    <li><a href="#">Initilizing plugins for your application</a></li>
-                    <li><a href="#">Using embedded Razor views</a></li>
-                </ul>
-
+        <div class="panel panel-info">
+            <div class="panel-heading">Bootstrap Landing Page</div>
+            <div class="panel-body">
+                Download the sample Landing page from <a href="http://startbootstrap.com/template-overviews/landing-page/">here</a>.
+                <br />
+                Unzip it and add it to the class library project under the Assets project library.
+                <br />
+                <img src="/EVE.Mvc.Samples.Embedded/Assets/Tutorial/EFS/Setup/assets.PNG" />
+                <br />
+                Make sure every file referenced in the index.html, and the index.html file itself is compiled as an Embedded Resource.
+                <br />
+                <img src="/EVE.Mvc.Samples.Embedded/Assets/Tutorial/EFS/Setup/embedded.PNG" />
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Embedded View Engine</h2>
-                <p>Embedded View Engine allows for storing Razor views as embedded resources, and use them as if they were file system based.</p>
 
-                <ul class="nav nav-stacked">
-                    <li><a href="#">Register the Embedded View Engine</a></li>
-                    <li><a href="#">Simple html view</a></li>
-                    <li><a href="#">Simple html view with a MasterPage</a></li>
-                    <li><a href="#">Simple html view with MasterPage and Partial Views</a></li>
-                    <li><a href="#">Typed html view</a></li>
-                    <li><a href="#">Typed html view with a MasterPage</a></li>
-                    <li><a href="#">Typed html view with MasterPage and Partial Views</a></li>
-                    <li><a href="#">Handling UI resources</a></li>
-                    <li><a href="#">EVE html attributes</a></li>
-                </ul>
+        <div class="panel panel-info">
+            <div class="panel-heading">Criating Embedded File System</div>
+            <div class="panel-body">
+                In your web application use the following code in your startup class to create a simulated file system that points to the Assets library in your Class Library project.
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">app<span style="color:#b4b4b4;">.</span>UseFileServer(<span style="color:#569cd6;">new</span>&nbsp;<span style="color:#4ec9b0;">FileServerOptions</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RequestPath&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">new</span>&nbsp;<span style="color:#4ec9b0;">PathString</span>(<span style="color:#d69d85;">&quot;/EVE.Mvc.Samples.Embedded/Assets&quot;</span>),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileSystem&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">new</span>&nbsp;<span style="color:#4ec9b0;">EmbeddedFileSystem</span>(<span style="color:#d69d85;">&quot;EVE.Mvc.Samples.Embedded,&nbsp;Version=1.0.0.0,&nbsp;Culture=neutral,&nbsp;PublicKeyToken=null&quot;</span>,&nbsp;<span style="color:#d69d85;">&quot;EVE.Mvc.Samples.Embedded.Assets&quot;</span>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;app<span style="color:#b4b4b4;">.</span>UseStageMarker(<span style="color:#b8d7a3;">PipelineStage</span><span style="color:#b4b4b4;">.</span>MapHandler);</pre>
 
+                Here you are specifying that the "/EVE.Mvc.Samples.Embedded/Assets" path will refer to the embedded resources inside your dll.
             </div>
-
         </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">Link Image or other resources from the embedded file system.</div>
+            <div class="panel-body">
+                To create a link to an embedded resource, such as an image file, you have to start with the registered path: "/EVE.Mvc.Samples.Embedded/Assets" and then follow with the file location inside the Assets folder in your project : "/LandingPage/img/ipad.png".
+                Here is the link code to this image:
+                <a href="/EVE.Mvc.Samples.Embedded/Assets/LandingPage/img/ipad.png">
+                    <img src="/EVE.Mvc.Samples.Embedded/Assets/LandingPage/img/ipad.png" style="height: 30px;">
+                </a>
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:gray;">&lt;</span><span style="color:#569cd6;">a</span>&nbsp;<span style="color:#9cdcfe;">href</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;/EVE.Mvc.Samples.Embedded/Assets/LandingPage/img/ipad.png&quot;</span><span style="color:gray;">&gt;</span>Image<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">a</span><span style="color:gray;">&gt;</span>
+</pre>
+            </div>
+        </div>
+
         <hr />
         <footer>
             <p>&copy; 2015 - EVE.Mvc</p>
@@ -133,6 +105,5 @@
 
 
 
-    
 </body>
 </html>
