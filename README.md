@@ -14,3 +14,5 @@ The sample app will show how to create a plugin (EVE.Mvc.Samples.Embedded) via E
 The EVE.Mvc.Samples.ViewEngine plugin project shows the same landing page, but this time using the EmbeddedViewEngine. Actual MVC views are used, which have a masterpgae and are using partial views for specific parts of the page.
 
 Build the sample applicaiton for tutorials.
+
+[Sample App Live](http://evemvc.azurewebsites.net/)
