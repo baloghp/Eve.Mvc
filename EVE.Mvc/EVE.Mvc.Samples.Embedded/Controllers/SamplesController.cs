@@ -17,7 +17,7 @@ namespace EVE.Mvc.TestMockup.Controllers
 
         public ActionResult RetrieveSimpleRazor()
         {
-            return View("/Plugins//EVE.Mvc.Samples.Embedded/Views/index.cshtml");
+            return View("/Plugins/EVE.Mvc.Samples.Embedded/Views/index.cshtml");
 
         }
     }

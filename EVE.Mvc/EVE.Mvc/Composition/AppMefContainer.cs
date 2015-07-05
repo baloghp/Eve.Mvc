@@ -14,7 +14,7 @@ namespace EVE.Mvc.Composition
     public static class AppMefContainer
     {
 
-        public static CompositionContainer Container {get; private set;}
+        public static CompositionContainer Container {get; set;}
 
         static AppMefContainer()
         {

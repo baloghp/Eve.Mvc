@@ -28,6 +28,23 @@ namespace EVE.Mvc.Samples.Embedded.Controllers
             return new EmbeddedHtmlStringResult("EVE.Mvc.Samples.Embedded.Assets.Tutorial.EFS.Razor.RazorResult.html",
                 this.GetType().Assembly);
         }
+
+        public ActionResult CreatePlugin()
+        {
+            return new EmbeddedHtmlStringResult("EVE.Mvc.Samples.Embedded.Assets.Tutorial.Plugin.CreatePlugin.CreatePlugin.html",
+                this.GetType().Assembly);
+        }
+
+        public ActionResult InitializePlugin()
+        {
+            return new EmbeddedHtmlStringResult("EVE.Mvc.Samples.Embedded.Assets.Tutorial.Plugin.Initialize.Initialize.html",
+                this.GetType().Assembly);
+        }
        
+        public ActionResult MEFCatalog()
+        {
+            return new EmbeddedHtmlStringResult("EVE.Mvc.Samples.Embedded.Assets.Tutorial.Plugin.MEF.mef.html",
+                this.GetType().Assembly);
+        }
     }
 }

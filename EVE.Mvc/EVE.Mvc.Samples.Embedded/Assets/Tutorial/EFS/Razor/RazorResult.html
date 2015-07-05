@@ -42,14 +42,47 @@
             <p class="lead">Using Embedded Razor views</p>
         </div>
 
-        <div class="panel panel-info">
-            <div class="panel-heading">Razor views outside of the Web application</div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">CAVEAT: This is done better elsewhere</div>
             <div class="panel-body">
-              TODO
+                While it is possible to use Razor views in the with the embedded file system, you are not encouraged to use the below approach, unless it perfectly suits your special need..
+                There is already an established solution should you wish to use Razor views in separate dll-s using <a href="https://github.com/RazorGenerator/RazorGenerator">RazorGenerator</a>
             </div>
         </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">Embed and extract Razor views</div>
+            <div class="panel-body">
+                You can embed a Razor view into your class library project. In order for intellisense and other Razor viewer features to work, you will need to include a web.config
+                file in the project as well. See the RazorGenerator link above for more detail on how to get this working.
+                What you can do then is to extract this Razor view to the view path of the web application.
+                First, let's set up a Razor view and make it embedded.
+                <br />
+                <img src="/EVE.Mvc.Samples.Embedded/Assets/Tutorial/EFS/Razor/rzrview.PNG">
+                <br />
+                <img src="/EVE.Mvc.Samples.Embedded/Assets/Tutorial/EFS/Razor/rzrproperties.PNG">
+                <br />
+                Here's the code that helps you to extract this view into a particular folder:
+
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">var</span>&nbsp;path&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#4ec9b0;">Path</span><span style="color:#b4b4b4;">.</span>Combine(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Hosting<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">HostingEnvironment</span><span style="color:#b4b4b4;">.</span>MapPath(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">HttpRuntime</span><span style="color:#b4b4b4;">.</span>AppDomainAppVirtualPath),&nbsp;<span style="color:#d69d85;">&quot;Plugins&quot;</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">AssetManager</span><span style="color:#b4b4b4;">.</span>ExtractResource(<span style="color:#d69d85;">&quot;EVE.Mvc.Samples.Embedded.Views.Sample.index.cshtml&quot;</span>,&nbsp;<span style="color:#569cd6;">this</span><span style="color:#b4b4b4;">.</span>GetType()<span style="color:#b4b4b4;">.</span>Assembly,&nbsp;path,&nbsp;<span style="color:#d69d85;">&quot;EVE.Mvc.Samples.Embedded/Views&quot;</span>);</pre>
+                <br />
+                Make sure this code runs only at application start, and with all the necessary file system privileges.
+                Once this is done you can refer to this view by the path: <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#d69d85;">&quot;/Plugins/EVE.Mvc.Samples.Embedded/Views/index.cshtml&quot;</span>
+</pre>
+
+                Very simple Controller action to this view would be:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#4ec9b0;">ActionResult</span>&nbsp;RetrieveSimpleRazor()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;View(<span style="color:#d69d85;">&quot;/Plugins/EVE.Mvc.Samples.Embedded/Views/index.cshtml&quot;</span>);
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+
+                See this in <a href="/Plugins/EmbeddedSample/Samples/RetrieveSimpleRazor">action.</a>.
 
 
+            </div>
+        </div>
         <hr />
         <footer>
             <p>&copy; 2015 - EVE.Mvc</p>

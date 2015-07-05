@@ -10,21 +10,40 @@ using System.Web.Routing;
 
 namespace EVE.Mvc
 {
+    /// <summary>
+    /// Defines initialization functions for the plugin
+    /// </summary>
     [InheritedExport]
     public interface IEmbeddedPlugin
     {
-         void InitiaizeEmbeddedFileSystem(IAppBuilder app);
 
-        //void InitializeControllerFactory();
-        
-        void InitializeViews(string PluginDirectory);
-        
-        void RegisterRoutes(RouteCollection routes);
+        IEnumerable<EmbeddedFileSystemDefinition> EmbeddedFileSystems { get; }
+
+        IEnumerable<ExtractRazorViewDefinition> RazoreViewsToExtract { get; }
+
+        IEnumerable<RouteDefinition> Routes { get; }
+
     }
 
-    public interface IEmbeddedFileSystemInfo
+    public class EmbeddedFileSystemDefinition
     {
-        string Path { get; set; }
-        string baseNameSpace { get; set; }
+        public string RequestPath { get; set; }
+        public string BaseResourceNamespace { get; set; }
+
+    }
+
+    public class ExtractRazorViewDefinition
+    {
+        public string ResourceName { get; set; }
+        public string BasePath { get; set; }
+        public string ViewPath { get; set; }
+    }
+
+    public class RouteDefinition
+    {
+        public string RouteName { get; set; }
+        public string Url { get; set; }
+        public object Defaults { get; set; }
+        public string[] Namespaces;
     }
 }

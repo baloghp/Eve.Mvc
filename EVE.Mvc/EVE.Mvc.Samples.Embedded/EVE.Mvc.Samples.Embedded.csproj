@@ -150,6 +150,11 @@
     <EmbeddedResource Include="Assets\LandingPage\js\jquery.js" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Tutorial\Plugin\MEF\mef.html" />
+    <EmbeddedResource Include="Assets\Tutorial\Plugin\Initialize\Initialize.html" />
+    <EmbeddedResource Include="Assets\Tutorial\Plugin\CreatePlugin\CreatePlugin.html" />
+    <EmbeddedResource Include="Assets\Tutorial\EFS\Razor\rzrproperties.PNG" />
+    <EmbeddedResource Include="Assets\Tutorial\EFS\Razor\rzrview.PNG" />
     <EmbeddedResource Include="Assets\Tutorial\EFS\Razor\RazorResult.html" />
     <EmbeddedResource Include="Assets\Tutorial\EFS\EmbeddedHtmlResult\Controller.PNG" />
     <EmbeddedResource Include="Assets\Tutorial\EFS\EmbeddedHtmlResult\HtmlResult.html" />
@@ -165,7 +170,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UIStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Mockup\index.cshtml">
+    <EmbeddedResource Include="Views\Sample\index.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Assets\LandingPage\index2.html" />
