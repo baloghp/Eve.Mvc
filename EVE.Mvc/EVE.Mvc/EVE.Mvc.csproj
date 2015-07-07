@@ -74,6 +74,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -121,7 +122,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Composition\AppMefContainer.cs" />
+    <Compile Include="Composition\EveMefContainer.cs" />
+    <Compile Include="Composition\BaseCatalogProvider.cs" />
+    <Compile Include="Composition\BinDirectoryCatalogProvider.cs" />
+    <Compile Include="Composition\CatalogProvider.cs" />
+    <Compile Include="Configuration\EveProvidersConfigSection.cs" />
     <Compile Include="Embedded\AssetManager.cs" />
     <Compile Include="Plugin\IAppBuilderExtension.cs" />
     <Compile Include="ViewEngine\DocumentHelper.cs" />

@@ -43,13 +43,129 @@
         </div>
 
         <div class="panel panel-info">
-            <div class="panel-heading">Initializing plugins for your application</div>
+            <div class="panel-heading">UseEmbeddedPlugins IAppBuilder extension</div>
             <div class="panel-body">
-                TODO
+                Now that you have defined every relevant aspect of the plugin via IEmbeddedPlugin interface you can prepare your web application to us them.
+                Eve.Mvc provides an extension method on IAppBuilder interface that automatically discovers all EmbeddedPlugins in your project and configures them based on their IEmbeddedPlugin interfaces.
+                For this automatic setup, just use the following code in your startup class:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">partial</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">Startup</span>
+&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;Configuration(<span style="color:#b8d7a3;">IAppBuilder</span>&nbsp;app)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+<span style="color:#9b9b9b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#region</span>&nbsp;standard&nbsp;startup
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">AreaRegistration</span><span style="color:#b4b4b4;">.</span>RegisterAllAreas();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">FilterConfig</span><span style="color:#b4b4b4;">.</span>RegisterGlobalFilters(<span style="color:#4ec9b0;">GlobalFilters</span><span style="color:#b4b4b4;">.</span>Filters);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">RouteConfig</span><span style="color:#b4b4b4;">.</span>RegisterRoutes(<span style="color:#4ec9b0;">RouteTable</span><span style="color:#b4b4b4;">.</span>Routes);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">BundleConfig</span><span style="color:#b4b4b4;">.</span>RegisterBundles(<span style="color:#4ec9b0;">BundleTable</span><span style="color:#b4b4b4;">.</span>Bundles);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ConfigureAuth(app);
+<span style="color:#9b9b9b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#endregion</span>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;app<span style="color:#b4b4b4;">.</span>UseEmbeddedPlugins();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;}</pre>
+                <br />
+
+
             </div>
         </div>
 
-        
+        <div class="panel panel-info">
+            <div class="panel-heading">Initialization in detail</div>
+            <div class="panel-body">
+                The UseEmbeddedPlugins method does the following:
+                <ol>
+                    <li>Using MEF it discovers all the classes that implement IEmbeddedPlugin. (On MEF and how to control MEF's territory see the next tutorial)</li>
+                    <li>For each of those classes initializes:
+                    <ol>
+                        <li>The Embedded File systems</li>
+                        <li>Extracts necessary Razor views</li>
+                        <li>Registers defined Routes</li>
+                    </ol>
+                    </li>
+                </ol>
+                <br />
+                Using MEF means that any dll with any implementation can be picked up by this process. 
+                The web application MUST always be interrupt this, or it has to be able to check the validity of the loaded plugins.
+                In order to do that the UseEmbeddedPlugins method provides a check mechanism before every step listed above.
+                Here is the full definition of the extension method:
+               
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">static</span>&nbsp;<span style="color:#b8d7a3;">IAppBuilder</span>&nbsp;UseEmbeddedPlugins(<span style="color:#569cd6;">this</span>&nbsp;<span style="color:#b8d7a3;">IAppBuilder</span>&nbsp;app,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">string</span>&nbsp;pluginViewsBasePath&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#d69d85;">&quot;&quot;</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">Lazy</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IEmbeddedPlugin</span><span style="color:#b4b4b4;">&gt;&gt;&gt;</span>&nbsp;BeforePluginsInitialized&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">EmbeddedFileSystemDefinition</span><span style="color:#b4b4b4;">&gt;&gt;</span>&nbsp;BeforeEmbeddedFileSystemInitialize&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">RouteDefinition</span><span style="color:#b4b4b4;">&gt;&gt;</span>&nbsp;BeforeRegisteringRoutes&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">ExtractRazorViewDefinition</span><span style="color:#b4b4b4;">&gt;&gt;</span>&nbsp;BeforeExtractingRazorViews&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>)</pre>
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Parameter</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                pluginViewsBasePath
+                            </td>
+                            <td>
+                                The web application can define a base relative path for the extracting Razor views
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                BeforePluginsInitialized
+                            </td>
+                            <td>
+                                This action receives the list of plugins discovered by MEF, in the implementation the web application can check for validity of these plugins, if necessary it can remove or add plugin definitions.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                BeforeEmbeddedFileSystemInitialize
+                            </td>
+                            <td>
+                                This action receives the list of embedded file system definitions which are to be registered,
+                                in the implementation the web application can check them, if necessary it can remove or add definitions before processing.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                BeforeRegisteringRoutes
+                            </td>
+                            <td>
+                                This action receives the list route definitions which are to be registered,
+                                in the implementation the web application can check them, if necessary it can remove or add definitions before processing.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                BeforeExtractingRazorViews
+                            </td>
+                            <td>
+                                This action receives the list Razor views which are to be extracted,
+                                in the implementation the web application can check them, if necessary it can remove or add definitions before processing.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+
+                Using the above parameters the application can be in full control of what is loaded into its domain.
+                In the next chapter I'll describe how to control/optimize the MEF aspect of type discovery for the plugin system.
+
+            </div>
+        </div>
 
         <hr />
         <footer>

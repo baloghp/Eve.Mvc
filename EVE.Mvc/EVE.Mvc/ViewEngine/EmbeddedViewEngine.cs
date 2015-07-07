@@ -84,7 +84,7 @@ namespace EVE.Mvc
 
         public ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache)
         {
-            var views = AppMefContainer.Container.GetExports<EmbeddedView>(partialViewName);
+            var views = EveMefContainer.Container.GetExports<EmbeddedView>(partialViewName);
             if (views != null && views.Count() > 0)
             {
                 var view = views.First().Value;
@@ -97,7 +97,7 @@ namespace EVE.Mvc
 
         public ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
         {
-            var views = AppMefContainer.Container.GetExports<EmbeddedView>(viewName);
+            var views = EveMefContainer.Container.GetExports<EmbeddedView>(viewName);
             if (views != null && views.Count() > 0)
             {
                 var view = views.First().Value;

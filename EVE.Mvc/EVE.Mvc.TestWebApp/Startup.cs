@@ -17,7 +17,7 @@ namespace EVE.Mvc.TestWebApp
     {
         public void Configuration(IAppBuilder app)
         {
-           // ViewEngines.Engines.Add(new EmbeddedViewEngine());
+            #region standard startup
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -26,9 +26,9 @@ namespace EVE.Mvc.TestWebApp
           
 
             ConfigureAuth(app);
-            //ConfigureEmbeddedFileSystem(app);
+            #endregion
 
-            app.UseEmbeddedPlugins("Plugins");
+            app.UseEmbeddedPlugins();
             
 
            

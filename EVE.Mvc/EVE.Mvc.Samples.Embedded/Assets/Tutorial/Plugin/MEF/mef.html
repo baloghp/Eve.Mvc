@@ -39,16 +39,69 @@
 
         <div class="jumbotron">
             <br />
-            <p class="lead">Application MEF catalog</p>
+            <p class="lead">The EVE MEF catalog</p>
         </div>
 
         <div class="panel panel-info">
-            <div class="panel-heading">Application MEF catalog</div>
+            <div class="panel-heading">EVE MEF catalog: EveMefContainer.Container</div>
             <div class="panel-body">
-                TODO
+                Any MEF type resolution done by Eve.Mvc uses only one MEF catalog, this singleton catalog is:
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#4ec9b0;">EveMefContainer</span><span style="color:#b4b4b4;">.</span>Container
+</pre>
+
+                <br />
+                The Container is based on a CompositeCatalog of Assemblies that contain the all the possible types for MEF selection.
+                <br />
+                Eve.Mvc uses a provider pattern to create this catalog. The default implementation uses all the dll-s int he web application's bin library as the basis for the catalog.
+                The provider pattern enables the web applications to just select those assemblies for the catalog which are actually relevant for the Embedded plugins and ViewEngine.
+
+                <br />
+                (The EmbeddedViewEngine uses this same MEF catalog to resolve views)
+                <br />
             </div>
         </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">Defining MEF Catalog provider</div>
+            <div class="panel-body">
+               Here is the sample configuration for the MEF Catalog provider.
+                <br />
+                Config section declaration:
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:gray;">&nbsp;&lt;</span><span style="color:#569cd6;">configSections</span><span style="color:gray;">&gt;</span>
+<span style="color:gray;">&nbsp;&nbsp;&nbsp;&nbsp;&lt;</span><span style="color:#569cd6;">section</span><span style="color:gray;">&nbsp;&nbsp;</span><span style="color:#92caf4;">name</span><span style="color:gray;">&nbsp;=</span><span style="color:gray;">&quot;</span><span style="color:#c8c8c8;">EveProviders</span><span style="color:gray;">&quot;</span><span style="color:gray;">&nbsp;</span><span style="color:#92caf4;">type</span><span style="color:gray;">=</span><span style="color:gray;">&quot;</span><span style="color:#c8c8c8;">EVE.Mvc.Configuration.EveProvidersConfigSection,&nbsp;EVE.Mvc,&nbsp;Version=1.0.0.0,&nbsp;Culture=neutral,&nbsp;PublicKeyToken=null</span><span style="color:gray;">&quot;</span><span style="color:gray;">/&gt;</span>
+<span style="color:gray;">&nbsp;&nbsp;&nbsp;</span></pre>
 
+                <br />
+                Here is the actual Config section:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:gray;">&nbsp;&lt;</span><span style="color:#569cd6;">EveProviders</span><span style="color:gray;">&gt;</span>
+<span style="color:gray;">&nbsp;&nbsp;&nbsp;&nbsp;&lt;</span><span style="color:#569cd6;">catalogProvider</span><span style="color:gray;">&nbsp;</span><span style="color:#92caf4;">name</span><span style="color:gray;">=</span><span style="color:gray;">&quot;</span><span style="color:#c8c8c8;">bindirCatalogProvider</span><span style="color:gray;">&quot;</span><span style="color:gray;">&nbsp;</span><span style="color:#92caf4;">type</span><span style="color:gray;">=</span><span style="color:gray;">&quot;</span><span style="color:#c8c8c8;">EVE.Mvc.TestWebApp.Providers.SampleEveCatalogProvider,&nbsp;EVE.Mvc.TestWebApp,&nbsp;Version=1.0.0.0,&nbsp;Culture=neutral,&nbsp;PublicKeyToken=null</span><span style="color:gray;">&quot;</span><span style="color:gray;">/&gt;</span>
+<span style="color:gray;">&nbsp;&nbsp;&lt;/</span><span style="color:#569cd6;">EveProviders</span><span style="color:gray;">&gt;</span></pre>
+                <br />
+                The provider implementation follows the Provider pattern already established in ASP.NET. The following is the code for the default provider that uses all the dll-s in the bin directory of the web application.
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">BinDirectoryCatalogProvider</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">BaseCatalogProvider</span>
+&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;System<span style="color:#b4b4b4;">.</span>ComponentModel<span style="color:#b4b4b4;">.</span>Composition<span style="color:#b4b4b4;">.</span>Primitives<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ComposablePartCatalog</span>&nbsp;CreateCatalog()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;<span style="color:#569cd6;">new</span>&nbsp;<span style="color:#4ec9b0;">DirectoryCatalog</span>(<span style="color:#4ec9b0;">Path</span><span style="color:#b4b4b4;">.</span>Combine(<span style="color:#4ec9b0;">HostingEnvironment</span><span style="color:#b4b4b4;">.</span>ApplicationPhysicalPath,<span style="color:#d69d85;">&quot;bin&quot;</span>));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;}</pre>
+                <br />
+                Here is an implementation from the sample web application that restricts the catalog to just the 2 relevant dll-s.
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">SampleEveCatalogProvider</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">BaseCatalogProvider</span>
+&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#4ec9b0;">ComposablePartCatalog</span>&nbsp;CreateCatalog()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">var</span>&nbsp;binPath&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#4ec9b0;">Path</span><span style="color:#b4b4b4;">.</span>Combine(<span style="color:#4ec9b0;">HostingEnvironment</span><span style="color:#b4b4b4;">.</span>ApplicationPhysicalPath,<span style="color:#d69d85;">&quot;bin&quot;</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">AssemblyCatalog</span>&nbsp;a1&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">new</span>&nbsp;<span style="color:#4ec9b0;">AssemblyCatalog</span>(<span style="color:#4ec9b0;">Path</span><span style="color:#b4b4b4;">.</span>Combine(binPath,&nbsp;<span style="color:#d69d85;">&quot;EVE.Mvc.Samples.Embedded.dll&quot;</span>));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">AssemblyCatalog</span>&nbsp;a2&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">new</span>&nbsp;<span style="color:#4ec9b0;">AssemblyCatalog</span>(<span style="color:#4ec9b0;">Path</span><span style="color:#b4b4b4;">.</span>Combine(binPath,&nbsp;<span style="color:#d69d85;">&quot;EVE.Mvc.Samples.ViewEngine.dll&quot;</span>));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">AggregateCatalog</span>&nbsp;aggregate&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">new</span>&nbsp;<span style="color:#4ec9b0;">AggregateCatalog</span>(a1,&nbsp;a2);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;aggregate;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;}</pre>
+            </div>
+        </div>
         
 
         <hr />

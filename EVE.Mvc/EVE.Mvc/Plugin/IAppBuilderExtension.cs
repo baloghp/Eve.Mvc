@@ -20,18 +20,21 @@ namespace EVE.Mvc.Plugin
     {
         public static IAppBuilder UseEmbeddedPlugins(this IAppBuilder app,
             string pluginViewsBasePath = "",
-            Action<IAppBuilder, IEnumerable<EmbeddedFileSystemDefinition>> BeforeEmbeddedFileSustemInitialize = null,
-            Action<IAppBuilder, IEnumerable<RouteDefinition>> BeforeRegisteringRoutes = null,
-            Action<IAppBuilder, IEnumerable<ExtractRazorViewDefinition>> BeforeExtractingRazorViews = null)
+            Action<IAppBuilder, IList<Lazy<IEmbeddedPlugin>>> BeforePluginsInitialized = null,
+            Action<IAppBuilder, IList<EmbeddedFileSystemDefinition>> BeforeEmbeddedFileSystemInitialize = null,
+            Action<IAppBuilder, IList<RouteDefinition>> BeforeRegisteringRoutes = null,
+            Action<IAppBuilder, IList<ExtractRazorViewDefinition>> BeforeExtractingRazorViews = null)
         {
-            var plugins = AppMefContainer.Container.GetExports<IEmbeddedPlugin>();
+            var plugins = EveMefContainer.Container.GetExports<IEmbeddedPlugin>().ToList();
+            if (BeforePluginsInitialized != null)
+                BeforePluginsInitialized(app, plugins);
             foreach (var p in plugins)
             {
                 if (p.Value == null)
                     throw new ApplicationException("Unable to instantiate plugin type: " + p.GetType().AssemblyQualifiedName);
                 #region Embedded File system
-                if (BeforeEmbeddedFileSustemInitialize != null)
-                    BeforeEmbeddedFileSustemInitialize(app, p.Value.EmbeddedFileSystems);
+                if (BeforeEmbeddedFileSystemInitialize != null)
+                    BeforeEmbeddedFileSystemInitialize(app, p.Value.EmbeddedFileSystems);
 
                 InitializeEmbeddedFileSystem(app, p.Value);
                 #endregion
@@ -70,8 +73,6 @@ namespace EVE.Mvc.Plugin
                 AssetManager.ExtractResource(item.ResourceName, embeddedPlugin.GetType().Assembly, path, item.ViewPath);
             }
         }
-
-     
 
         private static void RegisterRoutes(IAppBuilder app, IEmbeddedPlugin embeddedPlugin)
         {

@@ -17,11 +17,11 @@ namespace EVE.Mvc
     public interface IEmbeddedPlugin
     {
 
-        IEnumerable<EmbeddedFileSystemDefinition> EmbeddedFileSystems { get; }
+        IList<EmbeddedFileSystemDefinition> EmbeddedFileSystems { get; }
 
-        IEnumerable<ExtractRazorViewDefinition> RazoreViewsToExtract { get; }
+        IList<ExtractRazorViewDefinition> RazoreViewsToExtract { get; }
 
-        IEnumerable<RouteDefinition> Routes { get; }
+        IList<RouteDefinition> Routes { get; }
 
     }
 

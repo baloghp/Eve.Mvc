@@ -15,32 +15,7 @@ namespace EVE.Mvc.TestMockup
 {
     public class TestMockupPlugin : IEmbeddedPlugin
     {
-        public void InitiaizeEmbeddedFileSystem(IAppBuilder app)
-        {
-            app.UseFileServer(new FileServerOptions
-            {
-                RequestPath = new PathString("/EVE.Mvc.Samples.Embedded/Assets"),
-                FileSystem = new EmbeddedFileSystem("EVE.Mvc.Samples.Embedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "EVE.Mvc.Samples.Embedded.Assets")
-            });
-            app.UseStageMarker(PipelineStage.MapHandler);
-        }
-
-        public void InitializeViews(string PluginDirectory)
-        {
-            var path = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath(System.Web.HttpRuntime.AppDomainAppVirtualPath), "Plugins");
-            AssetManager.ExtractResource("EVE.Mvc.Samples.Embedded.Views.Sample.index.cshtml", this.GetType().Assembly, path, "EVE.Mvc.Samples.Embedded/Views");
-        }
-
-        public void RegisterRoutes(System.Web.Routing.RouteCollection routes)
-        {
-            routes.MapRoute("EVE.Mvc.Samples.Embedded",
-                "Plugins/EmbeddedSample/{controller}/{action}",
-                new { controller = "Samples", action = "RetrieveHtmlResult" },
-                new[] { " EVE.Mvc.Samples.Embedded.Controllers" }
-           );
-        }
-
-        public IEnumerable<EmbeddedFileSystemDefinition> EmbeddedFileSystems
+      public IList<EmbeddedFileSystemDefinition> EmbeddedFileSystems
         {
             get
             {
@@ -56,7 +31,7 @@ namespace EVE.Mvc.TestMockup
             }
         }
 
-        public IEnumerable<ExtractRazorViewDefinition> RazoreViewsToExtract
+      public IList<ExtractRazorViewDefinition> RazoreViewsToExtract
         {
             get { return new List<ExtractRazorViewDefinition>{
                 new ExtractRazorViewDefinition
@@ -70,7 +45,7 @@ namespace EVE.Mvc.TestMockup
             }
         }
 
-        public IEnumerable<RouteDefinition> Routes
+      public IList<RouteDefinition> Routes
         {
             get
             {
