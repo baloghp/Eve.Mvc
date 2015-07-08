@@ -9,10 +9,19 @@ using System.Web.Configuration;
 
 namespace EVE.Mvc.Composition
 {
+    /// <summary>
+    /// Static class containing responsible to instantiate the correct Catalog Provider based on configuration
+    /// </summary>
     public static class CatalogProvider
     {
+        /// <summary>
+        /// singleton for the catalog provider
+        /// </summary>
         public static readonly BaseCatalogProvider CurrentProvider;
 
+        /// <summary>
+        /// static constructor responsible to create the right instance for the catalog provider
+        /// </summary>
         static CatalogProvider()
         {
             var configSection = ConfigurationManager.GetSection("EveProviders") as EveProvidersConfigSection;

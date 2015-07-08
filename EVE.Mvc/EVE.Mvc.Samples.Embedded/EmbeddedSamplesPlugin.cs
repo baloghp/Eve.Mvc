@@ -13,7 +13,7 @@ using System.IO;
 
 namespace EVE.Mvc.TestMockup
 {
-    public class TestMockupPlugin : IEmbeddedPlugin
+    public class EmbeddedSamplesPlugin : IEmbeddedPlugin
     {
       public IList<EmbeddedFileSystemDefinition> EmbeddedFileSystems
         {

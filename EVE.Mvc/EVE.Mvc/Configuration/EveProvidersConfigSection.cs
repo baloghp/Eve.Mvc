@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc.Configuration
 {
+    /// <summary>
+    /// Config section to configure providers used by Eve.Mvc
+    /// </summary>
     public class EveProvidersConfigSection : System.Configuration.ConfigurationSection
     {
         private readonly ConfigurationProperty catalogProvider = new ConfigurationProperty("catalogProvider", typeof(ProviderSettings), null);
@@ -17,7 +20,9 @@ namespace EVE.Mvc.Configuration
                 
             }
 
-
+        /// <summary>
+        /// Provider for creating the MEF Catalog that EveMefContainer.Container is based on.
+        /// </summary>
             [ConfigurationProperty("catalogProvider")]
             public ProviderSettings CatalogProvider
             {

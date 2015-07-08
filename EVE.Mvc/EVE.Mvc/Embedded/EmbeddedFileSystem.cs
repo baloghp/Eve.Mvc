@@ -11,6 +11,7 @@ namespace EVE.Mvc
 {
     /// <summary>
     /// This class is obsolete you should use Microsoft.Owin.FileSystems.EmbeddedResourceFileSystem
+    /// Plan is to use a cache enabled version of EmbeddedResourceFileSystem in the future. This is not implemented yet
     /// </summary>
     [Obsolete]
     public class EmbeddedFileSystem :  EmbeddedResourceFileSystem

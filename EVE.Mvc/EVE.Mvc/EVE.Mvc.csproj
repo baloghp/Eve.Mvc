@@ -133,7 +133,6 @@
     <Compile Include="ViewEngine\DocumentHelperExtensions.cs" />
     <Compile Include="Embedded\EmbeddedFileSystem.cs" />
     <Compile Include="Embedded\EmbeddedHtmlStringResult.cs" />
-    <Compile Include="Plugin\EmbeddedPlugins.cs" />
     <Compile Include="ViewEngine\EmbeddedView.cs" />
     <Compile Include="ViewEngine\EmbeddedViewAttribute.cs" />
     <Compile Include="ViewEngine\EmbeddedViewEngine.cs" />

@@ -16,8 +16,21 @@ using System.Web.Mvc;
 
 namespace EVE.Mvc.Plugin
 {
+    /// <summary>
+    /// static class provising extension methods for IAppBuilder
+    /// </summary>
     public static class IAppBuilderExtension
     {
+        /// <summary>
+        ///  automatically discovers all EmbeddedPlugins in your application and configures them based on their IEmbeddedPlugin interfaces
+        /// </summary>
+        /// <param name="app">IAppBuider to extend</param>
+        /// <param name="pluginViewsBasePath">The web application can define a base relative path for the extracting Razor views</param>
+        /// <param name="BeforePluginsInitialized">This action receives the list of plugins discovered by MEF, in the implementation the web application can check for validity of these plugins, if necessary it can remove or add plugin definitions.</param>
+        /// <param name="BeforeEmbeddedFileSystemInitialize">This action receives the list of embedded file system definitions which are to be registered, in the implementation the web application can check them, if necessary it can remove or add definitions before processing.</param>
+        /// <param name="BeforeRegisteringRoutes">This action receives the list route definitions which are to be registered, in the implementation the web application can check them, if necessary it can remove or add definitions before processing.</param>
+        /// <param name="BeforeExtractingRazorViews">This action receives the list Razor views which are to be extracted, in the implementation the web application can check them, if necessary it can remove or add definitions before processing.</param>
+        /// <returns></returns>
         public static IAppBuilder UseEmbeddedPlugins(this IAppBuilder app,
             string pluginViewsBasePath = "",
             Action<IAppBuilder, IList<Lazy<IEmbeddedPlugin>>> BeforePluginsInitialized = null,

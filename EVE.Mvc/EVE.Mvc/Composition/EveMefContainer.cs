@@ -11,24 +11,25 @@ using System.Web.Hosting;
 
 namespace EVE.Mvc.Composition
 {
+    /// <summary>
+    /// Static class providing the singleton instance for the MEF container. It is important that for any MEF decision Eve.Mvc uses this catalog.
+    /// </summary>
     public static class EveMefContainer
     {
+        /// <summary>
+        /// Singleton instance of the MEF catalog
+        /// </summary>
+        public static volatile readonly CompositionContainer Container {get; set;}
 
-        public static CompositionContainer Container {get; set;}
-
+        /// <summary>
+        /// Static constructor responsible to create the MEF container
+        /// </summary>
         static EveMefContainer()
         {
-            if (AppDomain.CurrentDomain == null)
-                throw new ApplicationException("AppDomain does not exist. AppDomain is needed in order to create MEF container.");
+          
 
             var catalog = CatalogProvider.CurrentProvider.CreateCatalog();
-           // DirectoryCatalog dcat = new DirectoryCatalog(Path.Combine(HostingEnvironment.ApplicationPhysicalPath,"bin"));
-           
-            //var asmCatalogs = from a in BuildManager.GetReferencedAssemblies().Cast<Assembly>()
-            //                  select (new AssemblyCatalog(a));
-            
-           
-            //AggregateCatalog aggregateCatalog = new AggregateCatalog(asmCatalogs);
+  
             Container = new CompositionContainer(catalog);
         }
     }
