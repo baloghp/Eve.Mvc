@@ -15,6 +15,7 @@ namespace EVE.Mvc
     public class EmbeddedViewEngine : IViewEngine
     {
         public IEnumerable<EmbeddedResourceOption> options;
+        public Dictionary<string, Lazy<EmbeddedView>> allViews;
        
 
         public EmbeddedViewEngine():this(new List<EmbeddedResourceOption>() { 
@@ -35,19 +36,22 @@ namespace EVE.Mvc
         {
 
             this.options = options;
-            //InitializeResourceDictionary();
+            InitializeAllViews();
+        }
+
+        private void InitializeAllViews()
+        {
+            
         }
         
       
 
         public ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache)
         {
-            var views = EveMefContainer.Container.GetExports<EmbeddedView>(partialViewName);
-            if (views != null && views.Count() > 0)
+            EmbeddedView view = GetView(partialViewName);
+            if (view != null)
             {
-                var view = views.First().Value;
                 view.ViewName = partialViewName;
-              
                 return new ViewEngineResult(view, this);
             }
             return new ViewEngineResult(new string[] { partialViewName });
@@ -55,17 +59,34 @@ namespace EVE.Mvc
 
         public ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
         {
-            var views = EveMefContainer.Container.GetExports<EmbeddedView>(viewName);
-            if (views != null && views.Count() > 0)
+            EmbeddedView view = GetView(viewName);
+            if (view != null )
             {
-                var view = views.First().Value;
                 view.ViewName = viewName;
                 view.MasterName = masterName;
-             
+
                 return new ViewEngineResult(view, this);
             }
             return new ViewEngineResult(new string[] { masterName, viewName });
         }
+
+        private EmbeddedView GetView(string viewName)
+        {
+            var views = EveMefContainer.Container.GetExports<EmbeddedView>(viewName);
+            if (views != null && views.Count() > 0)
+            {
+                var view = views.First().Value;
+                return view;
+            }
+            else
+            {
+                AssetManager.LoadResourceString(viewName);
+
+            }
+            return null;
+        }
+
+       
 
         public void ReleaseView(ControllerContext controllerContext, IView view)
         {

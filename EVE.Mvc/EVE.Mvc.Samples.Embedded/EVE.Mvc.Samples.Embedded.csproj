@@ -198,6 +198,7 @@
     <EmbeddedResource Include="Assets\LandingPage\fonts\glyphicons-halflings-regular.ttf" />
     <EmbeddedResource Include="Assets\LandingPage\fonts\glyphicons-halflings-regular.woff" />
     <EmbeddedResource Include="Assets\LandingPage\fonts\glyphicons-halflings-regular.woff2" />
+    <EmbeddedResource Include="Views\Sample\index.cshtml" />
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>

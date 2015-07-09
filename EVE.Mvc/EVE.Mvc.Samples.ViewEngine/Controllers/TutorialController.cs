@@ -9,5 +9,9 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
 {
     public class TutorialController : Controller
     {
+        public ActionResult RegisterViewEngine()
+        {
+            return View("EVE.Mvc.Samples.ViewEngine.Assets.Views.Tutorial.RegisterViewEngine.html");
+        }
     }
 }

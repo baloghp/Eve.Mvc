@@ -139,6 +139,7 @@
     <Compile Include="ViewEngine\IDocumentHelper.cs" />
     <Compile Include="Plugin\IEmbeddedPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewEngine\SimpleResourceView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

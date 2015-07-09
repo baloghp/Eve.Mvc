@@ -35,6 +35,26 @@ namespace EVE.Mvc
                 }
             return value;
         }
+
+        /// <summary>
+        /// Extracts resource string from an assembly defined by the assembly's full name
+        /// </summary>
+        /// <param name="name">resource's name to extract</param>
+        /// <param name="assemblyName">fullname of the assembly</param>
+        /// <returns></returns>
+        internal static string LoadResourceString(string name)
+        {
+            string value;
+            var assembly = (from a in AppDomain.CurrentDomain.GetAssemblies()
+                            where name.StartsWith(a.FullName)
+                            select a).FirstOrDefault();
+            if (assembly == null) return string.Empty;
+            using (var sr = new StreamReader(assembly.GetManifestResourceStream(name)))
+            {
+                value = sr.ReadToEnd();
+            }
+            return value;
+        }
        /// <summary>
         /// Extracts resource string from an assembly
        /// </summary>

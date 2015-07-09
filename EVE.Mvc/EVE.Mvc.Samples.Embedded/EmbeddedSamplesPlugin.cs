@@ -55,7 +55,7 @@ namespace EVE.Mvc.TestMockup
                         RouteName = "EVE.Mvc.Samples.Embedded",
                         Url="Plugins/EmbeddedSample/{controller}/{action}",
                         Defaults =  new { controller = "Samples", action = "RetrieveHtmlResult" },
-                        Namespaces = new[] { " EVE.Mvc.Samples.Embedded.Controllers" }
+                        Namespaces = new[] { "EVE.Mvc.Samples.Embedded.Controllers" }
                     }
                 };
             }

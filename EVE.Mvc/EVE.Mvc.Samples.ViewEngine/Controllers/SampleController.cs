@@ -11,7 +11,7 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
     {
         public ActionResult ShowHtml() 
         {
-            return null;
+            return View("EVE.Mvc.Samples.ViewEngine.Assets.Views.EntireLandingPage.html");
         }
 
     }

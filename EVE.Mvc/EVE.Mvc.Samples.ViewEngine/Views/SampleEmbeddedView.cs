@@ -11,7 +11,6 @@ namespace EVE.Mvc.TestMockup.Views
     public class SampleEmbeddedView : EmbeddedView
     {
         
-
         public override void ProcessView( System.Web.Mvc.ViewContext viewContext)
         {
             

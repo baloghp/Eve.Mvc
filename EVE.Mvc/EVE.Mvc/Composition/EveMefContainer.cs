@@ -19,7 +19,7 @@ namespace EVE.Mvc.Composition
         /// <summary>
         /// Singleton instance of the MEF catalog
         /// </summary>
-        public static volatile readonly CompositionContainer Container {get; set;}
+        public static CompositionContainer Container {get; set;}
 
         /// <summary>
         /// Static constructor responsible to create the MEF container
