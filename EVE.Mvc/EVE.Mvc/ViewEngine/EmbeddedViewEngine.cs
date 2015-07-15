@@ -17,16 +17,24 @@ namespace EVE.Mvc
     {
 
         public string ViewNamePrefix { get; set; }
-       
 
-        public EmbeddedViewEngine():this(string.Empty)
+        public BaseMarkupProvider MarkupProvider { get; private set; }
+
+        public EmbeddedViewEngine()
+            : this(string.Empty, EVE.Mvc.ViewEngine.MarkupProvider.CurrentProvider)
         {
            
         }
 
         public EmbeddedViewEngine(string viewNamePrefix)
+            : this(viewNamePrefix, EVE.Mvc.ViewEngine.MarkupProvider.CurrentProvider)
+        {
+
+        }
+        public EmbeddedViewEngine(string viewNamePrefix, BaseMarkupProvider markupProvider)
         {
             ViewNamePrefix = viewNamePrefix;
+            this.MarkupProvider = markupProvider;
         }
         
         public ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache)
@@ -104,7 +112,7 @@ namespace EVE.Mvc
 
         private string FindMarkup(string viewName, EmbeddedView view)
         {
-            return MarkupProvider.CurrentProvider.GetResource(viewName, view);
+            return MarkupProvider.GetResource(viewName, view);
         }
 
         private EmbeddedView FindEmbeddedViewClass(string viewName)

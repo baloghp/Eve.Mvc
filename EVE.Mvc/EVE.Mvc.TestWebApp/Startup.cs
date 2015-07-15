@@ -17,8 +17,9 @@ namespace EVE.Mvc.TestWebApp
     {
         public void Configuration(IAppBuilder app)
         {
-            ViewEngines.Engines.Insert(0, new EmbeddedViewEngine("eve-"));
-
+            
+            ViewEngines.Engines.Insert(0, new EmbeddedViewEngine("eve-")); // default markup provider
+           
             #region standard startup
 
             AreaRegistration.RegisterAllAreas();
@@ -36,6 +37,8 @@ namespace EVE.Mvc.TestWebApp
            
         }
 
-       
+
+
+        
     }
 }
