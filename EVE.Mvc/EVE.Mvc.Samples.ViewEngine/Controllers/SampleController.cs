@@ -9,9 +9,14 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
 {
     public class SampleController : Controller
     {
-        public ActionResult ShowHtml() 
+        public ActionResult ShowResourceHtml() 
         {
-            return View("EVE.Mvc.Samples.ViewEngine.Assets.Views.EntireLandingPage.html");
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleHtml.LandingPage.html");
+        }
+
+        public ActionResult ShowCodeHtml()
+        {
+            return View("eve-Just.Code.Simple.Html.View");
         }
 
     }

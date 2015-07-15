@@ -27,7 +27,8 @@ namespace EVE.Mvc
                 if (_htmlDocument == null)
                 {
                     var doc = new HtmlAgilityPack.HtmlDocument();
-                    doc.LoadHtml(RawMarkup);
+                    if(!String.IsNullOrWhiteSpace(RawMarkup))
+                        doc.LoadHtml(RawMarkup);
                     _htmlDocument = new DocumentHelper(doc);
                 }
                 return _htmlDocument;

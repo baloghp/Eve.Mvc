@@ -9,8 +9,6 @@ namespace EVE.Mvc.ViewEngine
 {
     public class SimpleResourceView: EmbeddedView
     {
-      
-
         public override void ProcessView(ViewContext viewContext)
         {
             //do nothing

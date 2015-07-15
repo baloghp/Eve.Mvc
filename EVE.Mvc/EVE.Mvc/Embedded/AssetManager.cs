@@ -29,6 +29,7 @@ namespace EVE.Mvc
                                 where a.FullName == assemblyName
                                 select a).FirstOrDefault();
                 if (assembly == null) return string.Empty;
+                if (assembly.GetManifestResourceInfo(name) == null) return string.Empty;
                 using (var sr = new StreamReader(assembly.GetManifestResourceStream(name)))
                 {
                     value = sr.ReadToEnd();
@@ -72,6 +73,7 @@ namespace EVE.Mvc
             }
 
             if (assembly == null) return string.Empty;
+            if (assembly.GetManifestResourceInfo(name) == null) return string.Empty;
             using (var sr = new StreamReader(assembly.GetManifestResourceStream(name)))
             {
                 value = sr.ReadToEnd();
@@ -88,6 +90,7 @@ namespace EVE.Mvc
         {
             string value;
                 if (assembly == null) return string.Empty;
+            if (assembly.GetManifestResourceInfo(name)==null) return string.Empty;
                 using (var sr = new StreamReader(assembly.GetManifestResourceStream(name)))
                 {
                     value = sr.ReadToEnd();
