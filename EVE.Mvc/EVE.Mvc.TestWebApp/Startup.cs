@@ -17,7 +17,7 @@ namespace EVE.Mvc.TestWebApp
     {
         public void Configuration(IAppBuilder app)
         {
-            ViewEngines.Engines.Insert(0, new EmbeddedViewEngine());
+            ViewEngines.Engines.Insert(0, new EmbeddedViewEngine("eve-"));
 
             #region standard startup
 

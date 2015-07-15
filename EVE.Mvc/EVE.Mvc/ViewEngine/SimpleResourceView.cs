@@ -7,11 +7,13 @@ using System.Web.Mvc;
 
 namespace EVE.Mvc.ViewEngine
 {
-    public class SimpleResourceView: IView
+    public class SimpleResourceView: EmbeddedView
     {
-        public void Render(ViewContext viewContext, System.IO.TextWriter writer)
+      
+
+        public override void ProcessView(ViewContext viewContext)
         {
-            
+            //do nothing
         }
     }
 }

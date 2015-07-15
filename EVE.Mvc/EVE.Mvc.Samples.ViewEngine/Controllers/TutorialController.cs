@@ -11,7 +11,7 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
     {
         public ActionResult RegisterViewEngine()
         {
-            return View("EVE.Mvc.Samples.ViewEngine.Assets.Views.Tutorial.RegisterViewEngine.html");
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Tutorial.RegisterViewEngine.html");
         }
     }
 }

@@ -31,7 +31,15 @@ namespace EVE.Mvc.Configuration
 
 
 
-          
-        }
+
+            /// <summary>
+            /// Provider for getting markup for the Embedded View Engine.
+            /// </summary>
+            [ConfigurationProperty("markupProvider")]
+            public ProviderSettings MarkupProvider
+            {
+                get { return (ProviderSettings)base["markupProvider"]; }
+            }
+    }
     
 }

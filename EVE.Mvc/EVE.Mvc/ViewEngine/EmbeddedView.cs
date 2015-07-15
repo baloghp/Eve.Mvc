@@ -20,12 +20,26 @@ namespace EVE.Mvc
     [InheritedExport]
     public abstract class EmbeddedView: IView, IViewDataContainer
     {
+        internal string RawMarkup { get; set; }
+        private IDocumentHelper _htmlDocument = null;
+        public IDocumentHelper HtmlDocument { get
+            {
+                if (_htmlDocument == null)
+                {
+                    var doc = new HtmlAgilityPack.HtmlDocument();
+                    doc.LoadHtml(RawMarkup);
+                    _htmlDocument = new DocumentHelper(doc);
+                }
+                return _htmlDocument;
+            }
+        }
+        
         public string ViewName { get; internal set; }
         public string MasterName { get; set; }
         public string AssemblyName { get; internal set; }
         
-        //public HtmlDocument Document { get; internal set; }
-        public IDocumentHelper HtmlDocument { get; internal set; }
+        
+        
         public ViewDataDictionary ViewData  { get; set; }
         public HtmlHelper Html { get; internal set; }
 
@@ -43,21 +57,16 @@ namespace EVE.Mvc
             this.ViewData = viewContext.ViewData;    
             this.Html = new HtmlHelper(viewContext,this);
 
-            //if it has a master prepare that
-            if (!string.IsNullOrWhiteSpace(MasterName))
-            {
-                var masterString = this.Html.Partial(MasterName);
-                masterDoc = new HtmlDocument();
-                masterDoc.LoadHtml(masterString.ToHtmlString());
+            ////if it has a master prepare that
+            //if (!string.IsNullOrWhiteSpace(MasterName))
+            //{
+            //    var masterString = this.Html.Partial(MasterName);
+            //    masterDoc = new HtmlDocument();
+            //    masterDoc.LoadHtml(masterString.ToHtmlString());
                
-            }
+            //}
 
-            //prepare document for the current view
-            document = new HtmlAgilityPack.HtmlDocument();
-            var html = AssetManager.LoadResourceString(ViewName,AssemblyName);
-            document.LoadHtml(html);
-            //init document helper
-            this.HtmlDocument = new DocumentHelper(document);
+           
 
 
             //pass manipulation to child
@@ -65,17 +74,17 @@ namespace EVE.Mvc
 
             //handle partial views
 
-            //handle masterpage, if we have one insert the doc into it.
-            if (masterDoc!=null)
-            {
-                masterDoc.DocumentNode.SelectSingleNode("//*[@ev-renderbody]").InnerHtml = document.DocumentNode.WriteTo();
-                masterDoc.Save(writer);
-                return;
-            }
+            ////handle masterpage, if we have one insert the doc into it.
+            //if (masterDoc!=null)
+            //{
+            //    masterDoc.DocumentNode.SelectSingleNode("//*[@ev-renderbody]").InnerHtml = document.DocumentNode.WriteTo();
+            //    masterDoc.Save(writer);
+            //    return;
+            //}
 
 
             //save doc to output stream
-            document.Save(writer);
+            HtmlDocument.Document.Save(writer);
         }
 
         public abstract void ProcessView(ViewContext viewContext);

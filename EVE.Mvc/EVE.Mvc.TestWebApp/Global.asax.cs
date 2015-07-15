@@ -12,8 +12,7 @@ namespace EVE.Mvc.TestWebApp
     {
         protected void Application_Start()
         {
-            ViewEngines.Engines.Add(new EmbeddedViewEngine());
-
+            
             //AreaRegistration.RegisterAllAreas();
             //FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             //RouteConfig.RegisterRoutes(RouteTable.Routes);

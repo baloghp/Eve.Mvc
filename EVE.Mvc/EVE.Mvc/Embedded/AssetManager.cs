@@ -45,9 +45,32 @@ namespace EVE.Mvc
         internal static string LoadResourceString(string name)
         {
             string value;
-            var assembly = (from a in AppDomain.CurrentDomain.GetAssemblies()
-                            where name.StartsWith(a.FullName)
-                            select a).FirstOrDefault();
+            var assemblies = (from a in AppDomain.CurrentDomain.GetAssemblies()
+                            where name.StartsWith(a.GetName().Name)
+                           
+                            select a);
+            //select the longest match
+            
+            //this is O(2n)
+            //int max = assemblies.Max(a=>a.GetName().Name.Length);
+            //Assembly assembly = (from a in assemblies
+            //                    where a.GetName().Name.Length == max
+            //                    select a).First();
+
+            //this is O(n)
+            int max = 0;
+            Assembly assembly = null;
+            foreach (var a in assemblies)
+            {
+                
+                var nm = a.GetName().Name.Length;
+                if (nm > max)
+                {
+                    max = nm;
+                    assembly = a;
+                }
+            }
+
             if (assembly == null) return string.Empty;
             using (var sr = new StreamReader(assembly.GetManifestResourceStream(name)))
             {
