@@ -99,7 +99,7 @@ namespace EVE.Mvc
             HtmlDocument document;
 
             //init context sensitive fields
-            if (!(this.ViewData.Model is T))
+            if (this.ViewData.Model!=null && !(this.ViewData.Model is T))
             {
                 throw new ApplicationException(String.Format("Model passed for this view MUST be of type:{0}, but it is {1}", typeof(T), this.ViewData.Model.GetType()));
             }
@@ -153,7 +153,7 @@ namespace EVE.Mvc
             {
                 foreach (var partialNode in partialNodes)
                 {
-                    //let's get the viewname
+                    //let's get the view name
                     var partialName = partialNode.Attributes[EveMarkupAttributes.PartialView].Value;
                     //let's see if the user defined a model for this, by default we pass on the current model
                     object partialModel = Model;
