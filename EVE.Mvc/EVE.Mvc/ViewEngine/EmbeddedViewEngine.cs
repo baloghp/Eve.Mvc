@@ -54,7 +54,12 @@ namespace EVE.Mvc
             if (view != null )
             {
                 view.ViewName = viewName;
-                view.MasterName = masterName;
+                //set master name only if there is one specified,
+                //otherwise let the view try to figure out by its attributes
+                if (!string.IsNullOrWhiteSpace(masterName))
+                {
+                    view.MasterName = masterName;
+                }
 
                 return new ViewEngineResult(view, this);
             }
@@ -64,7 +69,7 @@ namespace EVE.Mvc
         /// So! A typical view is made up of an EmbeddedView class and a pice of markup string.
         /// First we look for the class and then pass the markup to it. 
         /// We're going to assume that if a class exists the corresponding markup will be in proximity to it (same assembly).
-        /// So we're going to pass both the viewname and the view class to the markup provider. 
+        /// So we're going to pass both the view name and the view class to the markup provider. 
         /// The default markup provider will look for the markup as an embedded string in the view class's assembly.
         /// If we do not find a class we still look for a markup using the same provider 
         /// (so the providers must be prepared to handle the scenario  when now view class is passed)
@@ -77,7 +82,7 @@ namespace EVE.Mvc
         {
             string realViewName = UnprefixViewName(viewName);
             if (string.IsNullOrWhiteSpace(realViewName)) return null;
-            EmbeddedView view = FindEmbeddedViewClass(realViewName);
+            EmbeddedView view = FindEmbeddedViewClass(viewName);
             string markup = FindMarkup(realViewName, view);
             if (view != null)
             {

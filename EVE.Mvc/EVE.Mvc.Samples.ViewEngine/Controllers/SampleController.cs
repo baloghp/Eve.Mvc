@@ -19,5 +19,15 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
             return View("eve-Just.Code.Simple.Html.View");
         }
 
+        public ActionResult ShowSimpleMasterHtml()
+        {
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingPage.html");
+        }
+
+        public ActionResult ShowSimpleMasterAndPartial()
+        {
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.MasterAndPartials.LandingPage.html",DateTime.Now);
+        }
+
     }
 }

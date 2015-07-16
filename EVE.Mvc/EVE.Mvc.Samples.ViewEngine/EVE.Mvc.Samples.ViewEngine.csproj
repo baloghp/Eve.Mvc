@@ -107,7 +107,12 @@
     <Compile Include="Views\LandingPage.cs" />
     <Compile Include="Views\LandingPageMaster.cs" />
     <Compile Include="Views\SampleEmbeddedView.cs" />
+    <Compile Include="Views\Sample\MasterAndPartials\Contents.cs" />
+    <Compile Include="Views\Sample\MasterAndPartials\IntroHeader.cs" />
+    <Compile Include="Views\Sample\MasterAndPartials\PageView.cs" />
     <Compile Include="Views\Sample\SimpleHtmlView.cs" />
+    <Compile Include="Views\Sample\SimpleMaster\MasterView.cs" />
+    <Compile Include="Views\Sample\SimpleMaster\PageView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -142,6 +147,36 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Views\Tutorial\SimpleHtml.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\SimpleMaster\LandingMaster.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\SimpleMaster\LandingPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Tutorial\SimpleMaster.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\MasterAndPartials\LandingPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\MasterAndPartials\IntroHeader.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\MasterAndPartials\Content1.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\MasterAndPartials\Content2.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\MasterAndPartials\Content3.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\MasterAndPartials\Contents.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\MasterAndPartials\Banner.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

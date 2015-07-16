@@ -9,8 +9,9 @@ namespace EVE.Mvc
 {
     public class EmbeddedViewAttribute : ExportAttribute
     {
-        
-        public EmbeddedViewAttribute(string contractName) : base(contractName,typeof(EmbeddedView))
+
+        public EmbeddedViewAttribute(string viewName)
+            : base(viewName, typeof(EmbeddedView))
         {}
         
         
