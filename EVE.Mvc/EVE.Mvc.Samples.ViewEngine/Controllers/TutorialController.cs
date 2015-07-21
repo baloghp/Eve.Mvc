@@ -17,5 +17,13 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
         {
             return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Tutorial.SimpleHtml.html");
         }
+        public ActionResult SimpleMaster()
+        {
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Tutorial.SimpleMaster.SimpleMaster.html");
+        }
+        public ActionResult SimpleMasterAndPartial()
+        {
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Tutorial.MasterAndPartials.MasterAndPartials.html");
+        }
     }
 }

@@ -13,7 +13,15 @@ namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.MasterAndPartials
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)
         {
-           // throw new NotImplementedException();
+            var nodes = this.HtmlDocument
+                            .Document
+                            .DocumentNode
+                            .SelectNodes("//h2");
+            foreach (var item in nodes)
+            {
+                item.InnerHtml = "Partial view content changed by page view";
+            }
+
         }
     }
 }

@@ -155,7 +155,7 @@
     <EmbeddedResource Include="Assets\Views\Sample\SimpleMaster\LandingPage.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\Views\Tutorial\SimpleMaster.html" />
+    <EmbeddedResource Include="Assets\Views\Tutorial\SimpleMaster\SimpleMaster.html" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Views\Sample\MasterAndPartials\LandingPage.html" />
@@ -177,6 +177,17 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Views\Sample\MasterAndPartials\Banner.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Tutorial\SimpleMaster\Codes.PNG" />
+    <EmbeddedResource Include="Assets\Views\Tutorial\SimpleMaster\Markups.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Tutorial\MasterAndPartials\MasterAndPartials.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Tutorial\MasterAndPartials\codes.png" />
+    <EmbeddedResource Include="Assets\Views\Tutorial\MasterAndPartials\markups.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

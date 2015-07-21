@@ -13,7 +13,11 @@ namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.SimpleMaster
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)
         {
-            //throw new NotImplementedException();
+            this.HtmlDocument
+                .Document
+                .DocumentNode
+                .SelectSingleNode("//title")
+                .InnerHtml = "This title is defined in Master, but it has been changed in page view.";
         }
     }
 }

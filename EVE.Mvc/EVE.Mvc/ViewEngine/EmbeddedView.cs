@@ -49,7 +49,7 @@ namespace EVE.Mvc
             }
         }
         #endregion
-
+        #region mastername
         private const string NOMASTERVIEWNAME = "___NO___MASTER___DISCOVERED****YET"; //pretty unique, hope no-one will want to name their master view like this
         private string _masterName = NOMASTERVIEWNAME;
         public string MasterName
@@ -77,14 +77,9 @@ namespace EVE.Mvc
             }
             return null;
         }
-
+        #endregion
 
         public string ViewName { get; internal set; }
-
-        public string AssemblyName { get; internal set; }
-
-
-
         public ViewDataDictionary ViewData { get; set; }
         public HtmlHelper Html { get; internal set; }
 
@@ -144,8 +139,7 @@ namespace EVE.Mvc
                     doc.LoadHtml(RawMarkup);
                 HtmlDocument = new DocumentHelper(doc);
             }
-            //pass manipulation to child
-            ProcessView(viewContext);
+         
 
             //handle partial views
             var partialNodes = HtmlDocument.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
@@ -178,7 +172,8 @@ namespace EVE.Mvc
                 }
             }
 
-
+            //pass manipulation to child
+            ProcessView(viewContext);
 
             //save doc to output stream
             HtmlDocument.Document.Save(writer);

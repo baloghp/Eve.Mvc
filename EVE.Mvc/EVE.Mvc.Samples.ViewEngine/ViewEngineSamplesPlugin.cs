@@ -12,8 +12,15 @@ namespace EVE.Mvc.Samples.ViewEngine
         {
             get
             {
-                // we're reusing the embedded sample's EFS
-                return null;
+                return new List<EmbeddedFileSystemDefinition> 
+                                {
+                                    new EmbeddedFileSystemDefinition()
+                                        {
+                                            BaseResourceNamespace="EVE.Mvc.Samples.ViewEngine.Assets",
+                                            RequestPath = "/EVE.Mvc.Samples.ViewEngine/Assets",
+                                            
+                                        }
+                                };
             }
         }
 

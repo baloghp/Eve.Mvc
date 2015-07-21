@@ -11,7 +11,7 @@ namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.SimpleMaster
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)
         {
-            //throw new NotImplementedException();
+            
         }
     }
 }
