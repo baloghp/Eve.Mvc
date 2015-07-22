@@ -13,13 +13,16 @@ using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.Extensions;
 using Microsoft.Owin;
 using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Hosting;
+using EVE.Mvc.Embedded;
 
 namespace EVE.Mvc.Plugin
 {
     /// <summary>
     /// static class provising extension methods for IAppBuilder
     /// </summary>
-    public static class IAppBuilderExtension
+    public static class AppBuilderExtension
     {
         /// <summary>
         ///  automatically discovers all EmbeddedPlugins in your application and configures them based on their IEmbeddedPlugin interfaces
@@ -68,6 +71,8 @@ namespace EVE.Mvc.Plugin
                 InitializeExtractedViews(app, p.Value, pluginViewsBasePath);
                 #endregion
 
+                p.Value.RegisterBundles(BundleTable.Bundles);
+
             }
 
             return app;
@@ -106,11 +111,15 @@ namespace EVE.Mvc.Plugin
 
             foreach (var item in embeddedPlugin.EmbeddedFileSystems)
             {
+                var fs = new EmbeddedFileSystem(embeddedPlugin.GetType().Assembly.FullName, item.BaseResourceNamespace);
+                var reqPath = new PathString(item.RequestPath);
                 app.UseFileServer(new FileServerOptions
            {
-               RequestPath = new PathString(item.RequestPath),
-               FileSystem = new EmbeddedFileSystem(embeddedPlugin.GetType().Assembly.FullName, item.BaseResourceNamespace)
+               RequestPath = reqPath,
+               FileSystem = fs
            });
+                if (item.RegisterVirtuPathProvider)
+                    HostingEnvironment.RegisterVirtualPathProvider(new EmbeddedPathProvider(fs, reqPath));
                 app.UseStageMarker(PipelineStage.MapHandler);
             }
         }

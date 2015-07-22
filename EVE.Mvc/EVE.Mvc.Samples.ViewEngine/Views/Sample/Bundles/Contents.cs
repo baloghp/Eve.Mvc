@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EVE.Mvc.TestMockup
+namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.Bundles
 {
-    [EmbeddedView("Bookly.Mvc.TestMockup.Views.Sample.LandingPageMaster.html")]
-    public class LandingPageMaster: EmbeddedView
+    [EmbeddedView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Bundles.Contents.html")]
+    public class Contents : EmbeddedView
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)
         {
-            
+            //throw new NotImplementedException();
         }
     }
 }

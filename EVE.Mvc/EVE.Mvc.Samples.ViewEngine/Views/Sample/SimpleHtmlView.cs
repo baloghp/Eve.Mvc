@@ -15,7 +15,8 @@ namespace EVE.Mvc.Samples.ViewEngine.Views.Sample
                                                     <body>
                                                     Hello World!!!
                                                     </body>
-                                                    </html>                                                    ");
+                                                    </html>
+                                                    ");
         }
     }
 }

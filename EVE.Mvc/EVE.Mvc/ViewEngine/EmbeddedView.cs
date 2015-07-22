@@ -49,6 +49,7 @@ namespace EVE.Mvc
             }
         }
         #endregion
+
         #region mastername
         private const string NOMASTERVIEWNAME = "___NO___MASTER___DISCOVERED****YET"; //pretty unique, hope no-one will want to name their master view like this
         private string _masterName = NOMASTERVIEWNAME;
@@ -79,6 +80,17 @@ namespace EVE.Mvc
         }
         #endregion
 
+        #region sections
+        private List<Section> _sections;
+        public IList<Section> Sections
+        {
+            get
+            {
+                return _sections ?? (_sections = new List<Section>());
+            }
+        }
+        #endregion
+
         public string ViewName { get; internal set; }
         public ViewDataDictionary ViewData { get; set; }
         public HtmlHelper Html { get; internal set; }
@@ -94,7 +106,7 @@ namespace EVE.Mvc
             HtmlDocument document;
 
             //init context sensitive fields
-            if (this.ViewData.Model!=null && !(this.ViewData.Model is T))
+            if (this.ViewData.Model != null && !(this.ViewData.Model is T))
             {
                 throw new ApplicationException(String.Format("Model passed for this view MUST be of type:{0}, but it is {1}", typeof(T), this.ViewData.Model.GetType()));
             }
@@ -105,31 +117,7 @@ namespace EVE.Mvc
             //if it has a master prepare that
             if (!string.IsNullOrWhiteSpace(MasterName))
             {
-                //get the html for the master view, by calling MVC view resolution
-                var masterString = this.Html.Partial(MasterName, Model, this.ViewData);
-                //let's prepare that as our main doc
-                masterDoc = new HtmlDocument();
-                masterDoc.LoadHtml(masterString.ToHtmlString());
-
-                //let's see where to put the current view
-                var renderBodyNode = masterDoc.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.RenderBody));
-                //if we could not find the place there is trouble
-                if (renderBodyNode == null)
-                    throw new ApplicationException("Master does not define node with 'eve-renderbody' attribute");
-                //let's see if we should render the current view into the tag, or instead
-                // we put the raw markup in there
-                if (renderBodyNode.Attributes.Contains(EveMarkupAttributes.RenderInstead))
-                {
-                    var parent = renderBodyNode.ParentNode;
-                    parent.InnerHtml = parent.InnerHtml.Replace(renderBodyNode.OuterHtml, RawMarkup);
-                }
-                else
-                {
-                    renderBodyNode.InnerHtml = RawMarkup;
-                }
-
-                // and we make the masterdoc our current operating document
-                HtmlDocument = new DocumentHelper(masterDoc);
+                masterDoc = PrepareMasterPage(masterDoc);
             }
             else
             {
@@ -139,10 +127,88 @@ namespace EVE.Mvc
                     doc.LoadHtml(RawMarkup);
                 HtmlDocument = new DocumentHelper(doc);
             }
-         
+
 
             //handle partial views
             var partialNodes = HtmlDocument.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
+            HandlePartials(partialNodes);
+
+            // collect sections
+            // only when the page view is called, not during master or partial
+            if (this == viewContext.View)
+            {
+                CreateSections();
+            }
+
+            //pass manipulation to child
+            ProcessView(viewContext);
+
+            // set sectionContent to html
+            // only when the page view is called, not during master or partial
+            if (this == viewContext.View)
+            {
+                ProcessSections();
+            }
+
+            //save doc to output stream
+            HtmlDocument.Document.Save(writer);
+        }
+
+        private void ProcessSections()
+        {
+            foreach (var section in Sections)
+            {
+                var sectionNode = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeByValueQuery(EveMarkupAttributes.SectionDefinition, section.Name));
+                if (sectionNode != null)
+                {
+                    var content = string.Concat(section.Contents);
+                    RenderForNode(sectionNode, content);
+                }
+            }
+        }
+
+        private void CreateSections()
+        {
+            var sectionDefinitions = HtmlDocument.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.SectionDefinition));
+            if (sectionDefinitions != null)
+            {
+                Sections.Clear();
+                foreach (var item in sectionDefinitions)
+                {
+                    string sectionName = item.Attributes[EveMarkupAttributes.SectionDefinition].Value;
+                    if (Sections.Where(s => s.Name == sectionName).Count() > 0)
+                        throw new ApplicationException(String.Format("Duplicate section definition: {0}", sectionName));
+
+                    Section section = new Section()
+                    {
+                        Name = item.Attributes[EveMarkupAttributes.SectionDefinition].Value,
+                        RenderInstead = item.Attributes[EveMarkupAttributes.RenderInstead] != null
+                    };
+                    var sectionContents = HtmlDocument.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeByValueQuery(EveMarkupAttributes.SectionContentFor, sectionName));
+                    if (sectionContents != null)
+                    {
+                        foreach (var sectionContentNode in sectionContents)
+                        {
+                            if (sectionContentNode.Attributes[EveMarkupAttributes.RenderOnlyContent] == null)
+                            {
+                                section.Contents.Add(sectionContentNode.OuterHtml);
+                            }
+                            else
+                            {
+                                section.Contents.Add(sectionContentNode.InnerHtml);
+                            }
+                            sectionContentNode.Remove();
+                        }
+
+                    }
+
+                    Sections.Add(section);
+                }
+            }
+        }
+
+        private void HandlePartials(HtmlNodeCollection partialNodes)
+        {
             if (partialNodes != null && partialNodes.Count() > 0)
             {
                 foreach (var partialNode in partialNodes)
@@ -160,30 +226,57 @@ namespace EVE.Mvc
                     //call partial MVC view process
                     var partialString = this.Html.Partial(partialName, partialModel, this.ViewData).ToHtmlString();
                     //determine if the partial result should be inside the partial tag or instead
-                    if (partialNode.Attributes.Contains(EveMarkupAttributes.RenderInstead))
-                    {
-                        var parent = partialNode.ParentNode;
-                        parent.InnerHtml = parent.InnerHtml.Replace(partialNode.OuterHtml, partialString);
-                    }
-                    else
-                    {
-                        partialNode.InnerHtml = partialString;
-                    }
+                    RenderForNode(partialNode, partialString);
+
                 }
             }
+        }
 
-            //pass manipulation to child
-            ProcessView(viewContext);
+        private HtmlAgilityPack.HtmlDocument PrepareMasterPage(HtmlDocument masterDoc)
+        {
+            //get the html for the master view, by calling MVC view resolution
+            var masterString = this.Html.Partial(MasterName, Model, this.ViewData);
+            //let's prepare that as our main doc
+            masterDoc = new HtmlDocument();
+            masterDoc.LoadHtml(masterString.ToHtmlString());
 
-            //save doc to output stream
-            HtmlDocument.Document.Save(writer);
+            //let's see where to put the current view
+            var renderBodyNode = masterDoc.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.RenderBody));
+            //if we could not find the place there is trouble
+            if (renderBodyNode == null)
+                throw new ApplicationException("Master does not define node with 'eve-renderbody' attribute");
+            //let's see if we should render the current view into the tag, or instead
+            // we put the raw markup in there
+            RenderForNode(renderBodyNode, RawMarkup);
+
+            // and we make the masterdoc our current operating document
+            HtmlDocument = new DocumentHelper(masterDoc);
+            return masterDoc;
+        }
+        /// <summary>
+        /// Renders content for node considering renderinstead, and renderinto attributes
+        /// </summary>
+        /// <param name="renderNode"></param>
+        /// <param name="content"></param>
+        public static void RenderForNode(HtmlNode renderNode, string content)
+        {
+            //let's see if we should render the current view into the tag, or instead
+            // we put the raw markup in there
+            if (renderNode.Attributes.Contains(EveMarkupAttributes.RenderInstead))
+            {
+                var parent = renderNode.ParentNode;
+                parent.InnerHtml = parent.InnerHtml.Replace(renderNode.OuterHtml, content);
+            }
+            else if (renderNode.Attributes.Contains(EveMarkupAttributes.RenderInto))
+            {
+                renderNode.InnerHtml += content;
+            }
+            else
+            {
+                renderNode.InnerHtml = content;
+            }
         }
 
         public abstract void ProcessView(ViewContext viewContext);
-
-
-
-
-
     }
 }

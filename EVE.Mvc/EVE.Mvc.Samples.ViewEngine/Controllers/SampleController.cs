@@ -29,5 +29,13 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
             return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.MasterAndPartials.LandingPage.html",DateTime.Now);
         }
 
+        public ActionResult Sections()
+        {
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Sections.LandingPage.html", DateTime.Now);
+        }
+        public ActionResult Bundles()
+        {
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Bundles.LandingPage.html", DateTime.Now);
+        }
     }
 }

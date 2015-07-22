@@ -25,7 +25,14 @@ namespace EVE.Mvc.TestMockup
                                         {
                                             BaseResourceNamespace="EVE.Mvc.Samples.Embedded.Assets",
                                             RequestPath = "/EVE.Mvc.Samples.Embedded/Assets",
+                                             RegisterVirtuPathProvider = true
                                             
+                                        },
+                                        new EmbeddedFileSystemDefinition()
+                                        {
+                                            BaseResourceNamespace="EVE.Mvc.Samples.Embedded.Views",
+                                            RequestPath = "/EVE.Mvc.Samples.Embedded/Views",
+                                            RegisterVirtuPathProvider = true
                                         }
                                 };
             }
@@ -60,5 +67,11 @@ namespace EVE.Mvc.TestMockup
                 };
             }
         }
+
+
+      public void RegisterBundles(System.Web.Optimization.BundleCollection bundles)
+      {
+          //throw new NotImplementedException();
+      }
     }
 }

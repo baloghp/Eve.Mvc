@@ -5,6 +5,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 
@@ -32,6 +33,8 @@ namespace EVE.Mvc
         /// </summary>
         IList<RouteDefinition> Routes { get; }
 
+        void RegisterBundles(BundleCollection bundles);
+
     }
     /// <summary>
     /// Class containing the necessary details to define an Embedded File system registration
@@ -46,6 +49,10 @@ namespace EVE.Mvc
         /// base resource namespace from which the file system is effective
         /// </summary>
         public string BaseResourceNamespace { get; set; }
+        /// <summary>
+        /// Determines if the files system will be registered with a corresponding virtualPathProvider
+        /// </summary>
+        public bool RegisterVirtuPathProvider { get; set; }
 
     }
     /// <summary>
@@ -88,4 +95,6 @@ namespace EVE.Mvc
         /// </summary>
         public string[] Namespaces;
     }
+
+   
 }

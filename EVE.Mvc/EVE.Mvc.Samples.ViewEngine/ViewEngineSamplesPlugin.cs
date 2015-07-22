@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Optimization;
 
 namespace EVE.Mvc.Samples.ViewEngine
 {
@@ -47,6 +48,19 @@ namespace EVE.Mvc.Samples.ViewEngine
                     }
                 };
             }
+        }
+
+
+        public void RegisterBundles(System.Web.Optimization.BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/bundles/lp/bootstrap").Include(
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/respond.js"));
+
+            bundles.Add(new StyleBundle("~/Content/lp/css").Include(
+                      "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/css/bootstrap.css",
+                      "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/css/landing-page.css",
+                      "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/font-awesome/css/font-awesome.css"));
         }
     }
 }

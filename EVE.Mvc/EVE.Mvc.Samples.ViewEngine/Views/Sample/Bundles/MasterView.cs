@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EVE.Mvc.TestMockup.Views
+namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.Bundles
 {
-    [EmbeddedView("Bookly.Mvc.TestMockup.Views.Sample.LandingPage.html")]
-    public class LandingPage : EmbeddedView
+    [EmbeddedView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Bundles.LandingMaster.html")]
+    public class MasterView : EmbeddedView
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)
         {

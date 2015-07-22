@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EVE.Mvc;
 
-namespace EVE.Mvc.TestMockup.Views
+namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.Sections
 {
-     [EmbeddedView("Bookly.Mvc.TestMockup.Views.Sample.EntireLandingPage.html")]
-    public class EntireLandingPageView : EmbeddedView
+    [EmbeddedView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Sections.LandingMaster.html")]
+    public class MasterView : EmbeddedView
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)
         {
-            this.HtmlDocument.ProcessViewBag(viewContext);
+            
         }
     }
 }
