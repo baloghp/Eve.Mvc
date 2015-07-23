@@ -9,21 +9,22 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc
 {
-    /// <summary>
-    /// This class is obsolete you should use Microsoft.Owin.FileSystems.EmbeddedResourceFileSystem
-    /// Plan is to use a cache enabled version of EmbeddedResourceFileSystem in the future. This is not implemented yet
-    /// </summary>
-    [Obsolete]
+    
     public class EmbeddedFileSystem :  EmbeddedResourceFileSystem
     {
-          
+        /// <summary>
+        /// EmbeddedPathProvider needs phisical file path for CacheDependancy
+        /// We're using this property to pass on the assembly's location
+        /// </summary>
+        public string AssemblyPath { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddedFileSystem" /> class using the calling
         /// assembly and empty base namespace.
         /// </summary>
         public EmbeddedFileSystem()
-            : base(Assembly.GetCallingAssembly())
+            : this(Assembly.GetCallingAssembly())
         {
+           
         }
 
         /// <summary>
@@ -34,6 +35,13 @@ namespace EVE.Mvc
         public EmbeddedFileSystem(Assembly assembly)
             : base(assembly, string.Empty)
         {
+            AssemblyPath = assembly.Location;
+        }
+
+        public EmbeddedFileSystem(Assembly assembly, string baseNamespace)
+            : base(assembly, baseNamespace)
+        {
+            AssemblyPath = assembly.Location;
         }
 
         /// <summary>
@@ -42,8 +50,9 @@ namespace EVE.Mvc
         /// </summary>
         /// <param name="baseNamespace">The base namespace that contains the embedded resources.</param>
         public EmbeddedFileSystem(string baseNamespace)
-            : base(Assembly.GetCallingAssembly(), baseNamespace)
+            : this(Assembly.GetCallingAssembly(), baseNamespace)
         {
+           
         }
 
        /// <summary>
@@ -54,8 +63,10 @@ namespace EVE.Mvc
        /// <param name="baseNamespace"></param>
 
         public EmbeddedFileSystem(string assemblyName, string baseNamespace)
-            : base(GetAssemblyByName(assemblyName), baseNamespace) 
-        { }
+            : this(GetAssemblyByName(assemblyName), baseNamespace)
+        { 
+            
+        }
         /// <summary>
         /// Finds the assembly in the current AppDomain based on assemblies fullname
         /// </summary>

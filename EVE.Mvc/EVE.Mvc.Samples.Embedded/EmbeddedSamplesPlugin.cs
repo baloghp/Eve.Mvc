@@ -25,7 +25,7 @@ namespace EVE.Mvc.TestMockup
                                         {
                                             BaseResourceNamespace="EVE.Mvc.Samples.Embedded.Assets",
                                             RequestPath = "/EVE.Mvc.Samples.Embedded/Assets",
-                                             RegisterVirtuPathProvider = true
+                                            RegisterVirtuPathProvider = true
                                             
                                         },
                                         new EmbeddedFileSystemDefinition()
@@ -38,19 +38,7 @@ namespace EVE.Mvc.TestMockup
             }
         }
 
-      public IList<ExtractRazorViewDefinition> RazoreViewsToExtract
-        {
-            get { return new List<ExtractRazorViewDefinition>{
-                new ExtractRazorViewDefinition
-                {
-                    BasePath = "Plugins",
-                    ResourceName = "EVE.Mvc.Samples.Embedded.Views.Sample.index.cshtml",
-                    ViewPath = "EVE.Mvc.Samples.Embedded/Views"
-                }
-            
-            };
-            }
-        }
+    
 
       public IList<RouteDefinition> Routes
         {
@@ -71,7 +59,7 @@ namespace EVE.Mvc.TestMockup
 
       public void RegisterBundles(System.Web.Optimization.BundleCollection bundles)
       {
-          //throw new NotImplementedException();
+         
       }
     }
 }

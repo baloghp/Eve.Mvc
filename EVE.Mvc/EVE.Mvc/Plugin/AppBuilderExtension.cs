@@ -28,18 +28,14 @@ namespace EVE.Mvc.Plugin
         ///  automatically discovers all EmbeddedPlugins in your application and configures them based on their IEmbeddedPlugin interfaces
         /// </summary>
         /// <param name="app">IAppBuider to extend</param>
-        /// <param name="pluginViewsBasePath">The web application can define a base relative path for the extracting Razor views</param>
         /// <param name="BeforePluginsInitialized">This action receives the list of plugins discovered by MEF, in the implementation the web application can check for validity of these plugins, if necessary it can remove or add plugin definitions.</param>
         /// <param name="BeforeEmbeddedFileSystemInitialize">This action receives the list of embedded file system definitions which are to be registered, in the implementation the web application can check them, if necessary it can remove or add definitions before processing.</param>
         /// <param name="BeforeRegisteringRoutes">This action receives the list route definitions which are to be registered, in the implementation the web application can check them, if necessary it can remove or add definitions before processing.</param>
-        /// <param name="BeforeExtractingRazorViews">This action receives the list Razor views which are to be extracted, in the implementation the web application can check them, if necessary it can remove or add definitions before processing.</param>
         /// <returns></returns>
         public static IAppBuilder UseEmbeddedPlugins(this IAppBuilder app,
-            string pluginViewsBasePath = "",
             Action<IAppBuilder, IList<Lazy<IEmbeddedPlugin>>> BeforePluginsInitialized = null,
             Action<IAppBuilder, IList<EmbeddedFileSystemDefinition>> BeforeEmbeddedFileSystemInitialize = null,
-            Action<IAppBuilder, IList<RouteDefinition>> BeforeRegisteringRoutes = null,
-            Action<IAppBuilder, IList<ExtractRazorViewDefinition>> BeforeExtractingRazorViews = null)
+            Action<IAppBuilder, IList<RouteDefinition>> BeforeRegisteringRoutes = null)
         {
             var plugins = EveMefContainer.Container.GetExports<IEmbeddedPlugin>().ToList();
             if (BeforePluginsInitialized != null)
@@ -63,14 +59,6 @@ namespace EVE.Mvc.Plugin
 
                 #endregion
 
-
-                #region Razor views
-                if (BeforeExtractingRazorViews != null)
-                    BeforeExtractingRazorViews(app, p.Value.RazoreViewsToExtract);
-
-                InitializeExtractedViews(app, p.Value, pluginViewsBasePath);
-                #endregion
-
                 p.Value.RegisterBundles(BundleTable.Bundles);
 
             }
@@ -78,19 +66,7 @@ namespace EVE.Mvc.Plugin
             return app;
         }
 
-        private static void InitializeExtractedViews(IAppBuilder app, IEmbeddedPlugin embeddedPlugin, string pluginViewsBasePath)
-        {
-            if (embeddedPlugin == null || embeddedPlugin.RazoreViewsToExtract == null) return;
-            string basepath = pluginViewsBasePath;
-            foreach (var item in embeddedPlugin.RazoreViewsToExtract)
-            {
-                if (string.IsNullOrWhiteSpace(basepath))
-                    basepath = item.BasePath;
-
-                var path = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath(System.Web.HttpRuntime.AppDomainAppVirtualPath), basepath);
-                AssetManager.ExtractResource(item.ResourceName, embeddedPlugin.GetType().Assembly, path, item.ViewPath);
-            }
-        }
+    
 
         private static void RegisterRoutes(IAppBuilder app, IEmbeddedPlugin embeddedPlugin)
         {

@@ -24,15 +24,14 @@ namespace EVE.Mvc
 
 
         /// <summary>
-        /// Extractable Razor view definitions
-        /// </summary>
-        IList<ExtractRazorViewDefinition> RazoreViewsToExtract { get; }
-
-        /// <summary>
         /// Routes for the plugin to define
         /// </summary>
         IList<RouteDefinition> Routes { get; }
 
+        /// <summary>
+        /// Stub to initialize plugin specific bundles
+        /// </summary>
+        /// <param name="bundles"></param>
         void RegisterBundles(BundleCollection bundles);
 
     }

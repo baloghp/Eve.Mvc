@@ -87,8 +87,8 @@
                     <li>For each of those classes initializes:
                     <ol>
                         <li>The Embedded File systems</li>
-                        <li>Extracts necessary Razor views</li>
                         <li>Registers defined Routes</li>
+                        <li>Runs plugin bundle registration</li>
                     </ol>
                     </li>
                 </ol>
@@ -100,12 +100,10 @@
                
                 <br />
                 <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">static</span>&nbsp;<span style="color:#b8d7a3;">IAppBuilder</span>&nbsp;UseEmbeddedPlugins(<span style="color:#569cd6;">this</span>&nbsp;<span style="color:#b8d7a3;">IAppBuilder</span>&nbsp;app,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">string</span>&nbsp;pluginViewsBasePath&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#d69d85;">&quot;&quot;</span>,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">Lazy</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IEmbeddedPlugin</span><span style="color:#b4b4b4;">&gt;&gt;&gt;</span>&nbsp;BeforePluginsInitialized&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">EmbeddedFileSystemDefinition</span><span style="color:#b4b4b4;">&gt;&gt;</span>&nbsp;BeforeEmbeddedFileSystemInitialize&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">RouteDefinition</span><span style="color:#b4b4b4;">&gt;&gt;</span>&nbsp;BeforeRegisteringRoutes&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">ExtractRazorViewDefinition</span><span style="color:#b4b4b4;">&gt;&gt;</span>&nbsp;BeforeExtractingRazorViews&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>)</pre>
-                <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">Lazy</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IEmbeddedPlugin</span><span style="color:#b4b4b4;">&gt;&gt;&gt;</span>&nbsp;BeforePluginsInitialized&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">EmbeddedFileSystemDefinition</span><span style="color:#b4b4b4;">&gt;&gt;</span>&nbsp;BeforeEmbeddedFileSystemInitialize&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Action</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#b8d7a3;">IAppBuilder</span>,&nbsp;<span style="color:#b8d7a3;">IList</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">RouteDefinition</span><span style="color:#b4b4b4;">&gt;&gt;</span>&nbsp;BeforeRegisteringRoutes&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">null</span>)</pre>
+                      <br />
                 <table class="table">
                     <thead>
                         <tr>
@@ -114,14 +112,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                pluginViewsBasePath
-                            </td>
-                            <td>
-                                The web application can define a base relative path for the extracting Razor views
-                            </td>
-                        </tr>
+                     
                         <tr>
                             <td>
                                 BeforePluginsInitialized
@@ -148,15 +139,7 @@
                                 in the implementation the web application can check them, if necessary it can remove or add definitions before processing.
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                BeforeExtractingRazorViews
-                            </td>
-                            <td>
-                                This action receives the list Razor views which are to be extracted,
-                                in the implementation the web application can check them, if necessary it can remove or add definitions before processing.
-                            </td>
-                        </tr>
+                       
                     </tbody>
                 </table>
                 <br />

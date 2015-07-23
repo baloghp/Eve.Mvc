@@ -60,7 +60,7 @@ namespace EVE.Mvc.Samples.ViewEngine
             bundles.Add(new StyleBundle("~/Content/lp/css").Include(
                       "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/css/bootstrap.css",
                       "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/css/landing-page.css",
-                      "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/font-awesome/css/font-awesome.css"));
+                      "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/font_awesome/css/font-awesome.css"));
         }
     }
 }
