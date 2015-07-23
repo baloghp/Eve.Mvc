@@ -154,6 +154,7 @@
     <Compile Include="ViewEngine\EmbeddedViewAttribute.cs" />
     <Compile Include="ViewEngine\EmbeddedViewEngine.cs" />
     <Compile Include="ViewEngine\EveMarkupAttributes.cs" />
+    <Compile Include="ViewEngine\IEmbeddedView.cs" />
     <Compile Include="ViewEngine\IModelContainer.cs" />
     <Compile Include="ViewEngine\IDocumentHelper.cs" />
     <Compile Include="Plugin\IEmbeddedPlugin.cs" />

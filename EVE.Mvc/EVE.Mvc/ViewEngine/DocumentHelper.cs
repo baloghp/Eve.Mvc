@@ -21,5 +21,10 @@ namespace EVE.Mvc
        {
            _document = document;
        }
+
+       internal void CleanUp()
+       {
+           _document = null;
+       }
     }
 }

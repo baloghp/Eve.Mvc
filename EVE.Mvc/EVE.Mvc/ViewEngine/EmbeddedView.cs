@@ -23,19 +23,34 @@ namespace EVE.Mvc
     {
     }
 
-    [InheritedExport]
-    public abstract class EmbeddedView<T> : IModelContainer<T>, IView, IViewDataContainer
+
+    public abstract class EmbeddedView<T> : IModelContainer<T>, IEmbeddedView
     {
         #region Model
+        private T _model;
         public T Model
         {
-            get;
-            protected set;
+            get
+            {
+                if (_model == null)
+                {
+                    if (this.ViewData.Model != null && !(this.ViewData.Model is T))
+                    {
+                        throw new ApplicationException(String.Format("Model passed for this view MUST be of type:{0}, but it is {1}", typeof(T), this.ViewData.Model.GetType()));
+                    }
+                    _model = (T)this.ViewData.Model;
+                }
+                return _model;
+            }
+            protected set
+            {
+                _model = value;
+            }
         }
         #endregion
 
         #region markup and internal html doc
-        internal string RawMarkup { get; set; }
+        public string RawMarkup { get; set; }
         private IDocumentHelper _htmlDocument = null;
         public IDocumentHelper HtmlDocument
         {
@@ -63,7 +78,7 @@ namespace EVE.Mvc
                 }
                 return _masterName;
             }
-            internal set
+            set
             {
                 _masterName = value;
             }
@@ -91,7 +106,7 @@ namespace EVE.Mvc
         }
         #endregion
 
-        public string ViewName { get; internal set; }
+        public string ViewName { get; set; }
         public ViewDataDictionary ViewData { get; set; }
         public HtmlHelper Html { get; internal set; }
 
@@ -102,22 +117,17 @@ namespace EVE.Mvc
 
         public void Render(ViewContext viewContext, System.IO.TextWriter writer)
         {
-            HtmlDocument masterDoc = null;
+
             HtmlDocument document;
 
             //init context sensitive fields
-            if (this.ViewData.Model != null && !(this.ViewData.Model is T))
-            {
-                throw new ApplicationException(String.Format("Model passed for this view MUST be of type:{0}, but it is {1}", typeof(T), this.ViewData.Model.GetType()));
-            }
-            this.Model = (T)this.ViewData.Model;
             this.ViewData = viewContext.ViewData;
             this.Html = new HtmlHelper(viewContext, this);
 
             //if it has a master prepare that
             if (!string.IsNullOrWhiteSpace(MasterName))
             {
-                masterDoc = PrepareMasterPage(masterDoc);
+                PrepareMasterPage();
             }
             else
             {
@@ -130,8 +140,14 @@ namespace EVE.Mvc
 
 
             //handle partial views
-            var partialNodes = HtmlDocument.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
-            HandlePartials(partialNodes);
+            
+            var partialNode = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
+            while (partialNode!=null)
+            {
+                HandlePartials(partialNode);
+                partialNode = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
+            }
+            
 
             // collect sections
             // only when the page view is called, not during master or partial
@@ -207,37 +223,38 @@ namespace EVE.Mvc
             }
         }
 
-        private void HandlePartials(HtmlNodeCollection partialNodes)
+        private void HandlePartials(HtmlNode partialNode)
         {
-            if (partialNodes != null && partialNodes.Count() > 0)
-            {
-                foreach (var partialNode in partialNodes)
-                {
-                    //let's get the view name
-                    var partialName = partialNode.Attributes[EveMarkupAttributes.PartialView].Value;
-                    //let's see if the user defined a model for this, by default we pass on the current model
-                    object partialModel = Model;
-                    if (partialNode.Attributes.Contains(EveMarkupAttributes.PartialModel))
-                    {
-                        var partialModelPath = partialNode.Attributes[EveMarkupAttributes.PartialModel].Value;
-                        //eval the new partial model on the current one
-                        partialModel = DataBinder.Eval(Model, partialModelPath);
-                    }
-                    //call partial MVC view process
-                    var partialString = this.Html.Partial(partialName, partialModel, this.ViewData).ToHtmlString();
-                    //determine if the partial result should be inside the partial tag or instead
-                    RenderForNode(partialNode, partialString);
 
-                }
+            //let's get the view name
+            var partialName = partialNode.Attributes[EveMarkupAttributes.PartialView].Value;
+            //let's see if the user defined a model for this, by default we pass on the current model
+            object partialModel = Model;
+            if (partialNode.Attributes.Contains(EveMarkupAttributes.PartialModel))
+            {
+                var partialModelPath = partialNode.Attributes[EveMarkupAttributes.PartialModel].Value;
+                //eval the new partial model on the current one
+                if (Model != null && !string.IsNullOrWhiteSpace(partialModelPath))
+                    partialModel = DataBinder.Eval(Model, partialModelPath);
             }
+            //call partial MVC view process
+            var viewData = new ViewDataDictionary(this.ViewData);
+            viewData.Model = partialModel;
+            var partialString = this.Html.Partial(partialName, partialModel, viewData).ToHtmlString();
+            partialNode.Attributes.Remove(EveMarkupAttributes.PartialView);
+            //determine if the partial result should be inside the partial tag or instead
+            RenderForNode(partialNode, partialString);
+            
+            
+
         }
 
-        private HtmlAgilityPack.HtmlDocument PrepareMasterPage(HtmlDocument masterDoc)
+        private HtmlAgilityPack.HtmlDocument PrepareMasterPage()
         {
             //get the html for the master view, by calling MVC view resolution
             var masterString = this.Html.Partial(MasterName, Model, this.ViewData);
             //let's prepare that as our main doc
-            masterDoc = new HtmlDocument();
+            var masterDoc = new HtmlDocument();
             masterDoc.LoadHtml(masterString.ToHtmlString());
 
             //let's see where to put the current view
@@ -275,8 +292,19 @@ namespace EVE.Mvc
             {
                 renderNode.InnerHtml = content;
             }
+
         }
 
         public abstract void ProcessView(ViewContext viewContext);
+
+
+        public void CleanUp()
+        {
+            var documentHelper = this.HtmlDocument as DocumentHelper;
+            if (documentHelper != null) documentHelper.CleanUp();
+
+            this.HtmlDocument = null;
+
+        }
     }
 }

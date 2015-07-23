@@ -130,6 +130,11 @@
     <Compile Include="Views\Sample\SimpleHtmlView.cs" />
     <Compile Include="Views\Sample\SimpleMaster\MasterView.cs" />
     <Compile Include="Views\Sample\SimpleMaster\PageView.cs" />
+    <Compile Include="Views\Sample\Typed\Banner.cs" />
+    <Compile Include="Views\Sample\Typed\Contents.cs" />
+    <Compile Include="Views\Sample\Typed\IntroHeader.cs" />
+    <Compile Include="Views\Sample\Typed\MasterView.cs" />
+    <Compile Include="Views\Sample\Typed\PageView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -238,6 +243,30 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Views\Sample\Bundles\LandingPage.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\Typed\Banner.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\Typed\Content1.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\Typed\Content2.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\Typed\Content3.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\Typed\Contents.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\Typed\IntroHeader.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\Typed\LandingMaster.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Views\Sample\Typed\LandingPage.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

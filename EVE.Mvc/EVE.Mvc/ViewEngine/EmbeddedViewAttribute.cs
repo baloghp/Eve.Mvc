@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EVE.Mvc.ViewEngine;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace EVE.Mvc
     {
 
         public EmbeddedViewAttribute(string viewName)
-            : base(viewName, typeof(EmbeddedView))
+            : base(viewName, typeof(IEmbeddedView))
         {}
         
         

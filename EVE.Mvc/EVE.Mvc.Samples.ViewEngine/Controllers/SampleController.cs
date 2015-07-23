@@ -26,16 +26,20 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
 
         public ActionResult ShowSimpleMasterAndPartial()
         {
-            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.MasterAndPartials.LandingPage.html",DateTime.Now);
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.MasterAndPartials.LandingPage.html");
         }
 
         public ActionResult Sections()
         {
-            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Sections.LandingPage.html", DateTime.Now);
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Sections.LandingPage.html");
         }
         public ActionResult Bundles()
         {
-            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Bundles.LandingPage.html", DateTime.Now);
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Bundles.LandingPage.html");
+        }
+        public ActionResult Typed()
+        {
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Typed.LandingPage.html", Models.LandingPageModel.GetSample());
         }
     }
 }

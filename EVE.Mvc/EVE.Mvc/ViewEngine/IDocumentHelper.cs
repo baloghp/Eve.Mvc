@@ -9,7 +9,7 @@ namespace EVE.Mvc
 {
     public interface IDocumentHelper
     {
-        HtmlAgilityPack.HtmlDocument Document { get; }
+        HtmlAgilityPack.HtmlDocument Document { get;}
        
     }
 }

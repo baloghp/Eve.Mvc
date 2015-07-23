@@ -8,7 +8,7 @@ namespace EVE.Mvc.ViewEngine
 {
     public class EmbeddedMarkupProvider: BaseMarkupProvider
     {
-        public override string GetResource(string viewName, EmbeddedView view)
+        public override string GetResource(string viewName, IEmbeddedView view)
         {
             string markup = String.Empty;
             if (view != null)

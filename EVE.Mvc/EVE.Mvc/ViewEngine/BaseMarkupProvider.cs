@@ -9,6 +9,6 @@ namespace EVE.Mvc.ViewEngine
 {
     public abstract class BaseMarkupProvider: ProviderBase
     {
-        public abstract string GetResource(string viewName, EmbeddedView view);
+        public abstract string GetResource(string viewName, IEmbeddedView view);
     }
 }

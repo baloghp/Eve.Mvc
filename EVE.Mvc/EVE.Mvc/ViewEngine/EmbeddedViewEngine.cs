@@ -39,7 +39,7 @@ namespace EVE.Mvc
         
         public ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache)
         {
-            EmbeddedView view = GetView(partialViewName);
+            IEmbeddedView view = GetView(partialViewName);
             if (view != null)
             {
                 view.ViewName = partialViewName;
@@ -50,7 +50,7 @@ namespace EVE.Mvc
 
         public ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
         {
-            EmbeddedView view = GetView(viewName);
+            IEmbeddedView view = GetView(viewName);
             if (view != null )
             {
                 view.ViewName = viewName;
@@ -78,11 +78,11 @@ namespace EVE.Mvc
         /// </summary>
         /// <param name="viewName"></param>
         /// <returns></returns>
-        private EmbeddedView GetView(string viewName)
+        private IEmbeddedView GetView(string viewName)
         {
             string realViewName = UnprefixViewName(viewName);
             if (string.IsNullOrWhiteSpace(realViewName)) return null;
-            EmbeddedView view = FindEmbeddedViewClass(viewName);
+            IEmbeddedView view = FindEmbeddedViewClass(viewName);
             string markup = FindMarkup(realViewName, view);
             if (view != null)
             {
@@ -115,14 +115,14 @@ namespace EVE.Mvc
             return viewName;
         }
 
-        private string FindMarkup(string viewName, EmbeddedView view)
+        private string FindMarkup(string viewName, IEmbeddedView view)
         {
             return MarkupProvider.GetResource(viewName, view);
         }
 
-        private EmbeddedView FindEmbeddedViewClass(string viewName)
+        private IEmbeddedView FindEmbeddedViewClass(string viewName)
         {
-            var views = EveMefContainer.Container.GetExports<EmbeddedView>(viewName);
+            var views = EveMefContainer.Container.GetExports<IEmbeddedView>(viewName);
             if (views != null && views.Count() > 0)
             {
                 var view = views.First().Value;
@@ -135,7 +135,13 @@ namespace EVE.Mvc
 
         public void ReleaseView(ControllerContext controllerContext, IView view)
         {
-
+            var embeddedView = view as IEmbeddedView;
+            if (view !=null)
+            {
+               embeddedView.CleanUp();
+            }
+            //not too sure if we need this!
+            //GC.Collect();
         }
     }
 
