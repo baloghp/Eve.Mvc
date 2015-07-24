@@ -41,5 +41,9 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
         {
             return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Typed.LandingPage.html", Models.LandingPageModel.GetSample());
         }
+        public ActionResult DataBinding()
+        {
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.DataBinding.LandingPage.html", Models.LandingPageModel.GetSample());
+        }
     }
 }

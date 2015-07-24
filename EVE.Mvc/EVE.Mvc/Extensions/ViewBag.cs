@@ -1,5 +1,6 @@
 ﻿using Dynamitey;
 using EVE.Mvc.ViewEngine;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,22 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace EVE.Mvc.DocumentHelperExtensions
+namespace EVE.Mvc
 {
     public static class ViewBag
     {
         public const string ViewBagAttribute = "eve-viewbag";
-        
+
         public static IDocumentHelper ProcessViewBag(this IDocumentHelper documentHelper, ViewContext viewContext)
         {
-            var scriptsNodes = documentHelper.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(ViewBagAttribute));
-            foreach (var item in scriptsNodes)
-            {
+            documentHelper.ProcessNodesWithAttributeParalell(ViewBagAttribute, new Func<HtmlNode, string>(a =>
+                    {
+                        var value = System.Web.Optimization.Styles.Render(a.Attributes[ViewBagAttribute].Value);
+                        return value.ToHtmlString();
+                    }
+               ));
 
-                var value = Dynamic.InvokeGet(viewContext.ViewBag, item.Attributes[ViewBagAttribute].Value);
-                EmbeddedView.RenderForNode(item, value.ToString());
-            }
-          
+
             return documentHelper;
         }
     }

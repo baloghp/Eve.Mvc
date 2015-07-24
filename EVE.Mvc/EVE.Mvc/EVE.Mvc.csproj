@@ -139,9 +139,10 @@
     <Compile Include="Composition\BinDirectoryCatalogProvider.cs" />
     <Compile Include="Composition\CatalogProvider.cs" />
     <Compile Include="Configuration\EveProvidersConfigSection.cs" />
-    <Compile Include="DocumentHelperExtensions\Bundles.cs" />
-    <Compile Include="DocumentHelperExtensions\DataBinding.cs" />
-    <Compile Include="DocumentHelperExtensions\ViewBag.cs" />
+    <Compile Include="Extensions\Bundles.cs" />
+    <Compile Include="Extensions\DataBinding.cs" />
+    <Compile Include="Extensions\Utils.cs" />
+    <Compile Include="Extensions\ViewBag.cs" />
     <Compile Include="Embedded\AssetManager.cs" />
     <Compile Include="Embedded\EmbeddedPathProvider.cs" />
     <Compile Include="Plugin\AppBuilderExtension.cs" />

@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using EVE.Mvc.ViewEngine;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,5 +27,7 @@ namespace EVE.Mvc
        {
            _document = null;
        }
+
+       
     }
 }

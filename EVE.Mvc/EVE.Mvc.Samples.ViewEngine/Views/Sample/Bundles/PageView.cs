@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EVE.Mvc.ViewEngine;
-using EVE.Mvc.DocumentHelperExtensions;
 
 namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.Bundles
 {

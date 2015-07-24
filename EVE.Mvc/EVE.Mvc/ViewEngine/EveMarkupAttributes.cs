@@ -30,7 +30,10 @@ namespace EVE.Mvc.ViewEngine
         {
             return String.Format("//*[@{0}='{1}']", attribute, value);
         }
-
+        public static string GetAllAttributeValuesQuery(string attribute)
+        {
+            return String.Format("//*[@{0}]/@{0}", attribute);
+        }
      
     }
 }

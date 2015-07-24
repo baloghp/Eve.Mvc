@@ -16,6 +16,7 @@ using HtmlAgilityPack;
 using System.Web.Mvc.Html;
 using EVE.Mvc.ViewEngine;
 using System.Web.UI;
+using EVE.Mvc;
 
 namespace EVE.Mvc
 {
@@ -140,14 +141,30 @@ namespace EVE.Mvc
 
 
             //handle partial views
-            
-            var partialNode = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
-            while (partialNode!=null)
+
+            //var partialNode = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
+            //while (partialNode!=null)
+            //{
+            //    HandlePartials(partialNode);
+            //    partialNode = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
+            //}
+
+            var partialNodes = HtmlDocument.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
+            if (partialNodes != null)
             {
-                HandlePartials(partialNode);
-                partialNode = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
+                var nodesAndResult = partialNodes.AsParallel()
+                .AsOrdered()
+                .Select(n => new { PartialName = n.Attributes[EveMarkupAttributes.PartialView].Value, Result = GetPartialString(n) });
+                foreach (var item in nodesAndResult)
+                {
+                    var node = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeByValueQuery(EveMarkupAttributes.PartialView, item.PartialName));
+                    if (node != null)
+                    {
+                        node.RenderValue(item.Result);
+                    }
+                }
             }
-            
+
 
             // collect sections
             // only when the page view is called, not during master or partial
@@ -156,6 +173,7 @@ namespace EVE.Mvc
                 CreateSections();
             }
 
+            BeforeProcessView(viewContext);
             //pass manipulation to child
             ProcessView(viewContext);
 
@@ -170,6 +188,27 @@ namespace EVE.Mvc
             HtmlDocument.Document.Save(writer);
         }
 
+        private string GetPartialString(HtmlNode partialNode)
+        {
+            //let's get the view name
+            var partialName = partialNode.Attributes[EveMarkupAttributes.PartialView].Value;
+            //let's see if the user defined a model for this, by default we pass on the current model
+            object partialModel = Model;
+            if (partialNode.Attributes.Contains(EveMarkupAttributes.PartialModel))
+            {
+                var partialModelPath = partialNode.Attributes[EveMarkupAttributes.PartialModel].Value;
+                //eval the new partial model on the current one
+                if (Model != null && !string.IsNullOrWhiteSpace(partialModelPath))
+                    partialModel = DataBinder.Eval(Model, partialModelPath);
+            }
+            //call partial MVC view process
+            var viewData = new ViewDataDictionary(this.ViewData);
+            viewData.Model = partialModel;
+            var partialString = this.Html.Partial(partialName, partialModel, viewData).ToHtmlString();
+
+            return partialString;
+        }
+
         private void ProcessSections()
         {
             foreach (var section in Sections)
@@ -178,7 +217,7 @@ namespace EVE.Mvc
                 if (sectionNode != null)
                 {
                     var content = string.Concat(section.Contents);
-                    RenderForNode(sectionNode, content);
+                    sectionNode.RenderValue(content);
                 }
             }
         }
@@ -243,9 +282,9 @@ namespace EVE.Mvc
             var partialString = this.Html.Partial(partialName, partialModel, viewData).ToHtmlString();
             partialNode.Attributes.Remove(EveMarkupAttributes.PartialView);
             //determine if the partial result should be inside the partial tag or instead
-            RenderForNode(partialNode, partialString);
-            
-            
+            partialNode.RenderValue(partialString);
+
+
 
         }
 
@@ -264,36 +303,15 @@ namespace EVE.Mvc
                 throw new ApplicationException("Master does not define node with 'eve-renderbody' attribute");
             //let's see if we should render the current view into the tag, or instead
             // we put the raw markup in there
-            RenderForNode(renderBodyNode, RawMarkup);
+            renderBodyNode.RenderValue(RawMarkup);
 
             // and we make the masterdoc our current operating document
             HtmlDocument = new DocumentHelper(masterDoc);
             return masterDoc;
         }
-        /// <summary>
-        /// Renders content for node considering renderinstead, and renderinto attributes
-        /// </summary>
-        /// <param name="renderNode"></param>
-        /// <param name="content"></param>
-        public static void RenderForNode(HtmlNode renderNode, string content)
-        {
-            //let's see if we should render the current view into the tag, or instead
-            // we put the raw markup in there
-            if (renderNode.Attributes.Contains(EveMarkupAttributes.RenderInstead))
-            {
-                var parent = renderNode.ParentNode;
-                parent.InnerHtml = parent.InnerHtml.Replace(renderNode.OuterHtml, content);
-            }
-            else if (renderNode.Attributes.Contains(EveMarkupAttributes.RenderInto))
-            {
-                renderNode.InnerHtml += content;
-            }
-            else
-            {
-                renderNode.InnerHtml = content;
-            }
 
-        }
+        protected virtual void BeforeProcessView(ViewContext viewContext)
+        { }
 
         public abstract void ProcessView(ViewContext viewContext);
 
