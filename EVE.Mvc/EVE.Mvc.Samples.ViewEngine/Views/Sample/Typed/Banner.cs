@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.Typed
 {
-    [EmbeddedView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Typed.Banner.html")]
+    [EmbeddedView("eve-Assets.Views.Sample.Typed.Banner.html")]
     public class Banner:  EmbeddedView<Models.Banner>
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)

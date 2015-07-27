@@ -7,8 +7,8 @@ using EVE.Mvc.ViewEngine;
 
 namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.SimpleMaster
 {
-    [MasterView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingMaster.html")]
-    [EmbeddedView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingPage.html")]
+    [MasterView("eve-Assets.Views.Sample.SimpleMaster.LandingMaster.html")]
+    [EmbeddedView("eve-Assets.Views.Sample.SimpleMaster.LandingPage.html")]
     public class PageView : EmbeddedView
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)

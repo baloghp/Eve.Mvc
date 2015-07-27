@@ -10,8 +10,8 @@ using System.Threading;
 
 namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.Bundles
 {
-    [MasterView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Bundles.LandingMaster.html")]
-    [EmbeddedView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Bundles.LandingPage.html")]
+    [MasterView("eve-Assets.Views.Sample.Bundles.LandingMaster.html")]
+    [EmbeddedView("eve-Assets.Views.Sample.Bundles.LandingPage.html")]
     public class PageView : EmbeddedView
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)

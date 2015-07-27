@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.DataBinding
 {
-    [EmbeddedView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.DataBinding.Contents.html")]
+    [EmbeddedView("eve-Assets.Views.Sample.DataBinding.Contents.html")]
     public class Contents : DataBindingView<LandingPageModel>
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)

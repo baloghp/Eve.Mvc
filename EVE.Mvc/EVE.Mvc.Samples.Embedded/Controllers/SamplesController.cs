@@ -25,25 +25,5 @@ namespace EVE.Mvc.TestMockup.Controllers
       
 
      
-       // public ActionResult RetrieveSimpleEmbedded()
-       // {
-       //     return View("EVE.Mvc.Samples.Embedded.Views.Mockup.index.cshtml");
-       // }
-
-       // public ActionResult SampleEntireLandingPage()
-       // {
-       //     ViewBag.Title = "Viewbag title from controller";
-       //     ViewBag.Header = "Viewbag header from controller";
-
-       //     return View("EVE.Mvc.Samples.Embedded.Views.Sample.EntireLandingPage.html");
-       // }
-
-       // public ActionResult SampleLandingPageWithMaster()
-       // {
-       //     ViewBag.Title = "Viewbag title from controller";
-       //     ViewBag.Header = "Viewbag header from controller";
-
-       //     return View("EVE.Mvc.Samples.Embedded.Views.Sample.LandingPage.html", "EVE.Mvc.Samples.Embedded.Views.Sample.LandingPageMaster.html");
-       // }
-    //}
+    
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.MasterAndPartials
 {
-   [EmbeddedView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.MasterAndPartials.IntroHeader.html")]
+   [EmbeddedView("eve-Assets.Views.Sample.MasterAndPartials.IntroHeader.html")]
     public class IntroHeader:EmbeddedView
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)

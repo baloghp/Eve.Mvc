@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.Typed
 {
-    [EmbeddedView("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Typed.Contents.html")]
+    [EmbeddedView("eve-Assets.Views.Sample.Typed.Contents.html")]
     public class Contents : EmbeddedView<IList<Models.Content>>
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)

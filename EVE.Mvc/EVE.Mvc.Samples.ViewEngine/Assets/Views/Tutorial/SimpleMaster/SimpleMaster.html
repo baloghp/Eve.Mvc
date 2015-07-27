@@ -53,7 +53,7 @@
                 <br />
                 <img src="/EVE.Mvc.Samples.ViewEngine/Assets/Views/Tutorial/SimpleMaster/Codes.PNG" />
                 <br />
-                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>)]
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>)]
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">MasterView</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">EmbeddedView</span>
 &nbsp;&nbsp;&nbsp;&nbsp;{
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;ProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)
@@ -62,8 +62,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
 &nbsp;&nbsp;&nbsp;&nbsp;}</pre>
                 <br />
-                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">&nbsp;[<span style="color:#4ec9b0;">MasterView</span>(<span style="color:#d69d85;">&quot;eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>)]
-&nbsp;&nbsp;&nbsp;[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingPage.html&quot;</span>)]
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">&nbsp;[<span style="color:#4ec9b0;">MasterView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>)]
+&nbsp;&nbsp;&nbsp;[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.SimpleMaster.LandingPage.html&quot;</span>)]
 &nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">PageView</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">EmbeddedView</span>
 &nbsp;&nbsp;&nbsp;{
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;ProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)
@@ -79,15 +79,15 @@
             <div class="panel-body">
                 You have basically two choices to define a page's master view. 
                 As you can see above you can define it on the code part of the page view by using the MasterView attribute.
-                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">&nbsp;&nbsp;&nbsp;&nbsp;[<span style="color:#4ec9b0;">MasterView</span>(<span style="color:#d69d85;">&quot;eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>)]
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">&nbsp;&nbsp;&nbsp;&nbsp;[<span style="color:#4ec9b0;">MasterView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>)]
 </pre>
                 <br />
                 Your other choice is to define it in the controller where you call the page view:
                 <br />
                 <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#4ec9b0;">ActionResult</span>&nbsp;ShowSimpleMasterHtml()
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;View(<span style="color:#d69d85;">&quot;eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingPage.html&quot;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,<span style="color:#d69d85;">&quot;eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;View(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.SimpleMaster.LandingPage.html&quot;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>);
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
  
 </pre>
@@ -115,8 +115,8 @@ The View Engine will look for a tag in the Master View's markup with the attribu
                 TAlways the code for the Master page is run first, 
                 that means that when the page's code is running the html for the Master page is available in the page's code view.
                 <br />
-                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">[<span style="color:#4ec9b0;">MasterView</span>(<span style="color:#d69d85;">&quot;eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>)]
-&nbsp;&nbsp;&nbsp;&nbsp;[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.SimpleMaster.LandingPage.html&quot;</span>)]
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">[<span style="color:#4ec9b0;">MasterView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>)]
+&nbsp;&nbsp;&nbsp;&nbsp;[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.SimpleMaster.LandingPage.html&quot;</span>)]
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">PageView</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">EmbeddedView</span>
 &nbsp;&nbsp;&nbsp;&nbsp;{
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;ProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)

@@ -9,6 +9,7 @@ using System.Web.Routing;
 using System.Web.Optimization;
 using System.IO;
 using EVE.Mvc.Plugin;
+using EVE.Mvc.ViewEngine;
 
 [assembly: OwinStartupAttribute(typeof(EVE.Mvc.TestWebApp.Startup))]
 namespace EVE.Mvc.TestWebApp
@@ -17,8 +18,16 @@ namespace EVE.Mvc.TestWebApp
     {
         public void Configuration(IAppBuilder app)
         {
+            //registry for the view engine samples, more specific goes first
+            ViewEngines.Engines.Insert(0, 
+                new EmbeddedViewEngine("eve-" // every view name will be prefixed by this
+                    , new BaseResourceNamespaceMarkupProvider("EVE.Mvc.Samples.ViewEngine"))); // using this markup provider, so we can have somewhat shorter view names
             
-            ViewEngines.Engines.Insert(0, new EmbeddedViewEngine("eve-")); // default markup provider
+            //registry for any generic case 
+            // this project won't use this, Embedded FIle system samples, do not use the view engine, 
+            // EVE views are only in the view engine samples project, that is caught by the VE above
+            // so this registry goes as last
+            ViewEngines.Engines.Add(new EmbeddedViewEngine()); // NO view prefix, default markup provider
            
             #region standard startup
 

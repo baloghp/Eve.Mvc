@@ -165,6 +165,7 @@
     <Compile Include="ViewEngine\MasterViewAttribute.cs" />
     <Compile Include="ViewEngine\Section.cs" />
     <Compile Include="ViewEngine\SimpleResourceView.cs" />
+    <Compile Include="ViewEngine\BaseResourceNamespaceMarkupProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
