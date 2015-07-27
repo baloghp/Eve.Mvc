@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EVE.Mvc.ViewEngine;
 using EVE.Mvc.Samples.ViewEngine.L10N;
 using System.Globalization;
+using System.Threading;
 
 namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.Bundles
 {
@@ -15,7 +16,7 @@ namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.Bundles
     {
         public override void ProcessView(System.Web.Mvc.ViewContext viewContext)
         {
-            this.HtmlDocument.ProcessBundles().ProcessLocals(Resources.ResourceManager, CultureInfo.GetCultureInfo("ja-JP"));
+            this.HtmlDocument.ProcessBundles().ProcessLocals(Resources.ResourceManager, Thread.CurrentThread.CurrentUICulture);
 
         }
     }

@@ -51,7 +51,8 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
 
         public ActionResult BundlesInJapan()
         {
-
+         
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ja-JP");
             return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Bundles.LandingPage.html");
         }
     }
