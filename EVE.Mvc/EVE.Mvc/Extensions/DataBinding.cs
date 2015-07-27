@@ -16,7 +16,7 @@ namespace EVE.Mvc
         public static IDocumentHelper ProcessEvals(this IDocumentHelper documentHelper, object Model)
         {
 
-            documentHelper.ProcessNodesWithAttributeParalell(EvalAttribute, new Func<HtmlNode, string>(a =>
+            documentHelper.ProcessNodesWithAttribute(EvalAttribute, new Func<HtmlNode, string>(a =>
             {
                 var evalPath = a.Attributes[EvalAttribute].Value;
                 //eval the new partial model on the current one

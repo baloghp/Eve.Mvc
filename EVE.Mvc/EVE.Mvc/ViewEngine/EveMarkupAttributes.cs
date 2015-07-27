@@ -26,6 +26,11 @@ namespace EVE.Mvc.ViewEngine
             return String.Format("//*[@{0}]", attribute);
         }
 
+
+        public static string GetAttributeQueryWithRenderInstead(string attribute)
+        {
+            return String.Format("//*[@{0} and @{1}] ", attribute, EveMarkupAttributes.RenderInstead);
+        }
         public static string GetAttributeByValueQuery(string attribute, string value)
         {
             return String.Format("//*[@{0}='{1}']", attribute, value);

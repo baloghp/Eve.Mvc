@@ -142,29 +142,7 @@ namespace EVE.Mvc
 
             //handle partial views
 
-            //var partialNode = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
-            //while (partialNode!=null)
-            //{
-            //    HandlePartials(partialNode);
-            //    partialNode = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
-            //}
-
-            var partialNodes = HtmlDocument.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.PartialView));
-            if (partialNodes != null)
-            {
-                var nodesAndResult = partialNodes.AsParallel()
-                .AsOrdered()
-                .Select(n => new { PartialName = n.Attributes[EveMarkupAttributes.PartialView].Value, Result = GetPartialString(n) });
-                foreach (var item in nodesAndResult)
-                {
-                    var node = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeByValueQuery(EveMarkupAttributes.PartialView, item.PartialName));
-                    if (node != null)
-                    {
-                        node.RenderValue(item.Result);
-                    }
-                }
-            }
-
+            HtmlDocument.ProcessNodesWithAttribute(EveMarkupAttributes.PartialView,GetPartialString,true);
 
             // collect sections
             // only when the page view is called, not during master or partial
@@ -173,11 +151,13 @@ namespace EVE.Mvc
                 CreateSections();
             }
 
+            //allow inheritance modifications to kick in
             BeforeProcessView(viewContext);
-            //pass manipulation to child
+
+            //pass view manipulation to child
             ProcessView(viewContext);
 
-            // set sectionContent to html
+            // insert sectionContent into html
             // only when the page view is called, not during master or partial
             if (this == viewContext.View)
             {
@@ -260,32 +240,6 @@ namespace EVE.Mvc
                     Sections.Add(section);
                 }
             }
-        }
-
-        private void HandlePartials(HtmlNode partialNode)
-        {
-
-            //let's get the view name
-            var partialName = partialNode.Attributes[EveMarkupAttributes.PartialView].Value;
-            //let's see if the user defined a model for this, by default we pass on the current model
-            object partialModel = Model;
-            if (partialNode.Attributes.Contains(EveMarkupAttributes.PartialModel))
-            {
-                var partialModelPath = partialNode.Attributes[EveMarkupAttributes.PartialModel].Value;
-                //eval the new partial model on the current one
-                if (Model != null && !string.IsNullOrWhiteSpace(partialModelPath))
-                    partialModel = DataBinder.Eval(Model, partialModelPath);
-            }
-            //call partial MVC view process
-            var viewData = new ViewDataDictionary(this.ViewData);
-            viewData.Model = partialModel;
-            var partialString = this.Html.Partial(partialName, partialModel, viewData).ToHtmlString();
-            partialNode.Attributes.Remove(EveMarkupAttributes.PartialView);
-            //determine if the partial result should be inside the partial tag or instead
-            partialNode.RenderValue(partialString);
-
-
-
         }
 
         private HtmlAgilityPack.HtmlDocument PrepareMasterPage()

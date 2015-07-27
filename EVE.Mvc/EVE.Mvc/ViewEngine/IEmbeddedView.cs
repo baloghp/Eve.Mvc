@@ -4,8 +4,7 @@ using System.Web.Mvc;
 namespace EVE.Mvc.ViewEngine
 {
 
-    [InheritedExport]
-
+   
     public interface IEmbeddedView : IView, IViewDataContainer
     {
         System.Web.Mvc.HtmlHelper Html { get; }

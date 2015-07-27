@@ -10,30 +10,7 @@ namespace EVE.Mvc
 {
     public static class Utils
     {
-        /// <summary>
-        /// Adds a value to nodes with a specific attribute. Value is calculated by Func parameter, this is a parallel implementation
-        /// </summary>
-        /// <param name="documentHelper">Extended class</param>
-        /// <param name="attributeName">atribute that determines which nodes will be selected</param>
-        /// <param name="getValue">Function that selects value for the node</param>
-        /// <param name="removeAttribute">specifies if the attribute should be removed after inserting value</param>
-        public static void ProcessNodesWithAttributeParalell(this IDocumentHelper documentHelper,
-            string attributeName, Func<HtmlNode, string> getValue,
-            bool removeAttribute = true)
-        {
-            var nodes = documentHelper.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(attributeName));
-            if (nodes == null || nodes.Count()==0) return;
-            var nodesAndResults = nodes.AsParallel()
-                .AsOrdered()
-                .Select(node => new { Node = node, result = getValue(node) });
-            foreach (var item in nodesAndResults)
-            {
-                
-                item.Node.RenderValue(item.result);
-                if (removeAttribute)
-                    item.Node.Attributes.Remove(attributeName);
-            }
-        }
+
 
         /// <summary>
         /// Adds a value to nodes with a specific attribut. Value is calculated by Func parameter, single thread implementation
@@ -46,18 +23,70 @@ namespace EVE.Mvc
             string attributeName, Func<HtmlNode, string> getValue,
             bool removeAttribute = true)
         {
+            // first we deal with  nodes that are not renderinsteads in parallel fashion
+
+            var nodes = documentHelper.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(attributeName));
+            if (nodes != null)
+            {
+                var nodesAndResult = nodes
+                    .Where(n => !n.IsReanderInstead())
+                    .AsParallel()
+                    .AsOrdered()
+                    .Select(n => new
+                    {
+                        Node = n,
+                        Result = getValue(n)
+                    });
+                foreach (var item in nodesAndResult)
+                {
+
+                    item.Node.RenderValue(item.Result);
+                    if (removeAttribute)
+                        item.Node.Attributes.Remove(attributeName);
+                }
+            }
+            // then we take the renderinsteads in sequence
+            var node = documentHelper.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQueryWithRenderInstead(attributeName));
+            while (node != null)
+            {
+                node.RenderValue(getValue(node));
+                if (removeAttribute)
+                    node.Attributes.Remove(attributeName);
+                node = documentHelper.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQueryWithRenderInstead(attributeName));
+            }
+
+        }
+        /// <summary>
+        /// Adds a value to nodes with a specific attribut. Value is calculated by Func parameter, single thread implementation
+        /// </summary>
+        /// <param name="documentHelper">Extended class</param>
+        /// <param name="attributeName">atribute that determines which nodes will be selected</param>
+        /// <param name="getValue">Function that selects value for the node</param>
+        /// <param name="removeAttribute">specifies if the attribute should be removed after inserting value</param>
+        public static void ProcessNodesWithAttributeSequential(this IDocumentHelper documentHelper,
+            string attributeName, Func<HtmlNode, string> getValue,
+            bool removeAttribute = true)
+        {
             var nodes = documentHelper.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(attributeName));
             if (nodes == null || nodes.Count() == 0) return;
-            foreach (var item in nodes)
+            var notRInodes = nodes.Where(n => !n.IsReanderInstead());
+            foreach (var item in notRInodes)
             {
                 string value = getValue(item);
                 item.RenderValue(value);
                 if (removeAttribute)
                     item.Attributes.Remove(attributeName);
             }
-            
-        }
+            var node = documentHelper.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQueryWithRenderInstead(attributeName));
+            while (node != null)
+            {
+                node.RenderValue(getValue(node));
+                if (removeAttribute)
+                    node.Attributes.Remove(attributeName);
+                node = documentHelper.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQueryWithRenderInstead(attributeName));
+            }
 
+        }
 
         /// <summary>
         /// Renders content for node considering renderinstead, and renderinto attributes
@@ -68,7 +97,7 @@ namespace EVE.Mvc
         {
             //let's see if we should render the current view into the tag, or instead
             // we put the raw markup in there
-            if (renderNode.Attributes.Contains(EveMarkupAttributes.RenderInstead))
+            if (renderNode.IsReanderInstead())
             {
                 var parent = renderNode.ParentNode;
                 parent.InnerHtml = parent.InnerHtml.Replace(renderNode.OuterHtml, content);
@@ -81,6 +110,18 @@ namespace EVE.Mvc
             {
                 renderNode.InnerHtml = content;
             }
+        }
+
+        /// <summary>
+        /// Determines if a node has the renderinstead attribute
+        /// </summary>
+        /// <param name="renderNode">the node</param>
+
+        public static bool IsReanderInstead(this HtmlNode renderNode)
+        {
+            return renderNode.Attributes.Contains(EveMarkupAttributes.RenderInstead);
+
+
         }
     }
 }

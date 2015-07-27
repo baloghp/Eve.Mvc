@@ -16,14 +16,14 @@ namespace EVE.Mvc
         public const string Styles = "eve-styles";
         public static IDocumentHelper ProcessBundles(this IDocumentHelper documentHelper)
         {
-            documentHelper.ProcessNodesWithAttribute(Styles, new Func<HtmlNode, string>(a =>
+            documentHelper.ProcessNodesWithAttributeSequential(Styles, new Func<HtmlNode, string>(a =>
                     {
                         var value = System.Web.Optimization.Styles.Render(a.Attributes[Styles].Value);
                         return value.ToHtmlString();
                     }
                 ));
 
-            documentHelper.ProcessNodesWithAttribute(Scripts, new Func<HtmlNode, string>(a =>
+            documentHelper.ProcessNodesWithAttributeSequential(Scripts, new Func<HtmlNode, string>(a =>
                     {
                         var value = System.Web.Optimization.Scripts.Render(a.Attributes[Scripts].Value);
                         return value.ToHtmlString();

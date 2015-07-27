@@ -16,7 +16,7 @@ namespace EVE.Mvc
 
         public static IDocumentHelper ProcessViewBag(this IDocumentHelper documentHelper, ViewContext viewContext)
         {
-            documentHelper.ProcessNodesWithAttributeParalell(ViewBagAttribute, new Func<HtmlNode, string>(a =>
+            documentHelper.ProcessNodesWithAttribute(ViewBagAttribute, new Func<HtmlNode, string>(a =>
                     {
                         var value = System.Web.Optimization.Styles.Render(a.Attributes[ViewBagAttribute].Value);
                         return value.ToHtmlString();
