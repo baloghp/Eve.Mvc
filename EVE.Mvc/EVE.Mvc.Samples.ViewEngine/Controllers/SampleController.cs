@@ -1,7 +1,10 @@
-﻿using System;
+﻿using EVE.Mvc.Samples.ViewEngine.L10N;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -44,6 +47,12 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
         public ActionResult DataBinding()
         {
             return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.DataBinding.LandingPage.html", Models.LandingPageModel.GetSample());
+        }
+
+        public ActionResult BundlesInJapan()
+        {
+
+            return View("eve-EVE.Mvc.Samples.ViewEngine.Assets.Views.Sample.Bundles.LandingPage.html");
         }
     }
 }

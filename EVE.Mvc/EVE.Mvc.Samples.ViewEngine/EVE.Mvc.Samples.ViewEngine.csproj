@@ -113,6 +113,11 @@
   <ItemGroup>
     <Compile Include="Controllers\SampleController.cs" />
     <Compile Include="Controllers\TutorialController.cs" />
+    <Compile Include="L10N\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="LocalizedResources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,6 +168,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Views\Sample\Sections\Banner.html" />
+    <EmbeddedResource Include="L10N\Resources.ja.resx" />
+    <EmbeddedResource Include="L10N\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="LocalizedResources\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -141,6 +141,7 @@
     <Compile Include="Configuration\EveProvidersConfigSection.cs" />
     <Compile Include="Extensions\Bundles.cs" />
     <Compile Include="Extensions\DataBinding.cs" />
+    <Compile Include="Extensions\Localization.cs" />
     <Compile Include="Extensions\Utils.cs" />
     <Compile Include="Extensions\ViewBag.cs" />
     <Compile Include="Embedded\AssetManager.cs" />
