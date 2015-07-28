@@ -27,7 +27,7 @@ namespace EVE.Mvc.ViewEngine
         /// <param name="viewName">Name of the view.</param>
         /// <param name="view">The view class, can be null.</param>
         /// <returns></returns>
-/        public override string GetResource(string viewName, IEmbeddedView view)
+        public override string GetResource(string viewName, IEmbeddedView view)
         {
             string markup = String.Empty;
             string newViewName = BaseResourceNamespace + "." + viewName;
