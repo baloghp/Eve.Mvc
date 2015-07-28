@@ -7,8 +7,17 @@ using System.Web.Mvc;
 
 namespace EVE.Mvc
 {
+    /// <summary>
+    /// Interface defining HtmlDocument for view processing.
+    /// </summary>
     public interface IDocumentHelper
     {
+        /// <summary>
+        /// Gets the HtmlDocument.
+        /// </summary>
+        /// <value>
+        /// The document.
+        /// </value>
         HtmlAgilityPack.HtmlDocument Document { get;}
        
     }

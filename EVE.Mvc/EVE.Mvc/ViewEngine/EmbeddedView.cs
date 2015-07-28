@@ -20,15 +20,30 @@ using EVE.Mvc;
 
 namespace EVE.Mvc
 {
+    /// <summary>
+    /// Non-generic version of EmbeddedView<T>.
+    /// </summary>
     public abstract class EmbeddedView : EmbeddedView<dynamic>
     {
     }
 
-
+    /// <summary>
+    /// EmbeddedView class. Center point of EmbeddedView engine implementation. This is what all views in the Eve.Mvc system must derive from. 
+    /// </summary>
+    /// <typeparam name="T">Type of the model for the view</typeparam>
     public abstract class EmbeddedView<T> : IModelContainer<T>, IEmbeddedView
     {
         #region Model
         private T _model;
+        /// <summary>
+        /// Gets or sets the model.
+        /// </summary>
+        /// <value>
+        /// The model.
+        /// </value>
+        /// <exception cref="System.ApplicationException"></exception>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations")]
+       
         public T Model
         {
             get
@@ -53,6 +68,12 @@ namespace EVE.Mvc
         #region markup and internal html doc
         public string RawMarkup { get; set; }
         private IDocumentHelper _htmlDocument = null;
+        /// <summary>
+        /// Gets the HTML document.
+        /// </summary>
+        /// <value>
+        /// The HTML document.
+        /// </value>
         public IDocumentHelper HtmlDocument
         {
             get
@@ -69,6 +90,12 @@ namespace EVE.Mvc
         #region mastername
         private const string NOMASTERVIEWNAME = "___NO___MASTER___DISCOVERED****YET"; //pretty unique, hope no-one will want to name their master view like this
         private string _masterName = NOMASTERVIEWNAME;
+        /// <summary>
+        /// Gets or sets the name of the master view.
+        /// </summary>
+        /// <value>
+        /// The name of the master view.
+        /// </value>
         public string MasterName
         {
             get
@@ -98,6 +125,12 @@ namespace EVE.Mvc
 
         #region sections
         private List<Section> _sections;
+        /// <summary>
+        /// Gets the list of sections defined in the markup.
+        /// </summary>
+        /// <value>
+        /// The sections.
+        /// </value>
         public IList<Section> Sections
         {
             get
@@ -107,15 +140,38 @@ namespace EVE.Mvc
         }
         #endregion
 
+        /// <summary>
+        /// Gets or sets the name of the view.
+        /// </summary>
+        /// <value>
+        /// The name of the view.
+        /// </value>
         public string ViewName { get; set; }
+        /// <summary>
+        /// Gets or sets the view data dictionary.
+        /// </summary>
         public ViewDataDictionary ViewData { get; set; }
+        /// <summary>
+        /// Gets the HTML helper.
+        /// </summary>
+        /// <value>
+        /// The HTML.
+        /// </value>
         public HtmlHelper Html { get; internal set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmbeddedView{T}"/> class.
+        /// </summary>
         public EmbeddedView()
         {
             this.ViewData = new ViewDataDictionary();
         }
 
+        /// <summary>
+        /// Renders the specified view context by using the specified the writer object.
+        /// </summary>
+        /// <param name="viewContext">The view context.</param>
+        /// <param name="writer">The writer object.</param>
         public void Render(ViewContext viewContext, System.IO.TextWriter writer)
         {
 
@@ -264,12 +320,23 @@ namespace EVE.Mvc
             return masterDoc;
         }
 
+        /// <summary>
+        /// Called the view is processed. Use this in inheritance to provide pre-processing before ProcessView method is called.
+        /// </summary>
+        /// <param name="viewContext">The view context.</param>
         protected virtual void BeforeProcessView(ViewContext viewContext)
         { }
 
+        /// <summary>
+        /// Override this in your view to process the view's document.
+        /// </summary>
+        /// <param name="viewContext">The view context.</param>
         public abstract void ProcessView(ViewContext viewContext);
 
 
+        /// <summary>
+        /// Cleans up internal resource intensive objects such as the document.
+        /// </summary>
         public void CleanUp()
         {
             var documentHelper = this.HtmlDocument as DocumentHelper;

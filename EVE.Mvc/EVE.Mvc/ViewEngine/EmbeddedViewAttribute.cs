@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc
 {
+    /// <summary>
+    /// Attribute to define MEF export with the view name as contract name, so MEF can easily choose appropriate view class based on view name.
+    /// </summary>
     public class EmbeddedViewAttribute : ExportAttribute
     {
 

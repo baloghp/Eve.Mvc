@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc.ViewEngine
 {
+    /// <summary>
+    /// Defines a contract to have a Model of type T in the class.
+    /// </summary>
+    /// <typeparam name="T">Type of the Model</typeparam>
     public interface IModelContainer<T>
     {
+        /// <summary>
+        /// Gets the model.
+        /// </summary>
+        /// <value>
+        /// The model.
+        /// </value>
          T Model { get;  }
 
     }

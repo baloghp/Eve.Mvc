@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc.ViewEngine
 {
+    /// <summary>
+    /// Collecition of attributes and utility methods that one can use in markup. See documentation for more detail
+    /// </summary>
     public static class EveMarkupAttributes
     {
         //renders
@@ -21,24 +24,39 @@ namespace EVE.Mvc.ViewEngine
         public const string SectionContentFor = "eve-sectioncontentfor";
         //
 
+        /// <summary>
+        /// Gets the XPATH query that returns all nodes with given attribute.
+        /// </summary>
+        /// <param name="attribute">The attribute.</param>
+        /// <returns></returns>
         public static string GetAttributeQuery(string attribute)
         {
             return String.Format("//*[@{0}]", attribute);
         }
 
 
+        /// <summary>
+        /// Gets the XPATH query that returns all nodes with given attribute and the renderinstead attribute.
+        /// </summary>
+        /// <param name="attribute">The attribute.</param>
+        /// <returns></returns>
         public static string GetAttributeQueryWithRenderInstead(string attribute)
         {
             return String.Format("//*[@{0} and @{1}] ", attribute, EveMarkupAttributes.RenderInstead);
         }
+
+        /// <summary>
+        /// Gets the XPATH query that returns all nodes with given attribute with the specified value.
+        /// </summary>
+        /// <param name="attribute">The attribute.</param>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
         public static string GetAttributeByValueQuery(string attribute, string value)
         {
             return String.Format("//*[@{0}='{1}']", attribute, value);
         }
-        public static string GetAllAttributeValuesQuery(string attribute)
-        {
-            return String.Format("//*[@{0}]/@{0}", attribute);
-        }
+
+        
      
     }
 }

@@ -13,30 +13,66 @@ using System.Web.Mvc;
 namespace EVE.Mvc
 {
 
+    /// <summary>
+    /// View engine implementation. This class is responsible to find markup and code parts of the views, and provide appropriate fall-backs should one be missing.
+    /// </summary>
     public class EmbeddedViewEngine : IViewEngine
     {
 
+        /// <summary>
+        /// Gets or sets the view name prefix, of the view engine
+        /// </summary>
+        /// <value>
+        /// The view name prefix.
+        /// </value>
         public string ViewNamePrefix { get; set; }
 
+        /// <summary>
+        /// Gets the markup provider, of the view engine
+        /// </summary>
+        /// <value>
+        /// The markup provider.
+        /// </value>
         public BaseMarkupProvider MarkupProvider { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmbeddedViewEngine"/> class.
+        /// </summary>
         public EmbeddedViewEngine()
             : this(string.Empty, EVE.Mvc.ViewEngine.MarkupProvider.CurrentProvider)
         {
            
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmbeddedViewEngine"/> class.
+        /// </summary>
+        /// <param name="viewNamePrefix">The view name prefix.</param>
         public EmbeddedViewEngine(string viewNamePrefix)
             : this(viewNamePrefix, EVE.Mvc.ViewEngine.MarkupProvider.CurrentProvider)
         {
 
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmbeddedViewEngine"/> class.
+        /// </summary>
+        /// <param name="viewNamePrefix">The view name prefix.</param>
+        /// <param name="markupProvider">The markup provider.</param>
         public EmbeddedViewEngine(string viewNamePrefix, BaseMarkupProvider markupProvider)
         {
             ViewNamePrefix = viewNamePrefix;
             this.MarkupProvider = markupProvider;
         }
-        
+
+        /// <summary>
+        /// Finds the specified partial view by using the specified controller context.
+        /// </summary>
+        /// <param name="controllerContext">The controller context.</param>
+        /// <param name="partialViewName">The name of the partial view.</param>
+        /// <param name="useCache">true to specify that the view engine returns the cached view, if a cached view exists; otherwise, false.</param>
+        /// <returns>
+        /// The partial view.
+        /// </returns>
         public ViewEngineResult FindPartialView(ControllerContext controllerContext, string partialViewName, bool useCache)
         {
             IEmbeddedView view = GetView(partialViewName);
@@ -48,6 +84,16 @@ namespace EVE.Mvc
             return new ViewEngineResult(new string[] { partialViewName });
         }
 
+        /// <summary>
+        /// Finds the specified view by using the specified controller context.
+        /// </summary>
+        /// <param name="controllerContext">The controller context.</param>
+        /// <param name="viewName">The name of the view.</param>
+        /// <param name="masterName">The name of the master.</param>
+        /// <param name="useCache">true to specify that the view engine returns the cached view, if a cached view exists; otherwise, false.</param>
+        /// <returns>
+        /// The page view.
+        /// </returns>
         public ViewEngineResult FindView(ControllerContext controllerContext, string viewName, string masterName, bool useCache)
         {
             IEmbeddedView view = GetView(viewName);
@@ -131,8 +177,13 @@ namespace EVE.Mvc
             return null;
         }
 
-       
 
+
+        /// <summary>
+        /// Releases the specified view by using the specified controller context.
+        /// </summary>
+        /// <param name="controllerContext">The controller context.</param>
+        /// <param name="view">The view.</param>
         public void ReleaseView(ControllerContext controllerContext, IView view)
         {
             var embeddedView = view as IEmbeddedView;

@@ -9,6 +9,9 @@ using System.Web.Configuration;
 
 namespace EVE.Mvc.ViewEngine
 {
+    /// <summary>
+    /// Singleton implementation for default markup provider.
+    /// </summary>
     public static class MarkupProvider
     {
          /// <summary>
