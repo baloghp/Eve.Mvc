@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace EVE.Mvc
 {
     /// <summary>
-    /// Assetmanager is a utility class containing helper functions
+    /// AssetManager is a utility class containing helper functions
     /// to extract embedded resources
     /// </summary>
    public class AssetManager
@@ -97,26 +97,7 @@ namespace EVE.Mvc
                 }
             return value;
         }
-       /// <summary>
-       /// Using reflection it creates a dictionary of an object's properties
-       /// </summary>
-       /// <param name="values">object to create map dictionary from</param>
-       /// <returns></returns>
-        public static IDictionary<string, object> Map(object values)
-        {
-            var dictionary = values as IDictionary<string, object>;
 
-            if (dictionary == null)
-            {
-                dictionary = new Dictionary<string, object>();
-                foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(values))
-                {
-                    dictionary.Add(descriptor.Name, descriptor.GetValue(values));
-                }
-            }
-
-            return dictionary;
-        }
        /// <summary>
        /// Extracts and saves an embedded resource to the combined path of basePath and modulepath
        /// </summary>
@@ -124,6 +105,7 @@ namespace EVE.Mvc
        /// <param name="assemblyName"> name of the assembly</param>
        /// <param name="basePath">base part of the path to save the resource</param>
        /// <param name="modulePath">module part of the path to save te resource</param>
+       [Obsolete]
         public static void ExtractResource(string resourceName, string assemblyName, string basePath, string modulePath)
         {
             string path = Path.Combine(basePath, modulePath);
@@ -136,26 +118,6 @@ namespace EVE.Mvc
                 }
             }
         }
-        /// <summary>
-        /// Extracts and saves an embedded resource to the combined path of basePath and modulepath
-        /// </summary>
-        /// <param name="resourceName">name of the resource</param>
-        /// <param name="assemblyName">the assembly</param>
-        /// <param name="basePath">base part of the path to save the resource</param>
-        /// <param name="modulePath">module part of the path to save te resource</param>
-        public static void ExtractResource(string resourceName, Assembly assembly, string basePath, string modulePath)
-        {
-            string path = Path.Combine(basePath, modulePath);
-            Directory.CreateDirectory(path);
-            path = Path.Combine(path, "index.cshtml");
-            using (var f = File.Create(path))
-            {
-                using (StreamWriter sw = new StreamWriter(f))
-                {
-                    sw.Write(LoadResourceString(resourceName, assembly));
-                    sw.Flush();
-                }
-            }
-        }
+       
     }
 }

@@ -13,7 +13,7 @@ namespace EVE.Mvc
     public class EmbeddedFileSystem :  EmbeddedResourceFileSystem
     {
         /// <summary>
-        /// EmbeddedPathProvider needs phisical file path for CacheDependancy
+        /// EmbeddedPathProvider needs physical file path for CacheDependancy
         /// We're using this property to pass on the assembly's location
         /// </summary>
         public string AssemblyPath { get; private set; }
@@ -37,7 +37,12 @@ namespace EVE.Mvc
         {
             AssemblyPath = assembly.Location;
         }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmbeddedFileSystem" /> class using the specified
+        /// assembly and base namespace.
+        /// </summary>
+        /// <param name="assembly"></param>
+        /// <param name="baseNamespace"></param>
         public EmbeddedFileSystem(Assembly assembly, string baseNamespace)
             : base(assembly, baseNamespace)
         {

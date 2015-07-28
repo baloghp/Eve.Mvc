@@ -26,8 +26,6 @@ namespace EVE.Mvc.Composition
         /// </summary>
         static EveMefContainer()
         {
-          
-
             var catalog = CatalogProvider.CurrentProvider.CreateCatalog();
   
             Container = new CompositionContainer(catalog);

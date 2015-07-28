@@ -90,7 +90,7 @@ namespace EVE.Mvc
 
             var html = AssetManager.LoadResourceString(this.file, assembly);
 
-
+            //TODO: may need to provide further customization of StringContent
             return new HttpResponseMessage()
             {
                 Content = new StringContent(html, System.Text.Encoding.UTF8, "text/html")

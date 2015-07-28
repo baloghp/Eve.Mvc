@@ -13,10 +13,10 @@ namespace EVE.Mvc
 
 
         /// <summary>
-        /// Adds a value to nodes with a specific attribut. Value is calculated by Func parameter, single thread implementation
+        /// Adds a value to nodes with a specific attribute. Value is calculated by Func parameter, single thread implementation
         /// </summary>
         /// <param name="documentHelper">Extended class</param>
-        /// <param name="attributeName">atribute that determines which nodes will be selected</param>
+        /// <param name="attributeName">attribute that determines which nodes will be selected</param>
         /// <param name="getValue">Function that selects value for the node</param>
         /// <param name="removeAttribute">specifies if the attribute should be removed after inserting value</param>
         public static void ProcessNodesWithAttribute(this IDocumentHelper documentHelper,
@@ -57,10 +57,10 @@ namespace EVE.Mvc
 
         }
         /// <summary>
-        /// Adds a value to nodes with a specific attribut. Value is calculated by Func parameter, single thread implementation
+        /// Adds a value to nodes with a specific attribute. Value is calculated by Func parameter, single thread implementation
         /// </summary>
         /// <param name="documentHelper">Extended class</param>
-        /// <param name="attributeName">atribute that determines which nodes will be selected</param>
+        /// <param name="attributeName">Attribute that determines which nodes will be selected</param>
         /// <param name="getValue">Function that selects value for the node</param>
         /// <param name="removeAttribute">specifies if the attribute should be removed after inserting value</param>
         public static void ProcessNodesWithAttributeSequential(this IDocumentHelper documentHelper,
