@@ -46,6 +46,7 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
         }
         public ActionResult DataBinding()
         {
+            this.ViewBag.Title = "Title comes from viewbag!!!!";
             return View("eve-Assets.Views.Sample.DataBinding.LandingPage.html", Models.LandingPageModel.GetSample());
         }
 

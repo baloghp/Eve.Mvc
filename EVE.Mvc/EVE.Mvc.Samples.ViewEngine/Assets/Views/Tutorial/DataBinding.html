@@ -1,0 +1,186 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVE.Mvc Tutorial 13 - DataBinding</title>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">EVE.Mvc</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+
+                    <li><a href="/Home/Contact">Contact</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+
+
+
+        <div class="jumbotron">
+            <br />
+            <p class="lead">DataBinding</p>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">DataBinding</div>
+            <div class="panel-body">
+              Now that you have explicit typed models in the views. We can introduce databinding. 
+                One of the primary concerns for the Embedded View Engine is that view processing should be opt-in and never mandatory. 
+                Databinding is one such feature. The concept is that databinding and any other opt in feature is an extension on the IDocumentHelper using the Fluent interface pattern.
+                Here is the code ofr the Databinding extension class:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">static</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">DataBinding</span>
+{
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">const</span>&nbsp;<span style="color:#569cd6;">string</span>&nbsp;EvalAttribute&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#d69d85;">&quot;eve-eval&quot;</span>;
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">static</span>&nbsp;<span style="color:#b8d7a3;">IDocumentHelper</span>&nbsp;ProcessEvals(<span style="color:#569cd6;">this</span>&nbsp;<span style="color:#b8d7a3;">IDocumentHelper</span>&nbsp;documentHelper,&nbsp;<span style="color:#569cd6;">object</span>&nbsp;Model)
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;documentHelper<span style="color:#b4b4b4;">.</span>ProcessNodesWithAttribute(EvalAttribute,&nbsp;<span style="color:#569cd6;">new</span>&nbsp;<span style="color:#4ec9b0;">Func</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">HtmlNode</span>,&nbsp;<span style="color:#569cd6;">string</span><span style="color:#b4b4b4;">&gt;</span>(a&nbsp;<span style="color:#b4b4b4;">=&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">var</span>&nbsp;evalPath&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;a<span style="color:#b4b4b4;">.</span>Attributes[EvalAttribute]<span style="color:#b4b4b4;">.</span>Value;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#57a64a;">//eval&nbsp;the&nbsp;new&nbsp;partial&nbsp;model&nbsp;on&nbsp;the&nbsp;current&nbsp;one</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">if</span>&nbsp;(Model&nbsp;<span style="color:#b4b4b4;">!=</span>&nbsp;<span style="color:#569cd6;">null</span>&nbsp;<span style="color:#b4b4b4;">&amp;&amp;</span>&nbsp;<span style="color:#b4b4b4;">!</span><span style="color:#569cd6;">string</span><span style="color:#b4b4b4;">.</span>IsNullOrWhiteSpace(evalPath))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">var</span>&nbsp;evalValue&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#4ec9b0;">DataBinder</span><span style="color:#b4b4b4;">.</span>Eval(Model,&nbsp;evalPath);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;evalValue&nbsp;<span style="color:#b4b4b4;">==</span>&nbsp;<span style="color:#569cd6;">null</span>&nbsp;<span style="color:#b4b4b4;">?</span>&nbsp;<span style="color:#569cd6;">string</span><span style="color:#b4b4b4;">.</span>Empty&nbsp;:&nbsp;evalValue<span style="color:#b4b4b4;">.</span>ToString();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;<span style="color:#569cd6;">null</span>;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;documentHelper;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+</pre>
+                <br />
+                First of all we define a tag attribute that is going to contain the databinder's path.
+                Then we define how to get the actual value from the model.
+                <br />
+                When calling this extension databinding will happen for all tags that have this attribute.
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">this</span><span style="color:#b4b4b4;">.</span>HtmlDocument
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#b4b4b4;">.</span>ProcessEvals(<span style="color:#569cd6;">this</span><span style="color:#b4b4b4;">.</span>Model);</pre>
+                <br />
+                To make things easier and so that we do not have to make this in every view processing code. You can derive from EmbeddedView and override the BeforeProcessView method.
+                Then you can use this class as a view class wherever databinding is needed.
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">abstract</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">DataBindingView</span><span style="color:#b4b4b4;">&lt;</span>T<span style="color:#b4b4b4;">&gt;</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">EmbeddedView</span><span style="color:#b4b4b4;">&lt;</span>T<span style="color:#b4b4b4;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">protected</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;BeforeProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">base</span><span style="color:#b4b4b4;">.</span>BeforeProcessView(viewContext);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">this</span><span style="color:#b4b4b4;">.</span>HtmlDocument
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#b4b4b4;">.</span>ProcessEvals(<span style="color:#569cd6;">this</span><span style="color:#b4b4b4;">.</span>Model);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+
+            </div>
+        </div>
+        
+        
+        <div class="panel panel-info">
+            <div class="panel-heading">Example for databinding</div>
+            <div class="panel-body">
+                Examine the databinding attributes in the views:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;container&quot;</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;row&quot;</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;col-lg-5&nbsp;col-sm-6&quot;</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">hr</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;section-heading-spacer&quot;</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;clearfix&quot;</span><span style="color:gray;">&gt;&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">h2</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;section-heading&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-eval</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;Heading&quot;</span><span style="color:gray;">&gt;</span>Death&nbsp;to&nbsp;the&nbsp;Stock&nbsp;Photo:<span style="color:gray;">&lt;</span><span style="color:#569cd6;">br</span><span style="color:gray;">&gt;</span>Special&nbsp;Thanks<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">h2</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">p</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;lead&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-eval</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;Lead&quot;</span><span style="color:gray;">&gt;</span>A&nbsp;special&nbsp;thanks&nbsp;to&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">a</span>&nbsp;<span style="color:#9cdcfe;">target</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;_blank&quot;</span>&nbsp;<span style="color:#9cdcfe;">href</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;http://join.deathtothestockphoto.com/&quot;</span><span style="color:gray;">&gt;</span>Death&nbsp;to&nbsp;the&nbsp;Stock&nbsp;Photo<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">a</span><span style="color:gray;">&gt;</span>&nbsp;for&nbsp;providing&nbsp;the&nbsp;photographs&nbsp;that&nbsp;you&nbsp;see&nbsp;in&nbsp;this&nbsp;template.&nbsp;Visit&nbsp;their&nbsp;website&nbsp;to&nbsp;become&nbsp;a&nbsp;member.<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">p</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;col-lg-5&nbsp;col-lg-offset-2&nbsp;col-sm-6&quot;</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">img</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;img-responsive&quot;</span>&nbsp;<span style="color:#9cdcfe;">src</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;/EVE.Mvc.Samples.Embedded/Assets/LandingPage/img/ipad.png&quot;</span>&nbsp;<span style="color:#9cdcfe;">alt</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;&quot;</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span></pre>
+                <br />
+                Again consider the Model bindings of the partial views here as well!! (See partial views example.)
+                <br />
+                Let's define a Databinding view:
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">abstract</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">DataBindingView</span><span style="color:#b4b4b4;">&lt;</span>T<span style="color:#b4b4b4;">&gt;</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">EmbeddedView</span><span style="color:#b4b4b4;">&lt;</span>T<span style="color:#b4b4b4;">&gt;</span>
+{
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">protected</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;BeforeProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">base</span><span style="color:#b4b4b4;">.</span>BeforeProcessView(viewContext);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">this</span><span style="color:#b4b4b4;">.</span>HtmlDocument
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#b4b4b4;">.</span>ProcessEvals(<span style="color:#569cd6;">this</span><span style="color:#b4b4b4;">.</span>Model);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</pre>
+                <br />
+
+                Let's also define a Preprocessing view that takes care of other things such as Bundles, ViewBags  etc...
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">protected</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;BeforeProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)
+&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">base</span><span style="color:#b4b4b4;">.</span>BeforeProcessView(viewContext);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">this</span><span style="color:#b4b4b4;">.</span>HtmlDocument
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#b4b4b4;">.</span>ProcessBundles()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#b4b4b4;">.</span>ProcessViewBag(viewContext);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;}</pre>
+                <br />
+                Let's make the partial views DataBingingView-s:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.DataBinding.Content1.html&quot;</span>)]
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">Content1</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">DataBindingView</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">Content</span><span style="color:#b4b4b4;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;ProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+                <br />
+                And make the page view process all:
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">[<span style="color:#4ec9b0;">MasterView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.DataBinding.LandingMaster.html&quot;</span>)]
+&nbsp;&nbsp;&nbsp;&nbsp;[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.DataBinding.LandingPage.html&quot;</span>)]
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">PageView</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">PreprocessingPageView</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">LandingPageModel</span><span style="color:#b4b4b4;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;ProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+                <br />
+                (Note: wanted to show you your possibilities in inheritance here, and that inheritance does not hinder view resolution. You could include the databinding extension just in the page view, it would still work)
+                <br />
+                <a href="/Plugins/ViewEngineSample/Sample/DataBinding">Here is the result of the above example.</a> 
+            </div>
+        </div>
+
+
+        <hr />
+        <footer>
+            <p>&copy; 2015 - EVE.Mvc</p>
+        </footer>
+    </div>
+
+    <script src="/Scripts/jquery-2.1.4.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+
+
+
+</body>
+</html>

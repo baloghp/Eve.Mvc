@@ -1,0 +1,118 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVE.Mvc Tutorial 14 - Localization</title>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">EVE.Mvc</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+
+                    <li><a href="/Home/Contact">Contact</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+
+
+
+        <div class="jumbotron">
+            <br />
+            <p class="lead">Localization</p>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Localization</div>
+            <div class="panel-body">
+              Localization is just another extesnion you can opt in for like databinding previously:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">static</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">Localization</span>
+&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">const</span>&nbsp;<span style="color:#569cd6;">string</span>&nbsp;LocalAttribute&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#d69d85;">&quot;eve-local&quot;</span>;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">static</span>&nbsp;<span style="color:#b8d7a3;">IDocumentHelper</span>&nbsp;ProcessLocals(<span style="color:#569cd6;">this</span>&nbsp;<span style="color:#b8d7a3;">IDocumentHelper</span>&nbsp;documentHelper,&nbsp;<span style="color:#4ec9b0;">ResourceManager</span>&nbsp;resourceManager,&nbsp;<span style="color:#4ec9b0;">CultureInfo</span>&nbsp;culture)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;documentHelper<span style="color:#b4b4b4;">.</span>ProcessNodesWithAttribute(LocalAttribute,&nbsp;<span style="color:#569cd6;">new</span>&nbsp;<span style="color:#4ec9b0;">Func</span><span style="color:#b4b4b4;">&lt;</span><span style="color:#4ec9b0;">HtmlNode</span>,&nbsp;<span style="color:#569cd6;">string</span><span style="color:#b4b4b4;">&gt;</span>(a&nbsp;<span style="color:#b4b4b4;">=&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">var</span>&nbsp;resourceKey&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;a<span style="color:#b4b4b4;">.</span>Attributes[LocalAttribute]<span style="color:#b4b4b4;">.</span>Value;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;resourceManager<span style="color:#b4b4b4;">.</span>GetString(resourceKey,culture);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;));
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;documentHelper;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;}</pre>
+
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">Example for Localization</div>
+            <div class="panel-body">
+               First create the appropriate resx files with the necessary content. See source for that.
+                <br />
+                Then prepare the markups with the localization tag:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;col-lg-6&quot;</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">h2</span>&nbsp;<span style="color:#9cdcfe;">eve-local</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;Banner&quot;</span><span style="color:gray;">&gt;</span>Connect&nbsp;to&nbsp;Start&nbsp;Bootstrap:<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">h2</span><span style="color:gray;">&gt;</span>
+<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span></pre>
+                <br />
+
+                You should set the locale of you page explicitly based on user input before calling the view:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#569cd6;">public</span>&nbsp;<span style="color:#4ec9b0;">ActionResult</span>&nbsp;BundlesInJapan()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4ec9b0;">Thread</span><span style="color:#b4b4b4;">.</span>CurrentThread<span style="color:#b4b4b4;">.</span>CurrentUICulture&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#4ec9b0;">CultureInfo</span><span style="color:#b4b4b4;">.</span>GetCultureInfo(<span style="color:#d69d85;">&quot;ja-JP&quot;</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">return</span>&nbsp;View(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.Bundles.LandingPage.html&quot;</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+                <br />
+
+                In you page view code you have to opt in for localization:
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">&nbsp;&nbsp;&nbsp;&nbsp;[<span style="color:#4ec9b0;">MasterView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.Bundles.LandingMaster.html&quot;</span>)]
+[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.Bundles.LandingPage.html&quot;</span>)]
+<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">PageView</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">EmbeddedView</span>
+{
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;ProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">this</span><span style="color:#b4b4b4;">.</span>HtmlDocument<span style="color:#b4b4b4;">.</span>ProcessBundles()<span style="color:#b4b4b4;">.</span>ProcessLocals(<span style="color:#4ec9b0;">Resources</span><span style="color:#b4b4b4;">.</span>ResourceManager,&nbsp;<span style="color:#4ec9b0;">Thread</span><span style="color:#b4b4b4;">.</span>CurrentThread<span style="color:#b4b4b4;">.</span>CurrentUICulture);
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</pre>
+                <a href="/Plugins/ViewEngineSample/Sample/BundlesInJapan">Here is the result of the above example.</a> 
+
+            </div>
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; 2015 - EVE.Mvc</p>
+        </footer>
+    </div>
+
+    <script src="/Scripts/jquery-2.1.4.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+
+
+
+</body>
+</html>

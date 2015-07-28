@@ -13,17 +13,15 @@ namespace EVE.Mvc
     public static class ViewBag
     {
         public const string ViewBagAttribute = "eve-viewbag";
-
         public static IDocumentHelper ProcessViewBag(this IDocumentHelper documentHelper, ViewContext viewContext)
         {
-            documentHelper.ProcessNodesWithAttribute(ViewBagAttribute, new Func<HtmlNode, string>(a =>
+            documentHelper.ProcessNodesWithAttributeSequential(ViewBagAttribute, new Func<HtmlNode, string>(a =>
                     {
-                        var value = System.Web.Optimization.Styles.Render(a.Attributes[ViewBagAttribute].Value);
-                        return value.ToHtmlString();
+                        var dynaPath = a.Attributes[ViewBagAttribute].Value;
+                        var value = Dynamic.InvokeGet(viewContext.ViewBag,dynaPath);
+                        return value.ToString();
                     }
                ));
-
-
             return documentHelper;
         }
     }

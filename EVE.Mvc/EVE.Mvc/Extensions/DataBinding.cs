@@ -12,10 +12,8 @@ namespace EVE.Mvc
     public static class DataBinding
     {
         public const string EvalAttribute = "eve-eval";
-
         public static IDocumentHelper ProcessEvals(this IDocumentHelper documentHelper, object Model)
         {
-
             documentHelper.ProcessNodesWithAttribute(EvalAttribute, new Func<HtmlNode, string>(a =>
             {
                 var evalPath = a.Attributes[EvalAttribute].Value;
@@ -28,8 +26,6 @@ namespace EVE.Mvc
                 return null;
             }
                ));
-
-
             return documentHelper;
         }
     }

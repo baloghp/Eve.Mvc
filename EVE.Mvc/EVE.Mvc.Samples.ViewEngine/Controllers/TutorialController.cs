@@ -25,5 +25,39 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
         {
             return View("eve-Assets.Views.Tutorial.MasterAndPartials.MasterAndPartials.html");
         }
+
+        public ActionResult Sections()
+        {
+            return View("eve-Assets.Views.Tutorial.Sections.html");
+        }
+
+        public ActionResult Bundles()
+        {
+            return View("eve-Assets.Views.Tutorial.Bundles.html");
+        }
+
+        public ActionResult TypedViews()
+        {
+            return View("eve-Assets.Views.Tutorial.Typed.html");
+        }
+        public ActionResult DataBinding()
+        {
+            return View("eve-Assets.Views.Tutorial.DataBinding.html");
+        }
+
+        public ActionResult Localization()
+        {
+            return View("eve-Assets.Views.Tutorial.Localization.html");
+        }
+
+        public ActionResult EveAttributes()
+        {
+            return View("eve-Assets.Views.Tutorial.EveAttributes.html");
+        }
+
+        public ActionResult ExtendingEve()
+        {
+            return View("eve-Assets.Views.Tutorial.ExtendingEve.html");
+        }
     }
 }
