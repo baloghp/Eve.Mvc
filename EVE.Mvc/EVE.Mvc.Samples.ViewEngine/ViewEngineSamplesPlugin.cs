@@ -54,6 +54,7 @@ namespace EVE.Mvc.Samples.ViewEngine
         public void RegisterBundles(System.Web.Optimization.BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/lp/bootstrap").Include(
+                      "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/js/jquery.js",
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
