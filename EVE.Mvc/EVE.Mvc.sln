@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8777C9
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.nuget\package.bat = .nuget\package.bat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVE.Mvc.Samples.ViewEngine", "EVE.Mvc.Samples.ViewEngine\EVE.Mvc.Samples.ViewEngine.csproj", "{09B9B1D1-C8B1-41E5-8703-45607DCF10B1}"
