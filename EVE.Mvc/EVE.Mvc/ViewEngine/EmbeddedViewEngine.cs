@@ -163,6 +163,19 @@ namespace EVE.Mvc
 
         private string FindMarkup(string viewName, IEmbeddedView view)
         {
+            
+            if (view!=null)
+            {
+                //let's see if there is a markup name specified for the view class
+                var viewAttribute = view.GetType().GetCustomAttribute<EmbeddedViewAttribute>();
+                if (viewAttribute != null && !String.IsNullOrWhiteSpace(viewAttribute.MarkupName))
+                {
+                    string result = MarkupProvider.GetResource(viewAttribute.MarkupName, view);
+                    if (!String.IsNullOrWhiteSpace(result)) return result;
+                }
+            }
+            
+
             return MarkupProvider.GetResource(viewName, view);
         }
 

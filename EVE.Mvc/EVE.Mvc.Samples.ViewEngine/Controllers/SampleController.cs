@@ -56,5 +56,11 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ja-JP");
             return View("eve-Assets.Views.Sample.Bundles.LandingPage.html");
         }
+
+        public ActionResult ShortViewNames()
+        {
+            this.ViewBag.Title = "Title comes from viewbag!!!!";
+            return View("eve-ShortViewNames.LandingPage.html", Models.LandingPageModel.GetSample());
+        }
     }
 }
