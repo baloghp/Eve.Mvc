@@ -1,0 +1,157 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVE.Mvc Tutorial 10 - Simple Page with Master and Partial views</title>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">EVE.Mvc</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+
+                    <li><a href="/Home/Contact">Contact</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+   <div class="jumbotron">
+            <br />
+            <p class="lead">Simple Page with Master and Partial views</p>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Defining partial view in the Markup</div>
+            <div class="panel-body">
+               You define a partial view in the markup by using the "eve-partial" attribute.
+                I have broken out the LandingPage to the following conponents:
+                <br />
+                <img src="/EVE.Mvc.Samples.ViewEngine/Assets/Views/Tutorial/MasterAndPartials/markups.png" />
+                <br />
+                Here is the markup for the main page:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#57a64a;">&lt;!--&nbsp;Header&nbsp;--&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">a</span>&nbsp;<span style="color:#9cdcfe;">name</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;about&quot;</span><span style="color:gray;">&gt;&lt;/</span><span style="color:#569cd6;">a</span><span style="color:gray;">&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;intro-header&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-Assets.Views.Sample.MasterAndPartials.IntroHeader.html&quot;</span><span style="color:gray;">&gt;</span>
+ 
+<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+<span style="color:#57a64a;">&lt;!--&nbsp;/.intro-header&nbsp;--&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-Assets.Views.Sample.MasterAndPartials.Contents.html&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-renderinstead</span><span style="color:gray;">&gt;</span>&nbsp;<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+ 
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">a</span>&nbsp;<span style="color:#9cdcfe;">name</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;contact&quot;</span><span style="color:gray;">&gt;&lt;/</span><span style="color:#569cd6;">a</span><span style="color:gray;">&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;banner&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-Assets.Views.Sample.MasterAndPartials.Banner.html&quot;</span><span style="color:gray;">&gt;</span>
+ 
+<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+<span style="color:#57a64a;">&lt;!--&nbsp;/.banner&nbsp;--&gt;</span></pre>
+                <br />
+                The "contents" partial view contains references tot he individual content views:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#57a64a;">&lt;!--&nbsp;Page&nbsp;Content&nbsp;--&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">a</span>&nbsp;<span style="color:#9cdcfe;">name</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;services&quot;</span><span style="color:gray;">&gt;&lt;/</span><span style="color:#569cd6;">a</span><span style="color:gray;">&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;content-section-a&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-Assets.Views.Sample.MasterAndPartials.Content1.html&quot;</span><span style="color:gray;">&gt;</span>
+ 
+<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+<span style="color:#57a64a;">&lt;!--&nbsp;/.content-section-a&nbsp;--&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;content-section-b&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-Assets.Views.Sample.MasterAndPartials.Content2.html&quot;</span><span style="color:gray;">&gt;</span>
+ 
+<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+<span style="color:#57a64a;">&lt;!--&nbsp;/.content-section-b&nbsp;--&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;content-section-a&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-Assets.Views.Sample.MasterAndPartials.Content3.html&quot;</span><span style="color:gray;">&gt;</span>
+ 
+<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+<span style="color:#57a64a;">&lt;!--&nbsp;/.content-section-a&nbsp;--&gt;</span></pre>
+                <br />
+            </div>
+        </div>
+        
+        <div class="panel panel-info">
+            <div class="panel-heading">Code for partial views</div>
+            <div class="panel-body">
+              You can as before define code for the partial views:
+                <br />
+                <img src="/EVE.Mvc.Samples.ViewEngine/Assets/Views/Tutorial/MasterAndPartials/codes.png" />
+                <br />
+                As you can see you do not always have to provide code for each partial view.
+
+                Partial views are evaluated after the master page is evaluated. But before the code for the page's view is run. 
+                Thus you can also access html generated by the partial views in the code of your page view. 
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">&nbsp;&nbsp;&nbsp;[<span style="color:#4ec9b0;">MasterView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.SimpleMaster.LandingMaster.html&quot;</span>)]
+&nbsp;[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-Assets.Views.Sample.MasterAndPartials.LandingPage.html&quot;</span>)]
+&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">PageView</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">EmbeddedView</span>
+&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;ProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">var</span>&nbsp;nodes&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#569cd6;">this</span><span style="color:#b4b4b4;">.</span>HtmlDocument
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#b4b4b4;">.</span>Document
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#b4b4b4;">.</span>DocumentNode
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#b4b4b4;">.</span>SelectNodes(<span style="color:#d69d85;">&quot;//h2&quot;</span>);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">foreach</span>&nbsp;(<span style="color:#569cd6;">var</span>&nbsp;item&nbsp;<span style="color:#569cd6;">in</span>&nbsp;nodes)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item<span style="color:#b4b4b4;">.</span>InnerHtml&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#d69d85;">&quot;Partial&nbsp;view&nbsp;content&nbsp;changed&nbsp;by&nbsp;page&nbsp;view&quot;</span>;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
+                <br />
+
+                <a href="/Plugins/ViewEngineSample/Sample/ShowSimpleMasterAndPartial">See the results in action by clicking here.</a>
+            </div>
+        </div>
+      
+        <div class="panel panel-info">
+            <div class="panel-heading">Model for partial views</div>
+            <div class="panel-body">
+                You can define the Model for the partial views by defining a databinding path for in the eve-partialmodel attribute. If you do not define this,the partial view will inherit the calling view's Model.
+                (If you are using typed view take special note of this.)
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:gray;">&lt;</span><span style="color:#569cd6;">a</span>&nbsp;<span style="color:#9cdcfe;">name</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;about&quot;</span><span style="color:gray;">&gt;&lt;/</span><span style="color:#569cd6;">a</span><span style="color:gray;">&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;intro-header&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-Assets.Views.Sample.DataBinding.IntroHeader.html&quot;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe;">eve-partialmodel</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;Header&quot;</span><span style="color:gray;">&gt;</span>
+ 
+<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+<span style="color:#57a64a;">&lt;!--&nbsp;/.intro-header&nbsp;--&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-Assets.Views.Sample.DataBinding.Contents.html&quot;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#9cdcfe;">eve-renderinstead</span><span style="color:gray;">&gt;&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+ 
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">a</span>&nbsp;<span style="color:#9cdcfe;">name</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;contact&quot;</span><span style="color:gray;">&gt;&lt;/</span><span style="color:#569cd6;">a</span><span style="color:gray;">&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;banner&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-Assets.Views.Sample.DataBinding.Banner.html&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partialmodel</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;Banner&quot;</span>&nbsp;<span style="color:gray;">&gt;</span></pre>
+                <br />
+                In this example the headerand the banner will have their own child models, however the conent will inherit from the model of this view.
+            </div>
+        </div>
+    
+        <hr />
+        <footer>
+            <p>&copy; 2015 - EVE.Mvc</p>
+        </footer>
+    </div>
+
+    <script src="/Scripts/jquery-2.1.4.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVE.Mvc Tutorial 11 - Sections</title>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">EVE.Mvc</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+
+                    <li><a href="/Home/Contact">Contact</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+
+
+
+        <div class="jumbotron">
+            <br />
+            <p class="lead">Sections</p>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Sections</div>
+            <div class="panel-body">
+              You can define sections in your markup. These are named placeholders. 
+                In other parts of the markup such as page views or partial views you can define tags that serve as content for these sections. 
+                Before the rendering of the page finishes all such placeholders get evaluated, and their accumulated contents get rendered in place of the placeholder tag.
+                <br />
+                Let's say just like in Razor, we want to mark the place for extra scripts in the Masterpage, we're using this code for placeholder:
+
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">eve-section</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;scripts&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-renderinstead</span><span style="color:gray;">&gt;&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span>
+</pre>
+                <br />
+                In the LandingPage here's how we define one script to include in this section.
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">&nbsp;&nbsp;<span style="color:#57a64a;">&lt;!--&nbsp;jQuery&nbsp;--&gt;</span>
+<span style="color:gray;">&lt;</span><span style="color:#569cd6;">script</span>&nbsp;<span style="color:#9cdcfe;">src</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;/EVE.Mvc.Samples.Embedded/Assets/LandingPage/js/jquery.js&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-sectioncontentfor</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;scripts&quot;</span><span style="color:gray;">&gt;&lt;/</span><span style="color:#569cd6;">script</span><span style="color:gray;">&gt;</span></pre>
+                <br />
+
+                In the Contents partial view here's how to define to include another line:
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">eve-sectioncontentfor</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;scripts&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-renderonlycontent</span><span style="color:gray;">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#57a64a;">&lt;!--&nbsp;Bootstrap&nbsp;Core&nbsp;JavaScript&nbsp;--&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&lt;</span><span style="color:#569cd6;">script</span>&nbsp;<span style="color:#9cdcfe;">src</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;/EVE.Mvc.Samples.Embedded/Assets/LandingPage/js/bootstrap.min.js&quot;</span><span style="color:gray;">&gt;&lt;/</span><span style="color:#569cd6;">script</span><span style="color:gray;">&gt;</span>
+<span style="color:gray;">&lt;/</span><span style="color:#569cd6;">div</span><span style="color:gray;">&gt;</span></pre>
+                <br />
+
+                Here are the meanings of the relevant attributes:
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Attribute</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#9cdcfe;">eve-section</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;scripts&quot;</span>
+</pre></td>
+                            <td>
+                                Defines a named section for the page.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#9cdcfe;">eve-sectioncontentfor</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;scripts&quot;</span>
+</pre>
+                            </td>
+                            <td>
+                                Defines a content for a named section.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:#9cdcfe;">eve-renderonlycontent</span>
+</pre>
+                            </td>
+                            <td>
+                                Defines that only the inner content of a given tag is considered as a content for a named section.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br />
+
+                <a href="/Plugins/ViewEngineSample/Sample/Sections">Here is the result of the above example.</a>   Open source and examine scripts at the bottom.
+
+            </div>
+        </div>
+        
+        <hr />
+        <footer>
+            <p>&copy; 2015 - EVE.Mvc</p>
+        </footer>
+    </div>
+
+    <script src="/Scripts/jquery-2.1.4.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+
+
+
+</body>
+</html>
