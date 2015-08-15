@@ -58,7 +58,7 @@ namespace EVE.Mvc.Samples.ViewEngine
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/css").Include(
+            bundles.Add(new StyleBundle("~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/css/css").Include(
                       "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/css/bootstrap.css",
                       "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/css/landing-page.css",
                       "~/EVE.Mvc.Samples.Embedded/Assets/LandingPage/font_awesome/css/font-awesome.css"));
