@@ -59,5 +59,10 @@ namespace EVE.Mvc.Samples.ViewEngine.Controllers
         {
             return View("eve-Assets.Views.Tutorial.ExtendingEve.html");
         }
+
+        public ActionResult ShortViewNames()
+        {
+            return View("eve-Assets.Views.Tutorial.ShortViewNames.html");
+        }
     }
 }

@@ -1,0 +1,81 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVE.Mvc Tutorial 18 - Shorter view names</title>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">EVE.Mvc</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+
+                    <li><a href="/Home/Contact">Contact</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+
+
+
+        <div class="jumbotron">
+            <br />
+            <p class="lead">Short view names</p>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Shortening View names</div>
+            <div class="panel-body">
+            It is possible to specify a resource name for any code view via the MarkupName property of the EmbeddedViewAttribute class. 
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-ShortViewNames.Banner.html&quot;</span>,&nbsp;MarkupName&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#d69d85;">&quot;Assets.Views.Sample.ShortViewNames.Banner.html&quot;</span>)]
+</pre>
+                <br />
+                This way you can give any name to your code view the ViewEngine will always look for the corresponding markup under the name as specified in the MarkupName property.
+                Thus you can use a shorter view name than the resource name.
+                Like:
+
+               <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;banner&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-ShortViewNames.Banner.html&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partialmodel</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;Banner&quot;</span><span style="color:gray;">&gt;</span>
+</pre>
+                <br />
+
+                <a href="/Plugins/ViewEngineSample/Sample/ShortViewNames">Here is the landingpage using the short view names.</a>
+
+            </div>
+        </div>
+        
+        <hr />
+        <footer>
+            <p>&copy; 2015 - EVE.Mvc</p>
+        </footer>
+    </div>
+
+    <script src="/Scripts/jquery-2.1.4.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+
+
+
+</body>
+</html>

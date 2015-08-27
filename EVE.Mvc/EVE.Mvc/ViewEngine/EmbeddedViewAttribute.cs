@@ -13,7 +13,7 @@ namespace EVE.Mvc
     /// </summary>
     public class EmbeddedViewAttribute : ExportAttribute
     {
-            public string MarkupName{get; set;}
+         public string MarkupName{get; set;}
 
 
         public EmbeddedViewAttribute(string viewName)
