@@ -1,18 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
-    <metadata minClientVersion="4.5">
+    <metadata >
         <id>EVE.Mvc</id>
-        <version>0.5.0.0</version>
+        <version>0.5.1-alpha</version>
         <title>EVE.Mvc</title>
         <authors>Peter Balogh</authors>
         <owners>Peter Balogh</owners>
         <projectUrl>https://github.com/baloghp/Eve.Mvc</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Plugin system that does not require separate static file deployment
-Utilities for using EmbeddedFileSystem to serve static content and html as ActionResult
-A View Engine that uses static embedded html as markup and a separate c# view class for markup (DOM) manipulation.</description>
+        <description>
+          Plugin system that does not require separate static file deployment
+          Utilities for using EmbeddedFileSystem to serve static content and html as ActionResult
+          A View Engine that uses static embedded html as markup and a separate c# view class for markup (DOM) manipulation.
+          See tutorial here: http://evemvc.azurewebsites.net/
+        </description>
         <summary>EVE.Mvc is a utility library for ASP.NET MVC</summary>
-        <releaseNotes>First ppreliminary release</releaseNotes>
+        <releaseNotes>Alpha release</releaseNotes>
         <copyright>Copyright ©  2015</copyright>
         <dependencies>
             <dependency id="Dynamitey" version="1.0.2.0" />
@@ -22,7 +25,6 @@ A View Engine that uses static embedded html as markup and a separate c# view cl
             <dependency id="Microsoft.AspNet.WebApi.Owin" version="5.2.3" />
             <dependency id="Microsoft.Owin.StaticFiles" version="3.0.1" />
             <dependency id="Mvc.Routing" version="1.0.0.4" />
-            <dependency id="RazorEngine" version="3.7.0" />
         </dependencies>
     </metadata>
     <files>
