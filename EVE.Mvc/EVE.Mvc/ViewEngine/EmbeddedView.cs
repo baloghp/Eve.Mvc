@@ -28,8 +28,15 @@ namespace EVE.Mvc
     /// EmbeddedView class. Center point of EmbeddedView engine implementation. This is what all views in the Eve.Mvc system must derive from. 
     /// </summary>
     /// <typeparam name="T">Type of the model for the view</typeparam>
-    public abstract class EmbeddedView<T> : IModelContainer<T>, IEmbeddedView
+    public abstract class EmbeddedView<T> : IModelContainer<T>, IEmbeddedView 
     {
+        private IViewEngine _viewEngine;
+        public IViewEngine ViewEngine
+        {
+            get { return _viewEngine; }
+            set { _viewEngine = value; }
+        }
+
         #region Model
         private T _model;
         /// <summary>
@@ -40,25 +47,36 @@ namespace EVE.Mvc
         /// </value>
         /// <exception cref="System.ApplicationException"></exception>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations")]
-       
+
         public T Model
         {
             get
             {
                 if (_model == null)
                 {
-                    if (this.ViewData.Model != null && !(this.ViewData.Model is T))
-                    {
-                        throw new ApplicationException(String.Format("Model passed for this view MUST be of type:{0}, but it is {1}", typeof(T), this.ViewData.Model.GetType()));
-                    }
-                    _model = (T)this.ViewData.Model;
+                    SetModel(this.ViewData.Model);
+                    //if (this.ViewData.Model != null && !(this.ViewData.Model is T))
+                    //{
+                    //    throw new ApplicationException(String.Format("Model passed for this view MUST be of type:{0}, but it is {1}", typeof(T), this.ViewData.Model.GetType()));
+                    //}
+                    //_model = (T)this.ViewData.Model;
                 }
                 return _model;
             }
-            protected set
+            set
             {
                 _model = value;
             }
+        }
+        
+
+        public void SetModel(object Model)
+        {
+            if (Model != null && !(Model is T))
+            {
+                throw new ApplicationException(String.Format("Model passed for this view MUST be of type:{0}, but it is {1}", typeof(T), this.ViewData.Model.GetType()));
+            }
+            _model = (T)Model;
         }
         #endregion
 
@@ -137,6 +155,7 @@ namespace EVE.Mvc
         }
         #endregion
 
+        public ViewContext ViewContext { get; set; }
         /// <summary>
         /// Gets or sets the name of the view.
         /// </summary>
@@ -175,6 +194,7 @@ namespace EVE.Mvc
             HtmlDocument document;
 
             //init context sensitive fields
+            this.ViewContext = viewContext;
             this.ViewData = viewContext.ViewData;
             this.Html = new HtmlHelper(viewContext, this);
 
@@ -185,7 +205,7 @@ namespace EVE.Mvc
             }
             else
             {
-                //if there is no masterpage, we prepare the raw markup as the current document
+                //if there is no master page, we prepare the raw markup as the current document
                 var doc = new HtmlAgilityPack.HtmlDocument();
                 if (!String.IsNullOrWhiteSpace(RawMarkup))
                     doc.LoadHtml(RawMarkup);
@@ -195,7 +215,7 @@ namespace EVE.Mvc
 
             //handle partial views
 
-            HtmlDocument.ProcessNodesWithAttribute(EveMarkupAttributes.PartialView,GetPartialString,true);
+            HtmlDocument.ProcessNodesWithAttribute(EveMarkupAttributes.PartialView, GetPartialString, true);
 
             // collect sections
             // only when the page view is called, not during master or partial
@@ -234,12 +254,19 @@ namespace EVE.Mvc
                 if (Model != null && !string.IsNullOrWhiteSpace(partialModelPath))
                     partialModel = DataBinder.Eval(Model, partialModelPath);
             }
-            //call partial MVC view process
-            var viewData = new ViewDataDictionary(this.ViewData);
-            viewData.Model = partialModel;
-            var partialString = this.Html.Partial(partialName, partialModel, viewData).ToHtmlString();
+           
+            MvcHtmlString partialString;
+            if (!GetPartialViewStringFromthisEngine(this.ViewContext, partialName, out partialString, partialModel))
+            {
+                //call partial MVC view process
+                var viewData = new ViewDataDictionary(this.ViewData);
+                viewData.Model = partialModel;
+                //get the html for the master view, by calling MVC view resolution
+                partialString = this.Html.Partial(partialName, partialModel, viewData);
+            }
 
-            return partialString;
+
+            return partialString.ToHtmlString();
         }
 
         private void ProcessSections()
@@ -297,8 +324,14 @@ namespace EVE.Mvc
 
         private HtmlAgilityPack.HtmlDocument PrepareMasterPage()
         {
-            //get the html for the master view, by calling MVC view resolution
-            var masterString = this.Html.Partial(MasterName, Model, this.ViewData);
+            MvcHtmlString masterString;
+            //let's see if our own view engine can give us the master view string
+            if (!GetPartialViewStringFromthisEngine(this.ViewContext, MasterName, out masterString, Model))
+            {
+                //get the html for the master view, by calling MVC view resolution
+                masterString = this.Html.Partial(MasterName, Model, this.ViewData);
+            }
+
             //let's prepare that as our main doc
             var masterDoc = new HtmlDocument();
             masterDoc.LoadHtml(masterString.ToHtmlString());
@@ -316,6 +349,43 @@ namespace EVE.Mvc
             HtmlDocument = new DocumentHelper(masterDoc);
             return masterDoc;
         }
+
+        private bool GetPartialViewStringFromthisEngine(ViewContext viewContext, string viewName, out MvcHtmlString result, object model = null)
+        {
+            ViewEngineResult viewResult = this.ViewEngine.FindView(viewContext, viewName, null, true);
+            result = null;
+            if (viewResult.View == null) return false;
+
+            string rawHtml;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (StreamWriter tw = new StreamWriter(ms))
+                {
+                    if (model != null)
+                    {
+                        var ev = viewResult.View as IEmbeddedView;
+                        ev.SetModel(model);
+
+                    }
+                    
+                    viewResult.View.Render(viewContext, tw);
+
+                    using (StreamReader sr = new StreamReader(ms))
+                    {
+                        rawHtml = sr.ReadToEnd();
+                    }
+                }
+            }
+            if (String.IsNullOrWhiteSpace(rawHtml)) return false;
+
+            result = new MvcHtmlString(rawHtml);
+            return true;
+
+        }
+
+       
+
+
 
         /// <summary>
         /// Called the view is processed. Use this in inheritance to provide pre-processing before ProcessView method is called.
@@ -342,5 +412,11 @@ namespace EVE.Mvc
             this.HtmlDocument = null;
 
         }
+
+
+
+        
+
+        
     }
 }

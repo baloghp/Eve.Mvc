@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EVE.Mvc.ViewEngine
+namespace EVE.Mvc
 {
     /// <summary>
     /// Attribute to signal the required Master view for a page view.

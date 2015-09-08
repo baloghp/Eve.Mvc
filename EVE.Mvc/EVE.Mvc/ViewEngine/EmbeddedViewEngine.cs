@@ -129,9 +129,11 @@ namespace EVE.Mvc
             string realViewName = UnprefixViewName(viewName);
             if (string.IsNullOrWhiteSpace(realViewName)) return null;
             IEmbeddedView view = FindEmbeddedViewClass(viewName);
+            
             string markup = FindMarkup(realViewName, view);
             if (view != null)
             {
+                view.ViewEngine = this;
                 if (!(string.IsNullOrEmpty(markup)))
                 {
                     view.RawMarkup = markup;
@@ -141,6 +143,7 @@ namespace EVE.Mvc
             if (!(string.IsNullOrEmpty(markup)))
             {
                 var sview = new SimpleResourceView();
+                sview.ViewEngine = this;
                 sview.RawMarkup = markup;
                 return sview;
             }

@@ -11,6 +11,8 @@ namespace EVE.Mvc.ViewEngine
     /// </summary>
     public interface IEmbeddedView : IView, IViewDataContainer
     {
+
+        IViewEngine ViewEngine { get; set; }
         /// <summary>
         /// Gets the HTML helper.
         /// </summary>
@@ -62,5 +64,7 @@ namespace EVE.Mvc.ViewEngine
         /// Cleans up internal resource intensive objects such as the document.
         /// </summary>
         void CleanUp();
+
+        void SetModel(object Model);
     }
 }

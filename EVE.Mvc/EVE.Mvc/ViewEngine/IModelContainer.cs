@@ -10,7 +10,7 @@ namespace EVE.Mvc.ViewEngine
     /// Defines a contract to have a Model of type T in the class.
     /// </summary>
     /// <typeparam name="T">Type of the Model</typeparam>
-    public interface IModelContainer<T>
+    internal interface IModelContainer<T>
     {
         /// <summary>
         /// Gets the model.
@@ -18,7 +18,9 @@ namespace EVE.Mvc.ViewEngine
         /// <value>
         /// The model.
         /// </value>
-         T Model { get;  }
+        T Model { get; set; }
+
+        
 
     }
 }
