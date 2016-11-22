@@ -150,7 +150,9 @@ namespace EVE.Mvc.Embedded
                 if (reqPath == null)
                     throw new ArgumentException("Provider's requestPath must exist", "provider.requestPath");
 
+#pragma warning disable CS1690 // Accessing a member on a field of a marshal-by-reference class may cause a runtime exception
                 return provider.embeddedFileSystem.TryGetFileInfo(this.VirtualPath.Remove(0, provider.requestPath.Value.Length), out fileInfo);
+#pragma warning restore CS1690 // Accessing a member on a field of a marshal-by-reference class may cause a runtime exception
             }
         }
         /// <summary>

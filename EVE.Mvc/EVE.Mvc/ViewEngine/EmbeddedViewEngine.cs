@@ -1,5 +1,6 @@
 ﻿using EVE.Mvc.Composition;
 using EVE.Mvc.ViewEngine;
+using EVE.Mvc.ViewEngine.Providers;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -34,34 +35,37 @@ namespace EVE.Mvc
         /// The markup provider.
         /// </value>
         public BaseMarkupProvider MarkupProvider { get; private set; }
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmbeddedViewEngine"/> class.
+        /// Gets view class provider
         /// </summary>
-        public EmbeddedViewEngine()
-            : this(string.Empty, EVE.Mvc.ViewEngine.MarkupProvider.CurrentProvider)
-        {
-           
-        }
+        public BaseViewClassProvider ViewClassProvider { get; private set; }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EmbeddedViewEngine"/> class.
-        /// </summary>
-        /// <param name="viewNamePrefix">The view name prefix.</param>
-        public EmbeddedViewEngine(string viewNamePrefix)
-            : this(viewNamePrefix, EVE.Mvc.ViewEngine.MarkupProvider.CurrentProvider)
-        {
-
-        }
         /// <summary>
         /// Initializes a new instance of the <see cref="EmbeddedViewEngine"/> class.
         /// </summary>
         /// <param name="viewNamePrefix">The view name prefix.</param>
         /// <param name="markupProvider">The markup provider.</param>
-        public EmbeddedViewEngine(string viewNamePrefix, BaseMarkupProvider markupProvider)
+        public EmbeddedViewEngine(string viewNamePrefix = "",
+            BaseMarkupProvider markupProvider = null, 
+            BaseViewClassProvider viewClassProvider = null)
         {
-            ViewNamePrefix = viewNamePrefix;
+            if (markupProvider== null)
+            {
+                if (ViewEngine.Providers.MarkupProvider.CurrentProvider == null)
+                    throw new ArgumentNullException("Markup provider is not specified");
+                markupProvider = ViewEngine.Providers.MarkupProvider.CurrentProvider;
+            }
             this.MarkupProvider = markupProvider;
+
+            if (viewClassProvider == null)
+            {
+                if (ViewEngine.Providers.ViewClassProvider.CurrentProvider == null)
+                    throw new ArgumentNullException("ViewClass provider is not specified");
+                viewClassProvider = ViewEngine.Providers.ViewClassProvider.CurrentProvider;
+            }
+            this.ViewClassProvider = viewClassProvider;
+            ViewNamePrefix = viewNamePrefix;
+            
         }
 
         /// <summary>
@@ -184,13 +188,7 @@ namespace EVE.Mvc
 
         private IEmbeddedView FindEmbeddedViewClass(string viewName)
         {
-            var views = EveMefContainer.Container.GetExports<IEmbeddedView>(viewName);
-            if (views != null && views.Count() > 0)
-            {
-                var view = views.First().Value;
-                return view;
-            }
-            return null;
+            return ViewClassProvider.GetEmbeddedViewClass(viewName);
         }
 
 

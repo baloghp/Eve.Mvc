@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Web.Razor.Parser;
-using System.Dynamic;
 using System.IO;
-using System.Web.Mvc.Razor;
-using System.ComponentModel.Composition;
-using HtmlAgilityPack;
+//using HtmlAgilityPack;
 using System.Web.Mvc.Html;
 using EVE.Mvc.ViewEngine;
 using System.Web.UI;
-using EVE.Mvc;
+using HtmlAgilityPack;
 
 namespace EVE.Mvc
 {
@@ -191,7 +185,7 @@ namespace EVE.Mvc
         public void Render(ViewContext viewContext, System.IO.TextWriter writer)
         {
 
-            HtmlDocument document;
+            //HtmlDocument document;
 
             //init context sensitive fields
             this.ViewContext = viewContext;

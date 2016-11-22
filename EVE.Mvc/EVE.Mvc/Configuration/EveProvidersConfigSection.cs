@@ -13,33 +13,42 @@ namespace EVE.Mvc.Configuration
     public class EveProvidersConfigSection : System.Configuration.ConfigurationSection
     {
         private readonly ConfigurationProperty catalogProvider = new ConfigurationProperty("catalogProvider", typeof(ProviderSettings), null);
-       
-            public EveProvidersConfigSection()
-            {
-                this.Properties.Add(catalogProvider);
-                
-            }
+
+        public EveProvidersConfigSection()
+        {
+            this.Properties.Add(catalogProvider);
+
+        }
 
         /// <summary>
         /// Provider for creating the MEF Catalog that EveMefContainer.Container is based on.
         /// </summary>
-            [ConfigurationProperty("catalogProvider")]
-            public ProviderSettings CatalogProvider
-            {
-                get { return (ProviderSettings)base["catalogProvider"]; }
-            }
+        [ConfigurationProperty("catalogProvider")]
+        public ProviderSettings CatalogProvider
+        {
+            get { return (ProviderSettings)base["catalogProvider"]; }
+        }
 
 
 
 
-            /// <summary>
-            /// Provider for getting markup for the Embedded View Engine.
-            /// </summary>
-            [ConfigurationProperty("markupProvider")]
-            public ProviderSettings MarkupProvider
-            {
-                get { return (ProviderSettings)base["markupProvider"]; }
-            }
+        /// <summary>
+        /// Provider for getting markup for the Embedded View Engine.
+        /// </summary>
+        [ConfigurationProperty("markupProvider")]
+        public ProviderSettings MarkupProvider
+        {
+            get { return (ProviderSettings)base["markupProvider"]; }
+        }
+
+        /// <summary>
+        /// Provider for getting markup for the Embedded View Engine.
+        /// </summary>
+        [ConfigurationProperty("viewProvider")]
+        public ProviderSettings ViewProvider
+        {
+            get { return (ProviderSettings)base["viewProvider"]; }
+        }
     }
-    
+
 }

@@ -10,6 +10,7 @@ using System.Web.Optimization;
 using System.IO;
 using EVE.Mvc.Plugin;
 using EVE.Mvc.ViewEngine;
+using EVE.Mvc.ViewEngine.Providers;
 
 [assembly: OwinStartupAttribute(typeof(EVE.Mvc.TestWebApp.Startup))]
 namespace EVE.Mvc.TestWebApp
@@ -21,7 +22,8 @@ namespace EVE.Mvc.TestWebApp
             //registry for the view engine samples, more specific goes first
             ViewEngines.Engines.Insert(0, 
                 new EmbeddedViewEngine("eve-" // every view name will be prefixed by this
-                    , new BaseResourceNamespaceMarkupProvider("EVE.Mvc.Samples.ViewEngine"))); // using this markup provider, so we can have somewhat shorter view names
+                    , new BaseResourceNamespaceMarkupProvider("EVE.Mvc.Samples.ViewEngine") // using this markup provider, so we can have somewhat shorter view names
+                    )); 
             
             //registry for any generic case 
             // this project won't use this, Embedded FIle system samples, do not use the view engine, 
