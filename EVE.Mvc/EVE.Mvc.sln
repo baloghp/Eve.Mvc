@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8777C9F1-7DC4-4389-8F2F-AAC0AB8EFED7}"
 	ProjectSection(SolutionItems) = preProject
-		.nuget\EVE.Mvc.0.5.2.nuspec = .nuget\EVE.Mvc.0.5.2.nuspec
+		.nuget\EVE.Mvc.0.5.3.nuspec = .nuget\EVE.Mvc.0.5.3.nuspec
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
