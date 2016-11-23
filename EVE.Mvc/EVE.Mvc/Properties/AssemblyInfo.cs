@@ -35,4 +35,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("0.5.0.3")]
 [assembly: AssemblyFileVersion("0.5.0.3")]
 //for nuget
-[assembly: AssemblyInformationalVersion("0.5.1-alpha")]
+[assembly: AssemblyInformationalVersion("0.5.3-alpha")]
