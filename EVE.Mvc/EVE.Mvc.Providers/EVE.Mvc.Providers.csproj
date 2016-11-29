@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -43,14 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseCatalogProvider.cs" />
+    <Compile Include="BaseEmbeddedPluginDefinitionProvider.cs" />
     <Compile Include="BaseMarkupProvider.cs" />
     <Compile Include="baseViewClassProvider.cs" />
+    <Compile Include="CatalogProvider.cs" />
     <Compile Include="Configuration\EveProvidersConfigSection.cs" />
+    <Compile Include="EmbeddedPluginDefinitionProvider.cs" />
     <Compile Include="MarkupProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewClassProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EVE.Mvc.Plugin\EVE.Mvc.Plugin.csproj">
+      <Project>{2bfd3d78-00d7-4a79-be81-6bb3288f9950}</Project>
+      <Name>EVE.Mvc.Plugin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc.View\EVE.Mvc.View.csproj">
       <Project>{0aabab37-a6e7-430c-a7be-838e83f28839}</Project>
       <Name>EVE.Mvc.View</Name>

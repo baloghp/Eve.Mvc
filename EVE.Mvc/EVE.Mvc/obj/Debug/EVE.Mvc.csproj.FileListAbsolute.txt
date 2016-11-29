@@ -48,3 +48,5 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc\bin\Debug\System.Web.
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc\obj\Debug\EVE.Mvc.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc\obj\Debug\EVE.Mvc.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc\bin\Debug\EVE.Mvc.Plugin.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc\bin\Debug\EVE.Mvc.Plugin.pdb

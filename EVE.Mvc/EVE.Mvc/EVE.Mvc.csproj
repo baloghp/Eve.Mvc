@@ -137,10 +137,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Composition\EveMefContainer.cs" />
-    <Compile Include="Composition\BaseCatalogProvider.cs" />
-    <Compile Include="Composition\BinDirectoryCatalogProvider.cs" />
-    <Compile Include="Composition\CatalogProvider.cs" />
     <Compile Include="Extensions\Bundles.cs" />
     <Compile Include="Extensions\DataBinding.cs" />
     <Compile Include="Extensions\Localization.cs" />
@@ -149,9 +145,6 @@
     <Compile Include="Embedded\AssetManager.cs" />
     <Compile Include="Embedded\EmbeddedPathProvider.cs" />
     <Compile Include="Plugin\AppBuilderExtension.cs" />
-    <Compile Include="Plugin\Providers\BaseEmbeddedPluginDefinitionProvider.cs" />
-    <Compile Include="Plugin\Providers\EmbeddedPluginDefinitionProvider.cs" />
-    <Compile Include="Plugin\Providers\MEFEmbeddedPluginDefinitionsProvider.cs" />
     <Compile Include="ViewEngine\DocumentHelper.cs" />
     <Compile Include="Embedded\EmbeddedFileSystem.cs" />
     <Compile Include="Embedded\EmbeddedHtmlStringResult.cs" />
@@ -162,10 +155,8 @@
     <Compile Include="ViewEngine\EmbeddedViewEngine.cs" />
     <Compile Include="ViewEngine\EveMarkupAttributes.cs" />
     <Compile Include="ViewEngine\IModelContainer.cs" />
-    <Compile Include="Plugin\IEmbeddedPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewEngine\MasterViewAttribute.cs" />
-    <Compile Include="ViewEngine\Providers\MEFViewClassProvider.cs" />
     <Compile Include="ViewEngine\SimpleResourceView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +174,10 @@
     <None Include="_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EVE.Mvc.Plugin\EVE.Mvc.Plugin.csproj">
+      <Project>{2bfd3d78-00d7-4a79-be81-6bb3288f9950}</Project>
+      <Name>EVE.Mvc.Plugin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc.Providers\EVE.Mvc.Providers.csproj">
       <Project>{691f4600-121b-48c0-a221-e744c3fe4f69}</Project>
       <Name>EVE.Mvc.Providers</Name>
@@ -192,6 +187,7 @@
       <Name>EVE.Mvc.View</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

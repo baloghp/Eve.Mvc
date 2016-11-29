@@ -1,0 +1,13 @@
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\EVE.Mvc.Plugin.dll.config
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\EVE.Mvc.Plugin.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\EVE.Mvc.Plugin.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\Antlr3.Runtime.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\Newtonsoft.Json.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\System.Web.Optimization.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\WebGrease.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\Antlr3.Runtime.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\Newtonsoft.Json.xml
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\System.Web.Optimization.xml
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\obj\Debug\EVE.Mvc.Plugin.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\obj\Debug\EVE.Mvc.Plugin.pdb
