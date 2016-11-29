@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Hosting;
 using EVE.Mvc.Embedded;
+using EVE.Mvc.Plugin.Providers;
 
 namespace EVE.Mvc.Plugin
 {
@@ -32,7 +33,7 @@ namespace EVE.Mvc.Plugin
             Action<IAppBuilder, IList<EmbeddedFileSystemDefinition>> BeforeEmbeddedFileSystemInitialize = null,
             Action<IAppBuilder, IList<RouteDefinition>> BeforeRegisteringRoutes = null)
         {
-            var plugins = EveMefContainer.Container.GetExports<IEmbeddedPlugin>().ToList();
+            var plugins = EmbeddedPluginDefinitionProvider.CurrentProvider.GetEmbeddedPluginList();
             if (BeforePluginsInitialized != null)
                 BeforePluginsInitialized(app, plugins);
             foreach (var p in plugins)

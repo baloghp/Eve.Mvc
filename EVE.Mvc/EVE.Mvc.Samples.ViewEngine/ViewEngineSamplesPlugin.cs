@@ -25,14 +25,6 @@ namespace EVE.Mvc.Samples.ViewEngine
             }
         }
 
-        public IList<ExtractRazorViewDefinition> RazoreViewsToExtract
-        {
-            get
-            {
-                // no razor views here
-                return null;
-            }
-        }
 
         public IList<RouteDefinition> Routes
         {

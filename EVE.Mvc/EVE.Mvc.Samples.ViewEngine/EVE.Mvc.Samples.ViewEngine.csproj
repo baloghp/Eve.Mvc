@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EVE.Mvc.Samples.ViewEngine</RootNamespace>
     <AssemblyName>EVE.Mvc.Samples.ViewEngine</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -166,6 +167,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EVE.Mvc.View\EVE.Mvc.View.csproj">
+      <Project>{0AABAB37-A6E7-430C-A7BE-838E83F28839}</Project>
+      <Name>EVE.Mvc.View</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc\EVE.Mvc.csproj">
       <Project>{03653281-a77e-463e-b24a-9763d59007a5}</Project>
       <Name>EVE.Mvc</Name>

@@ -27,8 +27,9 @@ namespace EVE.Mvc.Composition
             var configSection = ConfigurationManager.GetSection("EveProviders") as EveProvidersConfigSection;
             if (configSection == null || String.IsNullOrWhiteSpace(configSection.CatalogProvider.Type))
             {
-                CurrentProvider = new BinDirectoryCatalogProvider();
-                return;
+                throw new ArgumentException("Missing CatalogProvider");
+                //CurrentProvider = new BinDirectoryCatalogProvider();
+                //return;
             }
             var provider = ProvidersHelper.InstantiateProvider(configSection.CatalogProvider, typeof(BaseCatalogProvider));
             CurrentProvider = (BaseCatalogProvider)provider;

@@ -20,6 +20,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVE.Mvc.TestWebApp", "EVE.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVE.Mvc.Samples.Embedded", "EVE.Mvc.Samples.Embedded\EVE.Mvc.Samples.Embedded.csproj", "{5C0855AC-8408-4D5F-B148-AF50C77095B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVE.Mvc.Providers", "EVE.Mvc.Providers\EVE.Mvc.Providers.csproj", "{691F4600-121B-48C0-A221-E744C3FE4F69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVE.Mvc.View", "EVE.Mvc.View\EVE.Mvc.View.csproj", "{0AABAB37-A6E7-430C-A7BE-838E83F28839}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{3A00BFF4-549C-490F-AAB6-CEFA92C35A15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,8 +48,21 @@ Global
 		{5C0855AC-8408-4D5F-B148-AF50C77095B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C0855AC-8408-4D5F-B148-AF50C77095B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C0855AC-8408-4D5F-B148-AF50C77095B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{691F4600-121B-48C0-A221-E744C3FE4F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{691F4600-121B-48C0-A221-E744C3FE4F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{691F4600-121B-48C0-A221-E744C3FE4F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{691F4600-121B-48C0-A221-E744C3FE4F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AABAB37-A6E7-430C-A7BE-838E83F28839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AABAB37-A6E7-430C-A7BE-838E83F28839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AABAB37-A6E7-430C-A7BE-838E83F28839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AABAB37-A6E7-430C-A7BE-838E83F28839}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03653281-A77E-463E-B24A-9763D59007A5} = {3A00BFF4-549C-490F-AAB6-CEFA92C35A15}
+		{691F4600-121B-48C0-A221-E744C3FE4F69} = {3A00BFF4-549C-490F-AAB6-CEFA92C35A15}
+		{0AABAB37-A6E7-430C-A7BE-838E83F28839} = {3A00BFF4-549C-490F-AAB6-CEFA92C35A15}
 	EndGlobalSection
 EndGlobal
