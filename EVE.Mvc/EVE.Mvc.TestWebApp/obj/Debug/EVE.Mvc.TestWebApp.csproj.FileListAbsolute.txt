@@ -80,3 +80,7 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\Dynami
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\ja\EVE.Mvc.Samples.ViewEngine.resources.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\obj\Debug\EVE.Mvc.TestWebApp.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\obj\Debug\EVE.Mvc.TestWebApp.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.MEF.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.Plugin.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.MEF.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.Plugin.pdb

@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\EmbeddedViewAttribute.cs" />
+    <Compile Include="Attributes\EmbeddedViewEngine.cs" />
     <Compile Include="Composition\BinDirectoryCatalogProvider.cs" />
     <Compile Include="Composition\EveMefContainer.cs" />
     <Compile Include="MEFEmbeddedPluginDefinitionsProvider.cs" />
@@ -59,9 +61,9 @@
       <Project>{691f4600-121b-48c0-a221-e744c3fe4f69}</Project>
       <Name>EVE.Mvc.Providers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EVE.Mvc.View\EVE.Mvc.View.csproj">
+    <ProjectReference Include="..\EVE.Mvc.View\EVE.Mvc.Shared.csproj">
       <Project>{0AABAB37-A6E7-430C-A7BE-838E83F28839}</Project>
-      <Name>EVE.Mvc.View</Name>
+      <Name>EVE.Mvc.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

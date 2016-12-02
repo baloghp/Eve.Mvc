@@ -1,0 +1,43 @@
+﻿using HtmlAgilityPack;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Resources;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace EVE.Mvc
+{
+    /// <summary>
+    /// Extension methods for localization
+    /// </summary>
+    public static class Localization
+    {
+        public const string LocalAttribute = "eve-local";
+        /// <summary>
+        /// Processes the html document's tags with LocalAttribute ("eve-local") attributes, 
+        /// by evaluating the given attribute value on the specified ResourceManager with the specified culture, and inserting the result into the tag.
+        /// </summary>
+        /// <param name="documentHelper">Document this extension is attached on</param>
+        /// <param name="resourceManager">ResourceManager referring to the resx file for resources</param>
+        /// <param name="culture">Required culture for the localization</param>
+        /// <returns></returns>
+        public static IDocumentHelper ProcessLocals(this IDocumentHelper documentHelper, ResourceManager resourceManager, CultureInfo culture)
+        {
+            if (resourceManager == null)
+                throw new ArgumentNullException("resourceManager");
+            if (culture == null)
+                throw new ArgumentNullException("culture");
+
+            documentHelper.ProcessNodesWithAttribute(LocalAttribute, new Func<HtmlNode, string>(a =>
+            {
+                var resourceKey = a.Attributes[LocalAttribute].Value;
+                return resourceManager.GetString(resourceKey,culture);
+            }
+               ));
+            return documentHelper;
+        }
+    }
+}

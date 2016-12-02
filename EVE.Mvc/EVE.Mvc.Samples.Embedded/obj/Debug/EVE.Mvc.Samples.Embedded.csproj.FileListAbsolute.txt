@@ -53,3 +53,5 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.csproj.GenerateResource.Cache
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Plugin.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Plugin.pdb

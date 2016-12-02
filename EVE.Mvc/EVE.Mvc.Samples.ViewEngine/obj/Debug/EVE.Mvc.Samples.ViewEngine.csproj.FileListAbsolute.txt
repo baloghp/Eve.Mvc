@@ -54,3 +54,5 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bi
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\obj\Debug\ja\EVE.Mvc.Samples.ViewEngine.resources.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\obj\Debug\EVE.Mvc.Samples.ViewEngine.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\obj\Debug\EVE.Mvc.Samples.ViewEngine.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.Plugin.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.Plugin.pdb

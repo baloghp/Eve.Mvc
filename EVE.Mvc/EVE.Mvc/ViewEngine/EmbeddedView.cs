@@ -133,18 +133,18 @@ namespace EVE.Mvc
         #endregion
 
         #region sections
-        private List<Section> _sections;
+        private List<ISection> _sections;
         /// <summary>
         /// Gets the list of sections defined in the markup.
         /// </summary>
         /// <value>
         /// The sections.
         /// </value>
-        public IList<Section> Sections
+        public IList<ISection> Sections
         {
             get
             {
-                return _sections ?? (_sections = new List<Section>());
+                return _sections ?? (_sections = new List<ISection>());
             }
         }
         #endregion
@@ -288,7 +288,7 @@ namespace EVE.Mvc
                     if (Sections.Where(s => s.Name == sectionName).Count() > 0)
                         throw new ApplicationException(String.Format("Duplicate section definition: {0}", sectionName));
 
-                    Section section = new Section()
+                    ISection section = new Section()
                     {
                         Name = item.Attributes[EveMarkupAttributes.SectionDefinition].Value,
                         RenderInstead = item.Attributes[EveMarkupAttributes.RenderInstead] != null
