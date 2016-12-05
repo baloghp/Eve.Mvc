@@ -19,8 +19,8 @@ namespace EVE.Mvc
         /// <param name="attributeName">attribute that determines which nodes will be selected</param>
         /// <param name="getValue">Function that selects value for the node</param>
         /// <param name="removeAttribute">specifies if the attribute should be removed after inserting value</param>
-        public static void ProcessNodesWithAttribute(this IDocumentHelper documentHelper,
-            string attributeName, Func<HtmlNode, string> getValue,
+        public static void ProcessNodesWithAttribute<T>(this IDocumentHelper<T> documentHelper,
+            string attributeName, Func<IDocumentNode, string> getValue,
             bool removeAttribute = true)
         {
             // first we deal with  nodes that are not renderinsteads in parallel fashion
@@ -93,22 +93,25 @@ namespace EVE.Mvc
         /// </summary>
         /// <param name="renderNode"></param>
         /// <param name="content"></param>
-        public static void RenderValue(this HtmlNode renderNode, string content)
+        public static void RenderValue(this IDocumentNode renderNode, string content)
         {
             //let's see if we should render the current view into the tag, or instead
             // we put the raw markup in there
-            if (renderNode.IsReanderInstead())
+            if (renderNode.IsRenderInstead())
             {
-                var parent = renderNode.ParentNode;
-                parent.InnerHtml = parent.InnerHtml.Replace(renderNode.OuterHtml, content);
+                //var parent = renderNode.ParentNode;
+                //parent.InnerHtml = parent.InnerHtml.Replace(renderNode.OuterHtml, content);
+                renderNode.RenderInstead(content);
             }
-            else if (renderNode.Attributes.Contains(EveMarkupAttributes.RenderInto))
+            else if (renderNode.ContainsAttribute(EveMarkupAttributes.RenderInto))
             {
-                renderNode.InnerHtml += content;
+                //renderNode.InnerHtml += content;
+                renderNode.RenderInto(content);
             }
             else
             {
-                renderNode.InnerHtml = content;
+                //renderNode.InnerHtml = content;
+                renderNode.Render(content);
             }
         }
 
@@ -117,9 +120,10 @@ namespace EVE.Mvc
         /// </summary>
         /// <param name="renderNode">the node</param>
 
-        public static bool IsReanderInstead(this HtmlNode renderNode)
+        public static bool IsRenderInstead(this IDocumentNode renderNode)
         {
-            return renderNode.Attributes.Contains(EveMarkupAttributes.RenderInstead);
+            //return renderNode.Attributes.Contains(EveMarkupAttributes.RenderInstead);
+            return renderNode.ContainsAttribute(EveMarkupAttributes.RenderInstead);
 
 
         }

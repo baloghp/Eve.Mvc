@@ -10,7 +10,7 @@ namespace EVE.Mvc
     /// <summary>
     /// Interface defining HtmlDocument for view processing.
     /// </summary>
-    public interface IDocumentHelper
+    public interface IDocumentHelper<T> where T: IDocument
     {
         /// <summary>
         /// Gets the HtmlDocument.
@@ -18,7 +18,7 @@ namespace EVE.Mvc
         /// <value>
         /// The document.
         /// </value>
-        HtmlAgilityPack.HtmlDocument Document { get;}
+        T Document { get;}
        
     }
 }
