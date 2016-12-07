@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\EmbeddedViewAttribute.cs" />
-    <Compile Include="Attributes\EmbeddedViewEngine.cs" />
     <Compile Include="Composition\BinDirectoryCatalogProvider.cs" />
     <Compile Include="Composition\EveMefContainer.cs" />
     <Compile Include="MEFEmbeddedPluginDefinitionsProvider.cs" />

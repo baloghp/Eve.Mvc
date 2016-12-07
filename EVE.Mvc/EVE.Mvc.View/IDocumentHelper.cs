@@ -19,6 +19,7 @@ namespace EVE.Mvc
         /// The document.
         /// </value>
         T Document { get;}
-       
+
+        void CleanUp();
     }
 }

@@ -23,7 +23,6 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\System.Web.WebPages.Razor.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\WebActivatorEx.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\WebGrease.dll
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.View.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Providers.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\Dynamitey.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.pdb
@@ -44,7 +43,6 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\System.Web.WebPages.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\System.Web.WebPages.Razor.xml
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.View.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Providers.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\Dynamitey.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\Dynamitey.xml
@@ -55,3 +53,7 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Plugin.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Plugin.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Shared.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Processor.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Shared.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Processor.pdb

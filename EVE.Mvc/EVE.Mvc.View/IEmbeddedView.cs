@@ -24,7 +24,7 @@ namespace EVE.Mvc.ViewEngine
         /// <value>
         /// The HTML document.
         /// </value>
-        EVE.Mvc.IDocumentHelper HtmlDocument { get; }
+        EVE.Mvc.IDocumentHelper<IDocument> HtmlDocument { get; }
         /// <summary>
         /// Gets or sets the name of the master.
         /// </summary>

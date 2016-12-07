@@ -12,7 +12,7 @@ namespace EVE.Mvc.Composition
     /// <summary>
     /// Catalog provider implementation that takes uses a DirectoryCatalog on the web application's bin directory
     /// </summary>
-    public class BinDirectoryCatalogProvider : BaseCatalogProvider
+    public class BinDirectoryCatalogProvider : BaseCatalogFactory
     {
         /// <summary>
         /// Creates a DirectoryCatalog on the web application's bin directory 

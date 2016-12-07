@@ -139,9 +139,11 @@
     <Compile Include="Embedded\AssetManager.cs" />
     <Compile Include="Embedded\EmbeddedPathProvider.cs" />
     <Compile Include="Plugin\AppBuilderExtension.cs" />
-    <Compile Include="ViewEngine\DocumentHelper.cs" />
     <Compile Include="Embedded\EmbeddedFileSystem.cs" />
     <Compile Include="Embedded\EmbeddedHtmlStringResult.cs" />
+    <Compile Include="ViewEngine\DocumentHelper.cs" />
+    <Compile Include="ViewEngine\EmbeddedViewEngine.cs" />
+    <Compile Include="ViewEngine\MarkupNameAttribute.cs" />
     <Compile Include="ViewEngine\Providers\BaseResourceNamespaceMarkupProvider.cs" />
     <Compile Include="ViewEngine\Providers\EmbeddedMarkupProvider.cs" />
     <Compile Include="ViewEngine\EmbeddedView.cs" />
@@ -169,6 +171,10 @@
     <ProjectReference Include="..\EVE.Mvc.Plugin\EVE.Mvc.Plugin.csproj">
       <Project>{2bfd3d78-00d7-4a79-be81-6bb3288f9950}</Project>
       <Name>EVE.Mvc.Plugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EVE.Mvc.Processor\EVE.Mvc.Processor.csproj">
+      <Project>{a1fb1f6d-c069-4e2d-a2bd-c3444cfa5351}</Project>
+      <Name>EVE.Mvc.Processor</Name>
     </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc.Providers\EVE.Mvc.Providers.csproj">
       <Project>{691f4600-121b-48c0-a221-e744c3fe4f69}</Project>

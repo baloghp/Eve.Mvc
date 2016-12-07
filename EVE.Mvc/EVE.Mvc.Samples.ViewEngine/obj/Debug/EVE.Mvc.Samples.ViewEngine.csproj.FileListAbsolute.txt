@@ -8,7 +8,6 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bi
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\ja\EVE.Mvc.Samples.ViewEngine.resources.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\Antlr3.Runtime.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.dll
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.View.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\HtmlAgilityPack.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\Microsoft.Owin.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\Microsoft.Web.Infrastructure.dll
@@ -29,7 +28,6 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bi
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.Providers.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\Microsoft.Owin.StaticFiles.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\Dynamitey.dll
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.View.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\Antlr3.Runtime.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\HtmlAgilityPack.pdb
@@ -56,3 +54,9 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\ob
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\obj\Debug\EVE.Mvc.Samples.ViewEngine.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.Plugin.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.Plugin.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.MEF.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.Processor.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.Shared.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.MEF.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.Processor.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.ViewEngine\bin\Debug\EVE.Mvc.Shared.pdb

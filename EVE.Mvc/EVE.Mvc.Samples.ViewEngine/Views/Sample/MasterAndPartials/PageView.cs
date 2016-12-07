@@ -15,7 +15,6 @@ namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.MasterAndPartials
         {
             var nodes = this.HtmlDocument
                             .Document
-                            .DocumentNode
                             .SelectNodes("//h2");
             foreach (var item in nodes)
             {

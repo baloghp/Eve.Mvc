@@ -44,12 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseCatalogProvider.cs" />
+    <Compile Include="BaseCatalogFactory.cs" />
     <Compile Include="BaseEmbeddedPluginDefinitionProvider.cs" />
     <Compile Include="BaseMarkupProvider.cs" />
     <Compile Include="baseViewClassProvider.cs" />
-    <Compile Include="CatalogProvider.cs" />
+    <Compile Include="CatalogFactory.cs" />
     <Compile Include="Configuration\EveProvidersConfigSection.cs" />
+    <Compile Include="BaseDocumentHelperFactory.cs" />
+    <Compile Include="DocumentHelperFactory.cs" />
     <Compile Include="EmbeddedPluginDefinitionProvider.cs" />
     <Compile Include="MarkupProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
