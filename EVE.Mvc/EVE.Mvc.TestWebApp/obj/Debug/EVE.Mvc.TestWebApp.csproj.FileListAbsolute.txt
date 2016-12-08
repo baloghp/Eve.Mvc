@@ -37,7 +37,6 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\System
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\System.Web.WebPages.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\System.Web.WebPages.Razor.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\WebGrease.dll
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\HtmlAgilityPack.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\Dynamitey.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.Providers.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.Samples.Embedded.pdb
@@ -71,8 +70,6 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\System
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\System.Web.WebPages.Deployment.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\System.Web.WebPages.Razor.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\System.Web.Optimization.xml
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\HtmlAgilityPack.pdb
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\HtmlAgilityPack.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\Dynamitey.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\Dynamitey.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\ja\EVE.Mvc.Samples.ViewEngine.resources.dll

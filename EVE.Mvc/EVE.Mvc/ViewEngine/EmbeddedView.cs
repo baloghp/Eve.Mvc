@@ -7,7 +7,6 @@ using System.IO;
 using System.Web.Mvc.Html;
 using EVE.Mvc.ViewEngine;
 using System.Web.UI;
-using HtmlAgilityPack;
 using EVE.Mvc.Providers;
 
 namespace EVE.Mvc
@@ -201,10 +200,10 @@ namespace EVE.Mvc
             else
             {
                 //if there is no master page, we prepare the raw markup as the current document
-                var doc = new HtmlAgilityPack.HtmlDocument();
+                var doc = DocumentHelperFactory.Factory.CreateDocument(); //new HtmlAgilityPack.HtmlDocument();
                 if (!String.IsNullOrWhiteSpace(RawMarkup))
                     doc.LoadHtml(RawMarkup);
-                HtmlDocument = DocumentHelperFactory.Factory.CreateDocumentHelper<IDocument>();
+                HtmlDocument = DocumentHelperFactory.Factory.CreateDocumentHelper(doc);
             }
 
 

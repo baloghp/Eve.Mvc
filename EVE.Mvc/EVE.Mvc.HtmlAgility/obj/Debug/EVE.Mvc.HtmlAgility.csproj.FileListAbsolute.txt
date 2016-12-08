@@ -1,0 +1,5 @@
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.HtmlAgility\bin\Debug\EVE.Mvc.HtmlAgility.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.HtmlAgility\bin\Debug\EVE.Mvc.HtmlAgility.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.HtmlAgility\obj\Debug\EVE.Mvc.HtmlAgility.csprojResolveAssemblyReference.cache
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.HtmlAgility\obj\Debug\EVE.Mvc.HtmlAgility.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.HtmlAgility\obj\Debug\EVE.Mvc.HtmlAgility.pdb

@@ -30,6 +30,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Eve.Mvc.key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -44,10 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\AssemblyInfoVersion.cs" />
     <Compile Include="BaseCatalogFactory.cs" />
     <Compile Include="BaseEmbeddedPluginDefinitionProvider.cs" />
     <Compile Include="BaseMarkupProvider.cs" />
-    <Compile Include="baseViewClassProvider.cs" />
+    <Compile Include="BaseViewClassProvider.cs" />
     <Compile Include="CatalogFactory.cs" />
     <Compile Include="Configuration\EveProvidersConfigSection.cs" />
     <Compile Include="BaseDocumentHelperFactory.cs" />
@@ -66,6 +73,9 @@
       <Project>{0aabab37-a6e7-430c-a7be-838e83f28839}</Project>
       <Name>EVE.Mvc.Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Eve.Mvc.key.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
