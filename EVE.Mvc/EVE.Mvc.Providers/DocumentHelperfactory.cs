@@ -28,7 +28,7 @@ namespace EVE.Mvc.Providers
                 //CurrentProvider = new BinDirectoryCatalogProvider();
                 //return;
             }
-            var provider = ProvidersHelper.InstantiateProvider(configSection.CatalogFactory, typeof(BaseDocumentHelperFactory));
+            var provider = ProvidersHelper.InstantiateProvider(configSection.DocumentHelperFactory, typeof(BaseDocumentHelperFactory));
             Factory = (BaseDocumentHelperFactory)provider;
 
         }

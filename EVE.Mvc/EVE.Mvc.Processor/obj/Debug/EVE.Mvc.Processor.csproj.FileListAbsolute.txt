@@ -1,4 +1,3 @@
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\obj\Debug\EVE.Mvc.Processor.csprojResolveAssemblyReference.cache
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\bin\Debug\EVE.Mvc.Processor.dll.config
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\bin\Debug\EVE.Mvc.Processor.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\bin\Debug\EVE.Mvc.Processor.pdb
@@ -27,5 +26,6 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\bin\Debug\S
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\bin\Debug\System.Web.WebPages.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\obj\Debug\EVE.Mvc.Processor.csprojResolveAssemblyReference.cache
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\obj\Debug\EVE.Mvc.Processor.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Processor\obj\Debug\EVE.Mvc.Processor.pdb

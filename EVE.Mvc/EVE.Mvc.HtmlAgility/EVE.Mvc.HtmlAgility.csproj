@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EVE.Mvc.HtmlAgility</RootNamespace>
     <AssemblyName>EVE.Mvc.HtmlAgility</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,7 +37,12 @@
     <AssemblyOriginatorKeyFile>Eve.Mvc.key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,10 +55,26 @@
     <Compile Include="..\EVE.Mvc\Properties\AssemblyInfoVersion.cs">
       <Link>Properties\AssemblyInfoVersion.cs</Link>
     </Compile>
+    <Compile Include="HADocument.cs" />
+    <Compile Include="HADocumentHelper.cs" />
+    <Compile Include="HADocumentNode.cs" />
+    <Compile Include="HtmlAgilityDocumentHelperFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Eve.Mvc.key.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EVE.Mvc.Providers\EVE.Mvc.Providers.csproj">
+      <Project>{691f4600-121b-48c0-a221-e744c3fe4f69}</Project>
+      <Name>EVE.Mvc.Providers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EVE.Mvc.View\EVE.Mvc.Shared.csproj">
+      <Project>{0aabab37-a6e7-430c-a7be-838e83f28839}</Project>
+      <Name>EVE.Mvc.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

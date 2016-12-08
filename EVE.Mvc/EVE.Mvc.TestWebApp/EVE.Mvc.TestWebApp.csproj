@@ -243,7 +243,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -268,6 +270,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EVE.Mvc.HtmlAgility\EVE.Mvc.HtmlAgility.csproj">
+      <Project>{01f4eb41-76da-4436-8cdf-ae8e1b2357c2}</Project>
+      <Name>EVE.Mvc.HtmlAgility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc.MEF\EVE.Mvc.MEF.csproj">
       <Project>{5b6687f9-96a1-40fa-b812-2e5581870970}</Project>
       <Name>EVE.Mvc.MEF</Name>
@@ -275,6 +281,10 @@
     <ProjectReference Include="..\EVE.Mvc.Plugin\EVE.Mvc.Plugin.csproj">
       <Project>{2bfd3d78-00d7-4a79-be81-6bb3288f9950}</Project>
       <Name>EVE.Mvc.Plugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EVE.Mvc.Processor\EVE.Mvc.Processor.csproj">
+      <Project>{a1fb1f6d-c069-4e2d-a2bd-c3444cfa5351}</Project>
+      <Name>EVE.Mvc.Processor</Name>
     </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc.Providers\EVE.Mvc.Providers.csproj">
       <Project>{691f4600-121b-48c0-a221-e744c3fe4f69}</Project>

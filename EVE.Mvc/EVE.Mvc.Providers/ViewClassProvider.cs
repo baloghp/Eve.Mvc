@@ -29,7 +29,7 @@ namespace EVE.Mvc.ViewEngine.Providers
                 //CurrentProvider = new MEFViewClassProvider();
                 //return;
             }
-            var provider = ProvidersHelper.InstantiateProvider(configSection.MarkupProvider, typeof(BaseViewClassProvider));
+            var provider = ProvidersHelper.InstantiateProvider(configSection.ViewProvider, typeof(BaseViewClassProvider));
             CurrentProvider = (BaseViewClassProvider)provider;
 
         }
