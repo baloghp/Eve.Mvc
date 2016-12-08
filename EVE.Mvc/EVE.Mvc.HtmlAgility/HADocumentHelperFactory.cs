@@ -11,17 +11,17 @@ namespace EVE.Mvc.HtmlAgility
     {
         public override Mvc.IDocument CreateDocument()
         {
-            throw new NotImplementedException();
+            return new HADocument();
         }
 
-        public override Mvc.IDocumentHelper<T> CreateDocumentHelper<T>()
+        public override IDocumentHelper<IDocument> CreateDocumentHelper()
         {
-            throw new NotImplementedException();
+            return (IDocumentHelper<IDocument>)new HADocumentHelper();
         }
 
-        public override Mvc.IDocumentHelper<T> CreateDocumentHelper<T>(T document)
+        public override IDocumentHelper<IDocument> CreateDocumentHelper(IDocument document)
         {
-            throw new NotImplementedException();
+            return (IDocumentHelper<IDocument>)new HADocumentHelper(document);
         }
     }
 }

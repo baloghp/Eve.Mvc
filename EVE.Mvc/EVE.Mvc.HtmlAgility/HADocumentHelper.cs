@@ -9,6 +9,17 @@ namespace EVE.Mvc.HtmlAgility
 {
     public class HADocumentHelper : Mvc.IDocumentHelper<HADocument>
     {
+        private IDocument document;
+
+        public HADocumentHelper()
+        {
+        }
+
+        public HADocumentHelper(IDocument document)
+        {
+            this.document = document;
+        }
+
         public HADocument Document
         {
             get

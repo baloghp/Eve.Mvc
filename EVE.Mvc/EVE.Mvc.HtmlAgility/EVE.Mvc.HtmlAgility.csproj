@@ -58,7 +58,7 @@
     <Compile Include="HADocument.cs" />
     <Compile Include="HADocumentHelper.cs" />
     <Compile Include="HADocumentNode.cs" />
-    <Compile Include="HtmlAgilityDocumentHelperFactory.cs" />
+    <Compile Include="HADocumentHelperFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

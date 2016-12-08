@@ -9,8 +9,8 @@ namespace EVE.Mvc.Providers
 {
     public abstract class BaseDocumentHelperFactory : ProviderBase
     {
-        public abstract IDocumentHelper<T> CreateDocumentHelper<T>() where T : IDocument;
-        public abstract IDocumentHelper<T> CreateDocumentHelper<T>(T document) where T : IDocument;
+        public abstract IDocumentHelper<IDocument> CreateDocumentHelper();
+        public abstract IDocumentHelper<IDocument> CreateDocumentHelper(IDocument document);
         public abstract IDocument CreateDocument();
     }
 }
