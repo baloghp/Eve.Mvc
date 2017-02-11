@@ -76,7 +76,7 @@ namespace EVE.Mvc.HtmlAgility
         /// <param name="content"></param>
         public void RenderInstead(string content)
         {
-            // on document level this is the same as render
+            // on document level this is the same as renewing the doc
 
             //throw new NotImplementedException();
 
