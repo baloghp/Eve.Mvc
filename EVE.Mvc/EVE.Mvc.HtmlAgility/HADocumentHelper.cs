@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc.HtmlAgility
 {
-    public class HADocumentHelper : Mvc.IDocumentHelper<HADocument>
+    public class HADocumentHelper : Mvc.IDocumentHelper<IDocument>
     {
         private IDocument document;
 
         public HADocumentHelper()
         {
+            document = new HADocument();
         }
 
         public HADocumentHelper(IDocument document)
@@ -20,17 +21,17 @@ namespace EVE.Mvc.HtmlAgility
             this.document = document;
         }
 
-        public HADocument Document
+        public IDocument Document
         {
             get
             {
-                throw new NotImplementedException();
+                return document;
             }
         }
 
         public void CleanUp()
         {
-            throw new NotImplementedException();
+            this.document = null;
         }
     }
 }

@@ -3,21 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HtmlAgilityPack;
 
 namespace EVE.Mvc.HtmlAgility
 {
     public class HADocumentNode : IDocumentNode
     {
+        private HtmlNode Node;
+
+        public HADocumentNode(HtmlNode node)
+        {
+            this.Node = node;
+        }
+
         public string InnerHtml
         {
             get
             {
-                throw new NotImplementedException();
+                return Node.InnerHtml;
             }
 
             set
             {
-                throw new NotImplementedException();
+                this.Node.InnerHtml=value;
             }
         }
 
@@ -25,56 +33,54 @@ namespace EVE.Mvc.HtmlAgility
         {
             get
             {
-                throw new NotImplementedException();
+                return Node.OuterHtml;
             }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
+           
         }
 
         public IDocumentNode ParentNode
         {
             get
             {
-                throw new NotImplementedException();
+                return new HADocumentNode(Node.ParentNode);
             }
         }
 
-        public bool ContainsAttribute(string renderInstead)
+        public bool ContainsAttribute(string attributeName)
         {
-            throw new NotImplementedException();
+            return Node.Attributes.Contains(attributeName);
         }
 
         public string GetAttributeValue(string attributeName)
         {
-            throw new NotImplementedException();
+            return Node.Attributes[attributeName].Value;
         }
 
         public void Remove()
         {
-            throw new NotImplementedException();
+            Node.Remove();
         }
 
         public void RemoveAttribute(string attributeName)
         {
-            throw new NotImplementedException();
+            Node.Attributes.Remove(attributeName);
         }
 
         public void Render(string content)
         {
-            throw new NotImplementedException();
+            Node.InnerHtml = content;
         }
 
         public void RenderInstead(string content)
         {
-            throw new NotImplementedException();
+            var parent = Node.ParentNode;
+            parent.InnerHtml = parent.InnerHtml.Replace(Node.OuterHtml, content);
         }
 
         public void RenderInto(string content)
         {
-            throw new NotImplementedException();
+            Node.InnerHtml += content;
         }
     }
 }

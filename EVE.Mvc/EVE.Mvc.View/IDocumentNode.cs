@@ -10,10 +10,10 @@ namespace EVE.Mvc
     public interface IDocumentNode
     {
         IDocumentNode ParentNode { get; }
-        string OuterHtml { get; set; }
+        string OuterHtml { get;  }
         string InnerHtml { get; set; }
 
-        bool ContainsAttribute(string renderInstead);
+        bool ContainsAttribute(string attributeName);
         void RenderInstead(string content);
         void RenderInto(string content);
         void Render(string content);

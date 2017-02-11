@@ -14,12 +14,12 @@ namespace EVE.Mvc.HtmlAgility
         {
             get
             {
-                throw new NotImplementedException();
+                return DocumentNode.InnerHtml;
             }
 
             set
             {
-                throw new NotImplementedException();
+                DocumentNode.InnerHtml = value;
             }
         }
 
@@ -27,76 +27,86 @@ namespace EVE.Mvc.HtmlAgility
         {
             get
             {
-                throw new NotImplementedException();
+                return DocumentNode.OuterHtml;
             }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
+          
         }
 
         public IDocumentNode ParentNode
         {
             get
             {
-                throw new NotImplementedException();
+                return null;
             }
         }
 
-        public bool ContainsAttribute(string renderInstead)
+        public bool ContainsAttribute(string attributeName)
         {
-            throw new NotImplementedException();
+            return DocumentNode.Attributes.Contains(attributeName);
         }
 
         public string GetAttributeValue(string attributeName)
         {
-            throw new NotImplementedException();
+            return DocumentNode.Attributes[attributeName].Value;
         }
 
-        public void LoadHtml(string v)
+        public new void LoadHtml(string html)
         {
-            throw new NotImplementedException();
+            base.LoadHtml(html);             
         }
 
         public void Remove()
         {
-            throw new NotImplementedException();
+            DocumentNode.Remove();
         }
 
         public void RemoveAttribute(string attributeName)
         {
-            throw new NotImplementedException();
+            DocumentNode.Attributes.Remove(attributeName);
         }
 
         public void Render(string content)
         {
-            throw new NotImplementedException();
+            DocumentNode.InnerHtml = content;
         }
-
+        /// <summary>
+        /// On Document level this is the same as loadhtml.
+        /// </summary>
+        /// <param name="content"></param>
         public void RenderInstead(string content)
         {
-            throw new NotImplementedException();
+            // on document level this is the same as render
+
+            //throw new NotImplementedException();
+
+            this.LoadHtml(content);
         }
 
         public void RenderInto(string content)
         {
-            throw new NotImplementedException();
+            DocumentNode.InnerHtml += content;
         }
 
-        public void Save(TextWriter writer)
+        public new void Save(TextWriter writer)
         {
-            throw new NotImplementedException();
+            base.Save(writer);
         }
 
         public IEnumerable<IDocumentNode> SelectNodes(string xpath)
         {
-            throw new NotImplementedException();
+            var nodes = DocumentNode.SelectNodes(xpath);
+            if (nodes == null) return null;
+
+            return from a in nodes
+                   select new HADocumentNode(a);
         }
 
         public IDocumentNode SelectSingleNode(string xpath)
         {
-            throw new NotImplementedException();
+            var node = DocumentNode.SelectSingleNode(xpath);
+            if (node == null) return null;
+            return new HADocumentNode(node);
         }
     }
 }

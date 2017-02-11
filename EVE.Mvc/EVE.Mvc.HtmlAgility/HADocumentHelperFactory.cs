@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EVE.Mvc.HtmlAgility
 {
-    public class HtmlAgilityDocumentHelperFactory : BaseDocumentHelperFactory
+    public class HADocumentHelperFactory : BaseDocumentHelperFactory
     {
         public override Mvc.IDocument CreateDocument()
         {
@@ -16,12 +16,12 @@ namespace EVE.Mvc.HtmlAgility
 
         public override IDocumentHelper<IDocument> CreateDocumentHelper()
         {
-            return (IDocumentHelper<IDocument>)new HADocumentHelper();
+            return new HADocumentHelper();
         }
 
         public override IDocumentHelper<IDocument> CreateDocumentHelper(IDocument document)
         {
-            return (IDocumentHelper<IDocument>)new HADocumentHelper(document);
+            return new HADocumentHelper(document);
         }
     }
 }
