@@ -301,6 +301,10 @@
       <Project>{0aabab37-a6e7-430c-a7be-838e83f28839}</Project>
       <Name>EVE.Mvc.Shared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EVE.MVC.Xml\EVE.MVC.Xml.csproj">
+      <Project>{5c25c31b-f452-4331-bbf8-2bf52fa30ec3}</Project>
+      <Name>EVE.MVC.Xml</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc\EVE.Mvc.csproj">
       <Project>{03653281-a77e-463e-b24a-9763d59007a5}</Project>
       <Name>EVE.Mvc</Name>

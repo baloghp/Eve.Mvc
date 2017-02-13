@@ -1,10 +1,7 @@
-﻿using EVE.Mvc;
-using EVE.Mvc.Composition;
+﻿using EVE.Mvc.Composition;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EVE.Mvc.Plugin.Providers
 {

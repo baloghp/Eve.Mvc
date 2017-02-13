@@ -54,6 +54,8 @@
       <Link>Properties\AssemblyInfoVersion.cs</Link>
     </Compile>
     <Compile Include="Attributes\EmbeddedViewAttribute.cs" />
+    <Compile Include="BaseCatalogFactory.cs" />
+    <Compile Include="CatalogFactory.cs" />
     <Compile Include="Composition\BinDirectoryCatalogProvider.cs" />
     <Compile Include="Composition\EveMefContainer.cs" />
     <Compile Include="MEFEmbeddedPluginDefinitionsProvider.cs" />

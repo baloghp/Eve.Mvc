@@ -1,14 +1,7 @@
-﻿using EVE.Mvc.Composition;
-using EVE.Mvc.ViewEngine;
+﻿using EVE.Mvc.ViewEngine;
 using EVE.Mvc.ViewEngine.Providers;
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace EVE.Mvc

@@ -38,7 +38,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -51,11 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfoVersion.cs" />
-    <Compile Include="BaseCatalogFactory.cs" />
     <Compile Include="BaseEmbeddedPluginDefinitionProvider.cs" />
     <Compile Include="BaseMarkupProvider.cs" />
     <Compile Include="BaseViewClassProvider.cs" />
-    <Compile Include="CatalogFactory.cs" />
     <Compile Include="Configuration\EveProvidersConfigSection.cs" />
     <Compile Include="BaseDocumentHelperFactory.cs" />
     <Compile Include="DocumentHelperFactory.cs" />

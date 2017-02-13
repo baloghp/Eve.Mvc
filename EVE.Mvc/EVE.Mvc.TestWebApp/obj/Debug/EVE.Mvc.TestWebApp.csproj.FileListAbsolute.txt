@@ -1,3 +1,4 @@
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\obj\Debug\EVE.Mvc.TestWebApp.csprojResolveAssemblyReference.cache
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.TestWebApp.dll.config
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.TestWebApp.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.TestWebApp.pdb
@@ -13,6 +14,7 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mv
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.Samples.Embedded.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.Samples.ViewEngine.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.Shared.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.MVC.Xml.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -51,6 +53,7 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mv
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.Samples.Embedded.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.Samples.ViewEngine.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.Shared.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.MVC.Xml.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EVE.Mvc.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\Antlr3.Runtime.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\EntityFramework.xml
@@ -85,6 +88,5 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\HtmlAg
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\Dynamitey.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\Dynamitey.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\ja\EVE.Mvc.Samples.ViewEngine.resources.dll
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\obj\Debug\EVE.Mvc.TestWebApp.csprojResolveAssemblyReference.cache
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\obj\Debug\EVE.Mvc.TestWebApp.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\obj\Debug\EVE.Mvc.TestWebApp.pdb

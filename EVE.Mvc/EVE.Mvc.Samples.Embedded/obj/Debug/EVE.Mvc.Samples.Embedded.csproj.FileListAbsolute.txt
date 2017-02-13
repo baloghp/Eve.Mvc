@@ -1,3 +1,6 @@
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.csprojResolveAssemblyReference.cache
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.UIStrings.resources
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.csproj.GenerateResource.Cache
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Samples.Embedded.dll.config
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Samples.Embedded.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Samples.Embedded.pdb
@@ -52,8 +55,5 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\EVE.Mvc.Processor.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\Dynamitey.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\bin\Debug\Dynamitey.xml
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.csprojResolveAssemblyReference.cache
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.UIStrings.resources
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.csproj.GenerateResource.Cache
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Samples.Embedded\obj\Debug\EVE.Mvc.Samples.Embedded.pdb
