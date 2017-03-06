@@ -29,9 +29,16 @@ namespace EVE.Mvc.Plugin
         public static IAppBuilder UseEmbeddedPlugins(this IAppBuilder app,
             Action<IAppBuilder, IList<Lazy<IEmbeddedPlugin>>> BeforePluginsInitialized = null,
             Action<IAppBuilder, IList<EmbeddedFileSystemDefinition>> BeforeEmbeddedFileSystemInitialize = null,
-            Action<IAppBuilder, IList<RouteDefinition>> BeforeRegisteringRoutes = null)
+            Action<IAppBuilder, IList<RouteDefinition>> BeforeRegisteringRoutes = null,
+            BaseEmbeddedPluginDefinitionProvider embeddedPliginDefinitionProvider = null)
         {
-            var plugins = EmbeddedPluginDefinitionProvider.CurrentProvider.GetEmbeddedPluginList();
+            if (embeddedPliginDefinitionProvider == null)
+            {
+                if (EmbeddedPluginDefinitionProvider.CurrentProvider == null)
+                    throw new ArgumentNullException("EmbeddedPliginDefinition provider is not specified");
+                embeddedPliginDefinitionProvider = EmbeddedPluginDefinitionProvider.CurrentProvider;
+            }
+            var plugins = embeddedPliginDefinitionProvider.GetEmbeddedPluginList();
             if (BeforePluginsInitialized != null)
                 BeforePluginsInitialized(app, plugins);
             foreach (var p in plugins)
