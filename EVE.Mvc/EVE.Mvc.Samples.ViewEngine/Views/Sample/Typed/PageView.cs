@@ -17,7 +17,6 @@ namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.Typed
             this.HtmlDocument.ProcessBundles();
             this.HtmlDocument
                .Document
-               .DocumentNode
                .SelectSingleNode("//title")
                .InnerHtml = String.Format("Type of the Model of this View is: {0}, and it is not null (true/false): {1}", Model.GetType(), Model!=null) ;
         }

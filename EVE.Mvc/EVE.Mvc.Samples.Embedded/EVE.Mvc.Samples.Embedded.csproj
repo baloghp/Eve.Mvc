@@ -219,7 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EVE.Mvc.Plugin\EVE.Mvc.Plugin.csproj">
-      <Project>{2BFD3D78-00D7-4A79-BE81-6BB3288F9950}</Project>
+      <Project>{2bfd3d78-00d7-4a79-be81-6bb3288f9950}</Project>
       <Name>EVE.Mvc.Plugin</Name>
     </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc\EVE.Mvc.csproj">

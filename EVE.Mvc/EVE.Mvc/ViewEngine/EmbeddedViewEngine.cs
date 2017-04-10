@@ -1,14 +1,7 @@
-﻿using EVE.Mvc.Composition;
-using EVE.Mvc.ViewEngine;
+﻿using EVE.Mvc.ViewEngine;
 using EVE.Mvc.ViewEngine.Providers;
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.ComponentModel.Composition.Hosting;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace EVE.Mvc
@@ -174,7 +167,7 @@ namespace EVE.Mvc
             if (view!=null)
             {
                 //let's see if there is a markup name specified for the view class
-                var viewAttribute = view.GetType().GetCustomAttribute<EmbeddedViewAttribute>();
+                var viewAttribute = view.GetType().GetCustomAttribute<MarkupNameAttribute>();
                 if (viewAttribute != null && !String.IsNullOrWhiteSpace(viewAttribute.MarkupName))
                 {
                     string result = MarkupProvider.GetResource(viewAttribute.MarkupName, view);

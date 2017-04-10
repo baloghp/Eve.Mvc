@@ -10,7 +10,7 @@ using System.Web.Hosting;
 
 namespace EVE.Mvc.TestWebApp.Providers
 {
-    public class SampleEveCatalogProvider : BaseCatalogProvider
+    public class SampleEveCatalogProvider : BaseCatalogFactory
     {
         public override ComposablePartCatalog CreateCatalog()
         {

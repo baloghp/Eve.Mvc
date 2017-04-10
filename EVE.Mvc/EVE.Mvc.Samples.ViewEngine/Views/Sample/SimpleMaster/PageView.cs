@@ -15,7 +15,6 @@ namespace EVE.Mvc.Samples.ViewEngine.Views.Sample.SimpleMaster
         {
             this.HtmlDocument
                 .Document
-                .DocumentNode
                 .SelectSingleNode("//title")
                 .InnerHtml = "This title is defined in Master, but it has been changed in page view.";
         }

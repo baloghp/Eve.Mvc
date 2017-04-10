@@ -7,7 +7,7 @@ using System.IO;
 using System.Web.Mvc.Html;
 using EVE.Mvc.ViewEngine;
 using System.Web.UI;
-using HtmlAgilityPack;
+using EVE.Mvc.Providers;
 
 namespace EVE.Mvc
 {
@@ -76,14 +76,14 @@ namespace EVE.Mvc
 
         #region markup and internal html doc
         public string RawMarkup { get; set; }
-        private IDocumentHelper _htmlDocument = null;
+        private IDocumentHelper<IDocument> _htmlDocument = null;
         /// <summary>
         /// Gets the HTML document.
         /// </summary>
         /// <value>
         /// The HTML document.
         /// </value>
-        public IDocumentHelper HtmlDocument
+        public IDocumentHelper<IDocument> HtmlDocument
         {
             get
             {
@@ -133,18 +133,18 @@ namespace EVE.Mvc
         #endregion
 
         #region sections
-        private List<Section> _sections;
+        private List<ISection> _sections;
         /// <summary>
         /// Gets the list of sections defined in the markup.
         /// </summary>
         /// <value>
         /// The sections.
         /// </value>
-        public IList<Section> Sections
+        public IList<ISection> Sections
         {
             get
             {
-                return _sections ?? (_sections = new List<Section>());
+                return _sections ?? (_sections = new List<ISection>());
             }
         }
         #endregion
@@ -200,10 +200,10 @@ namespace EVE.Mvc
             else
             {
                 //if there is no master page, we prepare the raw markup as the current document
-                var doc = new HtmlAgilityPack.HtmlDocument();
+                var doc = DocumentHelperFactory.Factory.CreateDocument(); //new HtmlAgilityPack.HtmlDocument();
                 if (!String.IsNullOrWhiteSpace(RawMarkup))
                     doc.LoadHtml(RawMarkup);
-                HtmlDocument = new DocumentHelper(doc);
+                HtmlDocument = DocumentHelperFactory.Factory.CreateDocumentHelper(doc);
             }
 
 
@@ -235,15 +235,15 @@ namespace EVE.Mvc
             HtmlDocument.Document.Save(writer);
         }
 
-        private string GetPartialString(HtmlNode partialNode)
+        private string GetPartialString(IDocumentNode partialNode)
         {
             //let's get the view name
-            var partialName = partialNode.Attributes[EveMarkupAttributes.PartialView].Value;
+            var partialName = partialNode.GetAttributeValue(EveMarkupAttributes.PartialView);
             //let's see if the user defined a model for this, by default we pass on the current model
             object partialModel = Model;
-            if (partialNode.Attributes.Contains(EveMarkupAttributes.PartialModel))
+            if (partialNode.ContainsAttribute(EveMarkupAttributes.PartialModel))
             {
-                var partialModelPath = partialNode.Attributes[EveMarkupAttributes.PartialModel].Value;
+                var partialModelPath = partialNode.GetAttributeValue(EveMarkupAttributes.PartialModel);
                 //eval the new partial model on the current one
                 if (Model != null && !string.IsNullOrWhiteSpace(partialModelPath))
                     partialModel = DataBinder.Eval(Model, partialModelPath);
@@ -267,7 +267,7 @@ namespace EVE.Mvc
         {
             foreach (var section in Sections)
             {
-                var sectionNode = HtmlDocument.Document.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeByValueQuery(EveMarkupAttributes.SectionDefinition, section.Name));
+                var sectionNode = HtmlDocument.Document.SelectSingleNode(EveMarkupAttributes.GetAttributeByValueQuery(EveMarkupAttributes.SectionDefinition, section.Name));
                 if (sectionNode != null)
                 {
                     var content = string.Concat(section.Contents);
@@ -278,27 +278,27 @@ namespace EVE.Mvc
 
         private void CreateSections()
         {
-            var sectionDefinitions = HtmlDocument.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.SectionDefinition));
+            var sectionDefinitions = HtmlDocument.Document.SelectNodes(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.SectionDefinition));
             if (sectionDefinitions != null)
             {
                 Sections.Clear();
                 foreach (var item in sectionDefinitions)
                 {
-                    string sectionName = item.Attributes[EveMarkupAttributes.SectionDefinition].Value;
+                    string sectionName = item.GetAttributeValue(EveMarkupAttributes.SectionDefinition);
                     if (Sections.Where(s => s.Name == sectionName).Count() > 0)
                         throw new ApplicationException(String.Format("Duplicate section definition: {0}", sectionName));
 
-                    Section section = new Section()
+                    ISection section = new Section()
                     {
-                        Name = item.Attributes[EveMarkupAttributes.SectionDefinition].Value,
-                        RenderInstead = item.Attributes[EveMarkupAttributes.RenderInstead] != null
+                        Name = item.GetAttributeValue(EveMarkupAttributes.SectionDefinition),
+                        RenderInstead = item.ContainsAttribute(EveMarkupAttributes.RenderInstead)
                     };
-                    var sectionContents = HtmlDocument.Document.DocumentNode.SelectNodes(EveMarkupAttributes.GetAttributeByValueQuery(EveMarkupAttributes.SectionContentFor, sectionName));
+                    var sectionContents = HtmlDocument.Document.SelectNodes(EveMarkupAttributes.GetAttributeByValueQuery(EveMarkupAttributes.SectionContentFor, sectionName));
                     if (sectionContents != null)
                     {
                         foreach (var sectionContentNode in sectionContents)
                         {
-                            if (sectionContentNode.Attributes[EveMarkupAttributes.RenderOnlyContent] == null)
+                            if (sectionContentNode.ContainsAttribute(EveMarkupAttributes.RenderOnlyContent))
                             {
                                 section.Contents.Add(sectionContentNode.OuterHtml);
                             }
@@ -316,7 +316,7 @@ namespace EVE.Mvc
             }
         }
 
-        private HtmlAgilityPack.HtmlDocument PrepareMasterPage()
+        private IDocument PrepareMasterPage()
         {
             MvcHtmlString masterString;
             //let's see if our own view engine can give us the master view string
@@ -327,11 +327,11 @@ namespace EVE.Mvc
             }
 
             //let's prepare that as our main doc
-            var masterDoc = new HtmlDocument();
+            var masterDoc = DocumentHelperFactory.Factory.CreateDocument();// new HtmlDocument();
             masterDoc.LoadHtml(masterString.ToHtmlString());
 
             //let's see where to put the current view
-            var renderBodyNode = masterDoc.DocumentNode.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.RenderBody));
+            var renderBodyNode = masterDoc.SelectSingleNode(EveMarkupAttributes.GetAttributeQuery(EveMarkupAttributes.RenderBody));
             //if we could not find the place there is trouble
             if (renderBodyNode == null)
                 throw new ApplicationException("Master does not define node with 'eve-renderbody' attribute");
@@ -340,7 +340,7 @@ namespace EVE.Mvc
             renderBodyNode.RenderValue(RawMarkup);
 
             // and we make the masterdoc our current operating document
-            HtmlDocument = new DocumentHelper(masterDoc);
+            HtmlDocument = DocumentHelperFactory.Factory.CreateDocumentHelper(masterDoc);
             return masterDoc;
         }
 
@@ -400,7 +400,7 @@ namespace EVE.Mvc
         /// </summary>
         public void CleanUp()
         {
-            var documentHelper = this.HtmlDocument as DocumentHelper;
+            var documentHelper = this.HtmlDocument as IDocumentHelper<IDocument>;
             if (documentHelper != null) documentHelper.CleanUp();
 
             this.HtmlDocument = null;

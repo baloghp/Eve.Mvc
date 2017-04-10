@@ -24,7 +24,7 @@ namespace EVE.Mvc.ViewEngine
         /// <value>
         /// The HTML document.
         /// </value>
-        EVE.Mvc.IDocumentHelper HtmlDocument { get; }
+        EVE.Mvc.IDocumentHelper<IDocument> HtmlDocument { get; }
         /// <summary>
         /// Gets or sets the name of the master.
         /// </summary>
@@ -50,7 +50,7 @@ namespace EVE.Mvc.ViewEngine
         /// <value>
         /// The sections.
         /// </value>
-        System.Collections.Generic.IList<Section> Sections { get; }
+        System.Collections.Generic.IList<ISection> Sections { get; }
         /// <summary>
         /// Gets or sets the name of the view.
         /// </summary>

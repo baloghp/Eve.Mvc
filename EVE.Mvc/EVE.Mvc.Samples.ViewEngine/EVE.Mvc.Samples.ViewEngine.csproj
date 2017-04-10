@@ -167,13 +167,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EVE.Mvc.MEF\EVE.Mvc.MEF.csproj">
+      <Project>{5b6687f9-96a1-40fa-b812-2e5581870970}</Project>
+      <Name>EVE.Mvc.MEF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc.Plugin\EVE.Mvc.Plugin.csproj">
-      <Project>{2BFD3D78-00D7-4A79-BE81-6BB3288F9950}</Project>
+      <Project>{2bfd3d78-00d7-4a79-be81-6bb3288f9950}</Project>
       <Name>EVE.Mvc.Plugin</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EVE.Mvc.View\EVE.Mvc.View.csproj">
+    <ProjectReference Include="..\EVE.Mvc.Processor\EVE.Mvc.Processor.csproj">
+      <Project>{a1fb1f6d-c069-4e2d-a2bd-c3444cfa5351}</Project>
+      <Name>EVE.Mvc.Processor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EVE.Mvc.View\EVE.Mvc.Shared.csproj">
       <Project>{0AABAB37-A6E7-430C-A7BE-838E83F28839}</Project>
-      <Name>EVE.Mvc.View</Name>
+      <Name>EVE.Mvc.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc\EVE.Mvc.csproj">
       <Project>{03653281-a77e-463e-b24a-9763d59007a5}</Project>

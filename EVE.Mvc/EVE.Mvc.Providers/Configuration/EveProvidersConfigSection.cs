@@ -23,10 +23,10 @@ namespace EVE.Mvc.Configuration
         /// <summary>
         /// Provider for creating the MEF Catalog that EveMefContainer.Container is based on.
         /// </summary>
-        [ConfigurationProperty("catalogProvider")]
-        public ProviderSettings CatalogProvider
+        [ConfigurationProperty("catalogFactory")]
+        public ProviderSettings CatalogFactory
         {
-            get { return (ProviderSettings)base["catalogProvider"]; }
+            get { return (ProviderSettings)base["catalogFactory"]; }
         }
 
 
@@ -57,6 +57,15 @@ namespace EVE.Mvc.Configuration
         public ProviderSettings PluginDefinitionsProvider
         {
             get { return (ProviderSettings)base["pluginDefinitionsProvider"]; }
+        }
+
+        /// <summary>
+        /// Provider for getting ViewClass for the Embedded View Engine.
+        /// </summary>
+        [ConfigurationProperty("documentHelperFactory")]
+        public ProviderSettings DocumentHelperFactory
+        {
+            get { return (ProviderSettings)base["documentHelperFactory"]; }
         }
     }
 

@@ -243,7 +243,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -265,9 +267,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EVE.Mvc.HtmlAgility\EVE.Mvc.HtmlAgility.csproj">
+      <Project>{01f4eb41-76da-4436-8cdf-ae8e1b2357c2}</Project>
+      <Name>EVE.Mvc.HtmlAgility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EVE.Mvc.MEF\EVE.Mvc.MEF.csproj">
+      <Project>{5b6687f9-96a1-40fa-b812-2e5581870970}</Project>
+      <Name>EVE.Mvc.MEF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EVE.Mvc.Plugin\EVE.Mvc.Plugin.csproj">
+      <Project>{2bfd3d78-00d7-4a79-be81-6bb3288f9950}</Project>
+      <Name>EVE.Mvc.Plugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EVE.Mvc.Processor\EVE.Mvc.Processor.csproj">
+      <Project>{a1fb1f6d-c069-4e2d-a2bd-c3444cfa5351}</Project>
+      <Name>EVE.Mvc.Processor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc.Providers\EVE.Mvc.Providers.csproj">
       <Project>{691f4600-121b-48c0-a221-e744c3fe4f69}</Project>
       <Name>EVE.Mvc.Providers</Name>
@@ -280,9 +297,13 @@
       <Project>{09b9b1d1-c8b1-41e5-8703-45607dcf10b1}</Project>
       <Name>EVE.Mvc.Samples.ViewEngine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EVE.Mvc.View\EVE.Mvc.View.csproj">
+    <ProjectReference Include="..\EVE.Mvc.View\EVE.Mvc.Shared.csproj">
       <Project>{0aabab37-a6e7-430c-a7be-838e83f28839}</Project>
-      <Name>EVE.Mvc.View</Name>
+      <Name>EVE.Mvc.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EVE.MVC.Xml\EVE.MVC.Xml.csproj">
+      <Project>{5c25c31b-f452-4331-bbf8-2bf52fa30ec3}</Project>
+      <Name>EVE.MVC.Xml</Name>
     </ProjectReference>
     <ProjectReference Include="..\EVE.Mvc\EVE.Mvc.csproj">
       <Project>{03653281-a77e-463e-b24a-9763d59007a5}</Project>

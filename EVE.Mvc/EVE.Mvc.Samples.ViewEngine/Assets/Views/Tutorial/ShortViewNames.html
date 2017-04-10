@@ -45,25 +45,29 @@
         <div class="panel panel-info">
             <div class="panel-heading">Shortening View names</div>
             <div class="panel-body">
-            It is possible to specify a resource name for any code view via the MarkupName property of the EmbeddedViewAttribute class. 
+                It is possible to specify a resource name for any code view via the MarkupName Attribute class.
                 <br />
-                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-ShortViewNames.Banner.html&quot;</span>,&nbsp;MarkupName&nbsp;<span style="color:#b4b4b4;">=</span>&nbsp;<span style="color:#d69d85;">&quot;Assets.Views.Sample.ShortViewNames.Banner.html&quot;</span>)]
-</pre>
-                <br />
-                This way you can give any name to your code view the ViewEngine will always look for the corresponding markup under the name as specified in the MarkupName property.
+
+                This way you can give any name to your code view the ViewEngine will always look for the corresponding markup under the name as specified in the MarkupName attribute.
                 Thus you can use a shorter view name than the resource name.
                 Like:
 
-               <br />
-                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;"><span style="color:gray;">&lt;</span><span style="color:#569cd6;">div</span>&nbsp;<span style="color:#9cdcfe;">class</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;banner&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partial</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;eve-ShortViewNames.Banner.html&quot;</span>&nbsp;<span style="color:#9cdcfe;">eve-partialmodel</span><span style="color:#b4b4b4;">=</span><span style="color:#c8c8c8;">&quot;Banner&quot;</span><span style="color:gray;">&gt;</span>
-</pre>
+                <br />
+                <pre style="font-family:Consolas;font-size:13;color:gainsboro;background:#1e1e1e;">[<span style="color:#4ec9b0;">EmbeddedView</span>(<span style="color:#d69d85;">&quot;eve-ShortViewNames.Banner.html&quot;</span>)]
+&nbsp;&nbsp;&nbsp;&nbsp;[<span style="color:#4ec9b0;">MarkupName</span>(<span style="color:#d69d85;">&quot;Assets.Views.Sample.ShortViewNames.Banner.html&quot;</span>)]
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">class</span>&nbsp;<span style="color:#4ec9b0;">Banner</span>&nbsp;:&nbsp;<span style="color:#4ec9b0;">DataBindingView</span>&lt;Models<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">Banner</span>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#569cd6;">public</span>&nbsp;<span style="color:#569cd6;">override</span>&nbsp;<span style="color:#569cd6;">void</span>&nbsp;ProcessView(System<span style="color:#b4b4b4;">.</span>Web<span style="color:#b4b4b4;">.</span>Mvc<span style="color:#b4b4b4;">.</span><span style="color:#4ec9b0;">ViewContext</span>&nbsp;viewContext)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</pre>
                 <br />
 
                 <a href="/Plugins/ViewEngineSample/Sample/ShortViewNames">Here is the landingpage using the short view names.</a>
 
             </div>
         </div>
-        
+
         <hr />
         <footer>
             <p>&copy; 2015 - EVE.Mvc</p>

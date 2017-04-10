@@ -28,7 +28,7 @@ namespace EVE.Mvc.Plugin.Providers
                 //CurrentProvider = new MEFEmbeddedPluginDefinitionsProvider();
                 //return;
             }
-            var provider = ProvidersHelper.InstantiateProvider(configSection.MarkupProvider, typeof(BaseEmbeddedPluginDefinitionProvider));
+            var provider = ProvidersHelper.InstantiateProvider(configSection.PluginDefinitionsProvider, typeof(BaseEmbeddedPluginDefinitionProvider));
             CurrentProvider = (BaseEmbeddedPluginDefinitionProvider)provider;
 
         }
