@@ -1,5 +1,5 @@
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\bin\Debug\EVE.MVC.Xml.dll
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\bin\Debug\EVE.MVC.Xml.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\bin\Debug\EVE.Mvc.Xml.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\bin\Debug\EVE.Mvc.Xml.pdb
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\bin\Debug\EVE.Mvc.Providers.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\bin\Debug\EVE.Mvc.Shared.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\bin\Debug\EVE.Mvc.Plugin.dll
@@ -20,5 +20,5 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\bin\Debug\System.
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\bin\Debug\System.Web.WebPages.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\obj\Debug\EVE.MVC.Xml.csprojResolveAssemblyReference.cache
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\obj\Debug\EVE.MVC.Xml.dll
-C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\obj\Debug\EVE.MVC.Xml.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\obj\Debug\EVE.Mvc.Xml.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.MVC.Xml\obj\Debug\EVE.Mvc.Xml.pdb

@@ -16,5 +16,6 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.View\bin\Debug\System
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.View\bin\Debug\System.Web.WebPages.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.View\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.View\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.View\obj\Debug\EVE.Mvc.Shared.csprojResolveAssemblyReference.cache
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.View\obj\Debug\EVE.Mvc.Shared.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.View\obj\Debug\EVE.Mvc.Shared.pdb
