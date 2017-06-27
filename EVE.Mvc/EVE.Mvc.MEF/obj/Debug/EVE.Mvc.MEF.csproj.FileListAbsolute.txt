@@ -22,3 +22,4 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.MEF\bin\Debug\System.
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.MEF\obj\Debug\EVE.Mvc.MEF.csprojResolveAssemblyReference.cache
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.MEF\obj\Debug\EVE.Mvc.MEF.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.MEF\obj\Debug\EVE.Mvc.MEF.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.MEF\bin\Debug\EVE.Mvc.MEF.dll.config

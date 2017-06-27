@@ -90,3 +90,5 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\ja\EVE
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\obj\Debug\EVE.Mvc.TestWebApp.csprojResolveAssemblyReference.cache
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\obj\Debug\EVE.Mvc.TestWebApp.dll
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\obj\Debug\EVE.Mvc.TestWebApp.pdb
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\WebActivatorEx.dll
+C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.TestWebApp\bin\RazorGenerator.Mvc.dll
