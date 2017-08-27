@@ -1,33 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{AB6822AE-A9B1-4DF5-B3FA-6996F70DBE56}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc.TestWebApp", "EV5.Mvc.TestWebApp\EV5.Mvc.TestWebApp.xproj", "{7F19E1CF-3680-4FD8-9A45-2832D0F0C0B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.Mvc.Samples.ViewEngine", "EV5.Mvc.Samples.ViewEngine\EV5.Mvc.Samples.ViewEngine.csproj", "{43DE54A3-4150-4966-AA9C-5D7ED42200F7}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc.Samples.ViewEngine", "EV5.Mvc.Samples.ViewEngine\EV5.Mvc.Samples.ViewEngine.xproj", "{43DE54A3-4150-4966-AA9C-5D7ED42200F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.Mvc.Samples.Embedded", "EV5.Mvc.Samples.Embedded\EV5.Mvc.Samples.Embedded.csproj", "{8A8A4A95-3483-4BAD-B263-0B84380E6435}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc.Samples.Embedded", "EV5.Mvc.Samples.Embedded\EV5.Mvc.Samples.Embedded.xproj", "{8A8A4A95-3483-4BAD-B263-0B84380E6435}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.Mvc", "EV5.Mvc\EV5.Mvc.csproj", "{33993FD1-DB4E-417E-BDBF-57A217354F94}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc", "EV5.Mvc\EV5.Mvc.xproj", "{33993FD1-DB4E-417E-BDBF-57A217354F94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.Mvc.Autofac", "EV5.Mvc.Autofac\EV5.Mvc.Autofac.csproj", "{A54FB058-3513-4F78-A5DE-B16C6AC31E1B}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc.Autofac", "EV5.Mvc.Autofac\EV5.Mvc.Autofac.xproj", "{A54FB058-3513-4F78-A5DE-B16C6AC31E1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.Mvc.MEF", "EV5.Mvc.MEF\EV5.Mvc.MEF.csproj", "{30044F98-5689-47C1-9808-7B8C84D9B34F}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc.MEF", "EV5.Mvc.MEF\EV5.Mvc.MEF.xproj", "{30044F98-5689-47C1-9808-7B8C84D9B34F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.Mvc.Plugin", "EV5.Mvc.Plugin\EV5.Mvc.Plugin.csproj", "{F6BF4E28-9DD9-41BC-8AD4-E9421260F948}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc.Plugin", "EV5.Mvc.Plugin\EV5.Mvc.Plugin.xproj", "{F6BF4E28-9DD9-41BC-8AD4-E9421260F948}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.Mvc.Processor", "EV5.Mvc.Processor\EV5.Mvc.Processor.csproj", "{C9D20164-7F67-4E65-9925-CE7F1B93AFC9}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc.Processor", "EV5.Mvc.Processor\EV5.Mvc.Processor.xproj", "{C9D20164-7F67-4E65-9925-CE7F1B93AFC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.Mvc.Providers", "EV5.Mvc.Providers\EV5.Mvc.Providers.csproj", "{FDE2BA00-88AA-434D-8F1E-8CD020354D93}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc.Providers", "EV5.Mvc.Providers\EV5.Mvc.Providers.xproj", "{FDE2BA00-88AA-434D-8F1E-8CD020354D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.Mvc.Shared", "EV5.Mvc.Shared\EV5.Mvc.Shared.csproj", "{620B2358-1313-4A6E-8A05-4C14ECCC8566}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc.Shared", "EV5.Mvc.Shared\EV5.Mvc.Shared.xproj", "{620B2358-1313-4A6E-8A05-4C14ECCC8566}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.MVC.Xml", "EV5.MVC.Xml\EV5.MVC.Xml.csproj", "{30574D12-D5E2-4CA9-9608-E030F728595E}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.MVC.Xml", "EV5.MVC.Xml\EV5.MVC.Xml.xproj", "{30574D12-D5E2-4CA9-9608-E030F728595E}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EV5.Mvc.HtmlAgility", "EV5.Mvc.HtmlAgility\EV5.Mvc.HtmlAgility.xproj", "{60361D07-E4FB-436A-8B73-56976F7E0EEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EV5.Mvc.HtmlAgility", "EV5.Mvc.HtmlAgility\EV5.Mvc.HtmlAgility.csproj", "{60361D07-E4FB-436A-8B73-56976F7E0EEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7F19E1CF-3680-4FD8-9A45-2832D0F0C0B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F19E1CF-3680-4FD8-9A45-2832D0F0C0B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F19E1CF-3680-4FD8-9A45-2832D0F0C0B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F19E1CF-3680-4FD8-9A45-2832D0F0C0B4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{43DE54A3-4150-4966-AA9C-5D7ED42200F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{43DE54A3-4150-4966-AA9C-5D7ED42200F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43DE54A3-4150-4966-AA9C-5D7ED42200F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -97,5 +91,8 @@ Global
 		{620B2358-1313-4A6E-8A05-4C14ECCC8566} = {AB6822AE-A9B1-4DF5-B3FA-6996F70DBE56}
 		{30574D12-D5E2-4CA9-9608-E030F728595E} = {AB6822AE-A9B1-4DF5-B3FA-6996F70DBE56}
 		{60361D07-E4FB-436A-8B73-56976F7E0EEA} = {AB6822AE-A9B1-4DF5-B3FA-6996F70DBE56}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47B34AE7-2F5E-40A2-8591-E307043EBF97}
 	EndGlobalSection
 EndGlobal

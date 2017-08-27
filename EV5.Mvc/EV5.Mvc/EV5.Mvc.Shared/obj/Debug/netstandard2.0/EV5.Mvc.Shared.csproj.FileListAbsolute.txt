@@ -1,0 +1,8 @@
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Shared\bin\Debug\netstandard2.0\EV5.Mvc.Shared.deps.json
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Shared\bin\Debug\netstandard2.0\EV5.Mvc.Shared.dll
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Shared\bin\Debug\netstandard2.0\EV5.Mvc.Shared.pdb
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Shared\obj\Debug\netstandard2.0\EV5.Mvc.Shared.csproj.CoreCompileInputs.cache
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Shared\obj\Debug\netstandard2.0\EV5.Mvc.Shared.AssemblyInfoInputs.cache
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Shared\obj\Debug\netstandard2.0\EV5.Mvc.Shared.AssemblyInfo.cs
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Shared\obj\Debug\netstandard2.0\EV5.Mvc.Shared.dll
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Shared\obj\Debug\netstandard2.0\EV5.Mvc.Shared.pdb

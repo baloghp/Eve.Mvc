@@ -1,0 +1,8 @@
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Autofac\bin\Debug\netstandard2.0\EV5.Mvc.Autofac.deps.json
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Autofac\bin\Debug\netstandard2.0\EV5.Mvc.Autofac.dll
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Autofac\bin\Debug\netstandard2.0\EV5.Mvc.Autofac.pdb
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Autofac\obj\Debug\netstandard2.0\EV5.Mvc.Autofac.csproj.CoreCompileInputs.cache
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Autofac\obj\Debug\netstandard2.0\EV5.Mvc.Autofac.AssemblyInfoInputs.cache
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Autofac\obj\Debug\netstandard2.0\EV5.Mvc.Autofac.AssemblyInfo.cs
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Autofac\obj\Debug\netstandard2.0\EV5.Mvc.Autofac.dll
+C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Autofac\obj\Debug\netstandard2.0\EV5.Mvc.Autofac.pdb
