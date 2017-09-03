@@ -3,3 +3,13 @@
 ################################################################################
 
 /EVE.Mvc/EVE.Mvc.TestWebApp/bin
+/EV5.Mvc/EV5.Mvc/EV5.Mvc/obj/Release/netstandard2.0
+/EV5.Mvc/EV5.Mvc/EV5.Mvc.MEF/obj/Release/netstandard2.0
+/EV5.Mvc/EV5.Mvc/EV5.Mvc.Autofac/obj/Release/netstandard2.0
+/EV5.Mvc/EV5.Mvc/EV5.Mvc.HtmlAgility/obj/Release/netstandard2.0
+/EV5.Mvc/EV5.Mvc/EV5.Mvc.Processor/obj/Release/netstandard2.0
+/EV5.Mvc/EV5.Mvc/EV5.Mvc.Plugin/obj/Release/netstandard2.0
+/EV5.Mvc/EV5.Mvc/EV5.Mvc.Providers/obj/Release/netstandard2.0
+/EV5.Mvc/EV5.Mvc/EV5.Mvc.Samples.Embedded/obj/Release/netstandard2.0
+/EV5.Mvc/EV5.Mvc/EV5.Mvc.Samples.ViewEngine/obj/Release/netstandard2.0
+/EV5.Mvc/EV5.Mvc/EV5.MVC.Xml/obj/Release/netstandard2.0

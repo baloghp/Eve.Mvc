@@ -5,7 +5,6 @@ C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Autofac\obj\Debug\EVE
 C:\Users\peter.balogh\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Autofac\obj\Debug\EVE.Mvc.Autofac.pdb
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Autofac\bin\Debug\EVE.Mvc.Autofac.dll
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Autofac\bin\Debug\EVE.Mvc.Autofac.pdb
-C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Autofac\obj\Debug\EVE.Mvc.Autofac.csprojResolveAssemblyReference.cache
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Autofac\obj\Debug\EVE.Mvc.Autofac.csproj.CoreCompileInputs.cache
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Autofac\obj\Debug\EVE.Mvc.Autofac.dll
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Autofac\obj\Debug\EVE.Mvc.Autofac.pdb

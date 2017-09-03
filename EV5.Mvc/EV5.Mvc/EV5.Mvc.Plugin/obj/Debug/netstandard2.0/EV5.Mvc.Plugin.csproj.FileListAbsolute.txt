@@ -1,8 +1,0 @@
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Plugin\bin\Debug\netstandard2.0\EV5.Mvc.Plugin.deps.json
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Plugin\bin\Debug\netstandard2.0\EV5.Mvc.Plugin.dll
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Plugin\bin\Debug\netstandard2.0\EV5.Mvc.Plugin.pdb
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Plugin\obj\Debug\netstandard2.0\EV5.Mvc.Plugin.csproj.CoreCompileInputs.cache
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Plugin\obj\Debug\netstandard2.0\EV5.Mvc.Plugin.AssemblyInfoInputs.cache
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Plugin\obj\Debug\netstandard2.0\EV5.Mvc.Plugin.AssemblyInfo.cs
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Plugin\obj\Debug\netstandard2.0\EV5.Mvc.Plugin.dll
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Plugin\obj\Debug\netstandard2.0\EV5.Mvc.Plugin.pdb

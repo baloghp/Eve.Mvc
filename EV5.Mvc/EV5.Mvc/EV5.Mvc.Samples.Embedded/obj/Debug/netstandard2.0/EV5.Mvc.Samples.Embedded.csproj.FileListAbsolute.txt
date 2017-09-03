@@ -1,9 +1,0 @@
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.Embedded\bin\Debug\netstandard2.0\EV5.Mvc.Samples.Embedded.deps.json
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.Embedded\bin\Debug\netstandard2.0\EV5.Mvc.Samples.Embedded.dll
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.Embedded\bin\Debug\netstandard2.0\EV5.Mvc.Samples.Embedded.pdb
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.Embedded\obj\Debug\netstandard2.0\EV5.Mvc.Samples.Embedded.csprojResolveAssemblyReference.cache
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.Embedded\obj\Debug\netstandard2.0\EV5.Mvc.Samples.Embedded.csproj.CoreCompileInputs.cache
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.Embedded\obj\Debug\netstandard2.0\EV5.Mvc.Samples.Embedded.AssemblyInfoInputs.cache
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.Embedded\obj\Debug\netstandard2.0\EV5.Mvc.Samples.Embedded.AssemblyInfo.cs
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.Embedded\obj\Debug\netstandard2.0\EV5.Mvc.Samples.Embedded.dll
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.Embedded\obj\Debug\netstandard2.0\EV5.Mvc.Samples.Embedded.pdb

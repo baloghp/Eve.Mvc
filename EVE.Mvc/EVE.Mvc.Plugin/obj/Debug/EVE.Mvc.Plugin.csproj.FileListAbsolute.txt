@@ -23,7 +23,6 @@ C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\WebGrease.d
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\Antlr3.Runtime.pdb
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\Newtonsoft.Json.xml
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\bin\Debug\System.Web.Optimization.xml
-C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\obj\Debug\EVE.Mvc.Plugin.csprojResolveAssemblyReference.cache
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\obj\Debug\EVE.Mvc.Plugin.csproj.CoreCompileInputs.cache
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\obj\Debug\EVE.Mvc.Plugin.dll
 C:\Users\peter\Source\Repos\Eve.Mvc\EVE.Mvc\EVE.Mvc.Plugin\obj\Debug\EVE.Mvc.Plugin.pdb

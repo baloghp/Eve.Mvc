@@ -1,8 +1,0 @@
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.ViewEngine\bin\Debug\netstandard2.0\EV5.Mvc.Samples.ViewEngine.deps.json
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.ViewEngine\bin\Debug\netstandard2.0\EV5.Mvc.Samples.ViewEngine.dll
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.ViewEngine\bin\Debug\netstandard2.0\EV5.Mvc.Samples.ViewEngine.pdb
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.ViewEngine\obj\Debug\netstandard2.0\EV5.Mvc.Samples.ViewEngine.csproj.CoreCompileInputs.cache
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.ViewEngine\obj\Debug\netstandard2.0\EV5.Mvc.Samples.ViewEngine.AssemblyInfoInputs.cache
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.ViewEngine\obj\Debug\netstandard2.0\EV5.Mvc.Samples.ViewEngine.AssemblyInfo.cs
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.ViewEngine\obj\Debug\netstandard2.0\EV5.Mvc.Samples.ViewEngine.dll
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.Mvc.Samples.ViewEngine\obj\Debug\netstandard2.0\EV5.Mvc.Samples.ViewEngine.pdb
