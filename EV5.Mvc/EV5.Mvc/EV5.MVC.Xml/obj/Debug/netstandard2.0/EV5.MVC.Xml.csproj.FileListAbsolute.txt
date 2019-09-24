@@ -1,8 +1,0 @@
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.MVC.Xml\bin\Debug\netstandard2.0\EV5.MVC.Xml.deps.json
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.MVC.Xml\bin\Debug\netstandard2.0\EV5.MVC.Xml.dll
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.MVC.Xml\bin\Debug\netstandard2.0\EV5.MVC.Xml.pdb
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.MVC.Xml\obj\Debug\netstandard2.0\EV5.MVC.Xml.csproj.CoreCompileInputs.cache
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.MVC.Xml\obj\Debug\netstandard2.0\EV5.MVC.Xml.AssemblyInfoInputs.cache
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.MVC.Xml\obj\Debug\netstandard2.0\EV5.MVC.Xml.AssemblyInfo.cs
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.MVC.Xml\obj\Debug\netstandard2.0\EV5.MVC.Xml.dll
-C:\Users\peter\Source\Repos\Eve.Mvc\EV5.Mvc\EV5.Mvc\EV5.MVC.Xml\obj\Debug\netstandard2.0\EV5.MVC.Xml.pdb
